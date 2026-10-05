@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Base */
+  --color-bg: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-surface-elevated: #FFFFFF;
+  --color-muted: #E9EEF6;
+  --color-border: #DBEAFE;
+  --color-border-strong: #CBD5E1;
+  --color-text-primary: #1E3A8A;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748B;
+  --color-primary: #1E40AF;
+  --color-primary-hover: #1D4ED8;
+  --color-on-primary: #FFFFFF;
+  --color-secondary: #3B82F6;
+  --color-ring: #1E40AF;
+  --color-info: #0891B2;
+
+  /* Health status - validated, locked */
+  --color-good: #047857;
+  --color-good-bg: #ECFDF5;
+  --color-monitor: #D97706;
+  --color-monitor-bg: #FFFBEB;
+  --color-critical: #B91C1C;
+  --color-critical-bg: #FEF2F2;
+
+  /* Chart palettes - validated, locked */
+  --chart-cat-1: #2563EB;
+  --chart-cat-2: #0891B2;
+  --chart-cat-3: #BE185D;
+  --chart-seq-1: #60A5FA;
+  --chart-seq-2: #3B82F6;
+  --chart-seq-3: #1D4ED8;
+  --chart-seq-4: #1E3A8A;
+
+  /* Spacing */
+  --space-xs: 2px;
+  --space-sm: 4px;
+  --space-md: 8px;
+  --space-lg: 12px;
+  --space-xl: 16px;
+  --space-2xl: 24px;
+  --space-3xl: 32px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-full: 9999px;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,.1);
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: 'Fira Sans', ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Tabular numeric alignment wherever metrics/percentages are shown */
+.font-mono, .tabular-nums {
+  font-family: 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Visible global focus ring - never outline:none */
+:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+a, button, input, select, textarea, [tabindex] {
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease, box-shadow 200ms ease, opacity 200ms ease, transform 200ms ease;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

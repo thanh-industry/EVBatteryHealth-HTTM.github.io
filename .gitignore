@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# App data (generated at runtime)
+backend/data/app.db
+backend/data/models/
+backend/data/datasets/
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Internal working documents - not part of the shipped project
+ARCHITECTURE.md
+DESIGN_SYSTEM.md
+PROJECT_STATUS.md
+SETUP.md
+DATASET.md
+CLAUDE.md
+design-system/
+.dist/
