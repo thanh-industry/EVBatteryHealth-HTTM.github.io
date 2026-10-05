@@ -5,6 +5,7 @@ import { useAuth } from '../../lib/auth'
 import { NAV_BY_ROLE } from '../../lib/nav'
 import { cx } from '../../lib/utils'
 import { MobileNav } from './MobileNav'
+import { ProjectCredits } from './ProjectCredits'
 import { Sidebar } from './Sidebar'
 
 export function AppShell() {
@@ -40,6 +41,12 @@ export function AppShell() {
             <Outlet />
           </div>
         </main>
+
+        <footer className="min-w-0 border-t border-border bg-surface">
+          <div className="mx-auto w-full min-w-0 max-w-[1280px] px-xl">
+            <ProjectCredits variant="compact" className="border-t-0 px-0" />
+          </div>
+        </footer>
 
         {useBottomNav && <MobileNav items={items} />}
       </div>
