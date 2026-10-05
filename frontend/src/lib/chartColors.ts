@@ -26,3 +26,12 @@ export const ALGORITHM_LABELS: Record<string, string> = {
   random_forest: 'Random Forest',
   logistic_regression: 'Logistic Regression',
 }
+
+// Fixed identity -> color mapping (never cycled by render/array order), so
+// an algorithm always gets the same categorical color across every chart
+// and session, per DESIGN_SYSTEM.md section 1.
+export const ALGORITHM_COLORS: Record<string, string> = {
+  svm: CATEGORICAL_COLORS[0],
+  random_forest: CATEGORICAL_COLORS[1],
+  logistic_regression: CATEGORICAL_COLORS[2],
+}

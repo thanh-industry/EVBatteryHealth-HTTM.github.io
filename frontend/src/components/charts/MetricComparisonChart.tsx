@@ -1,6 +1,6 @@
 import { Bar, BarChart, CartesianGrid, Legend, LabelList, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import type { Algorithm, Metrics } from '../../types/api'
-import { ALGORITHM_LABELS, CATEGORICAL_COLORS } from '../../lib/chartColors'
+import { ALGORITHM_COLORS, ALGORITHM_LABELS } from '../../lib/chartColors'
 import { ChartFrame } from './ChartFrame'
 
 export interface AlgorithmMetrics {
@@ -71,13 +71,13 @@ export function MetricComparisonChart({ entries }: MetricComparisonChartProps) {
             label={{ value: 'Score (%)', angle: -90, position: 'insideLeft', style: { fill: 'var(--color-text-secondary)', fontSize: 12 } }}
           />
           <Tooltip formatter={(value: number) => `${value.toFixed(1)}%`} />
-          <Legend formatter={(value: string) => ALGORITHM_LABELS[value] ?? value} />
-          {entries.map((entry, index) => (
+          {entries.length >= 2 && <Legend formatter={(value: string) => ALGORITHM_LABELS[value] ?? value} />}
+          {entries.map((entry) => (
             <Bar
               key={entry.algorithm}
               dataKey={entry.algorithm}
               name={ALGORITHM_LABELS[entry.algorithm] ?? entry.algorithm}
-              fill={CATEGORICAL_COLORS[index % CATEGORICAL_COLORS.length]}
+              fill={ALGORITHM_COLORS[entry.algorithm]}
               isAnimationActive={false}
             >
               <LabelList

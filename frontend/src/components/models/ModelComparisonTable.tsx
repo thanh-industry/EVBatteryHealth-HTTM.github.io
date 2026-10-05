@@ -1,3 +1,4 @@
+import { AlertOctagon } from 'lucide-react'
 import type { TrainingRun } from '../../types/api'
 import { ALGORITHM_LABELS } from '../../lib/chartColors'
 import { formatDateTime, formatPercent } from '../../lib/utils'
@@ -10,6 +11,11 @@ export interface ModelComparisonTableProps {
 }
 
 type MetricKey = 'accuracy' | 'precision_macro' | 'recall_macro' | 'f1_macro'
+
+function criticalRecall(run: TrainingRun): number | null {
+  const entry = run.metrics?.per_class.find((pc) => pc.class === 'CRITICAL')
+  return entry ? entry.recall : null
+}
 
 function bestRunId(runs: TrainingRun[], key: MetricKey): number | null {
   let bestId: number | null = null
@@ -24,16 +30,34 @@ function bestRunId(runs: TrainingRun[], key: MetricKey): number | null {
   return bestId
 }
 
+function bestRunIdByCriticalRecall(runs: TrainingRun[]): number | null {
+  let bestId: number | null = null
+  let bestValue = -Infinity
+  for (const run of runs) {
+    const value = criticalRecall(run)
+    if (value !== null && value > bestValue) {
+      bestValue = value
+      bestId = run.id
+    }
+  }
+  return bestId
+}
+
 /**
- * Comparison table across all four metrics. Each metric's best value is
- * highlighted independently - accuracy alone never declares a winner
- * (ARCHITECTURE.md section 3 / DESIGN_SYSTEM.md section 5).
+ * Comparison table across all four macro metrics PLUS per-class CRITICAL
+ * recall. Each metric's best value is highlighted independently - accuracy
+ * alone never declares a winner (ARCHITECTURE.md section 3 /
+ * DESIGN_SYSTEM.md section 5). CRITICAL recall matters separately from the
+ * macro metrics: for a battery safety product, missing a dangerous battery
+ * is the expensive error, so the highest-accuracy model is not
+ * automatically the right deployment choice.
  */
 export function ModelComparisonTable({ runs }: ModelComparisonTableProps) {
   const bestAccuracy = bestRunId(runs, 'accuracy')
   const bestPrecision = bestRunId(runs, 'precision_macro')
   const bestRecall = bestRunId(runs, 'recall_macro')
   const bestF1 = bestRunId(runs, 'f1_macro')
+  const bestCriticalRecall = bestRunIdByCriticalRecall(runs)
 
   const metricCell = (run: TrainingRun, key: MetricKey, bestId: number | null) => {
     const value = run.metrics?.[key]
@@ -102,6 +126,24 @@ export function ModelComparisonTable({ runs }: ModelComparisonTableProps) {
       render: (r) => metricCell(r, 'f1_macro', bestF1),
     },
     {
+      key: 'critical_recall',
+      header: 'Critical Recall',
+      accessor: (r) => criticalRecall(r),
+      sortable: true,
+      numeric: true,
+      align: 'right',
+      render: (r) => {
+        const value = criticalRecall(r)
+        const isBest = r.id === bestCriticalRecall && value !== null
+        return (
+          <span className={cx('inline-flex items-center gap-xs', isBest && 'font-semibold text-good')}>
+            <AlertOctagon className="h-3.5 w-3.5 shrink-0 text-critical" aria-hidden="true" />
+            {value !== null ? formatPercent(value * 100) : '--'}
+          </span>
+        )
+      },
+    },
+    {
       key: 'completed_at',
       header: 'Trained',
       accessor: (r) => r.completed_at,
@@ -112,7 +154,7 @@ export function ModelComparisonTable({ runs }: ModelComparisonTableProps) {
 
   return (
     <DataTable
-      caption="Trained model comparison across accuracy, precision, recall and F1"
+      caption="Trained model comparison across accuracy, precision, recall, F1 and critical-class recall"
       columns={columns}
       rows={runs}
       getRowId={(r) => r.id}

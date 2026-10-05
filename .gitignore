@@ -33,3 +33,6 @@ DATASET.md
 CLAUDE.md
 design-system/
 .dist/
+
+# Generated static demo export (only needed for a serverless Pages build)
+frontend/public/demo-api/

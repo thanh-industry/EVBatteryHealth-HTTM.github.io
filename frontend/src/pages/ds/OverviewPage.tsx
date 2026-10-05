@@ -13,7 +13,7 @@ import { useDatasets } from '../../hooks/useDatasets'
 import { useTrainingRuns } from '../../hooks/useTraining'
 import { useActiveModel } from '../../hooks/useModels'
 import { ALGORITHM_LABELS } from '../../lib/chartColors'
-import { formatDateTime } from '../../lib/utils'
+import { formatDateTime, formatRelativeTime } from '../../lib/utils'
 import type { Algorithm, TrainingRun } from '../../types/api'
 
 export function OverviewPage() {
@@ -138,8 +138,9 @@ export function OverviewPage() {
         />
         <KpiCard
           label="Latest Training"
-          value={latestRun ? formatDateTime(latestRun.started_at) : '--'}
-          hint={latestRun ? latestRun.status : undefined}
+          value={latestRun ? formatRelativeTime(latestRun.started_at) : '--'}
+          valueVariant="text"
+          hint={latestRun ? `${formatDateTime(latestRun.started_at)} - ${latestRun.status}` : undefined}
           icon={BarChart3}
         />
       </div>

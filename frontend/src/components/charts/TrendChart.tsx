@@ -64,7 +64,7 @@ export function TrendChart({ measurements, thresholds }: TrendChartProps) {
   const ariaSummary = `Line chart of State of Health percentage over time, from ${sorted[0].soh.toFixed(1)}% on ${formatDate(sorted[0].recorded_at)} to ${sorted[sorted.length - 1].soh.toFixed(1)}% on ${formatDate(sorted[sorted.length - 1].recorded_at)}`
 
   return (
-    <ChartFrame title="SoH Trend" unitNote="State of Health (%) over time" ariaSummary={ariaSummary} isEmpty={false}>
+    <ChartFrame title="SoH Trend" unitNote="State of Health (%) over time" ariaSummary={ariaSummary} isEmpty={false} height={300}>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={sorted} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
           <CartesianGrid stroke="var(--color-border)" strokeDasharray="3 3" vertical={false} />
@@ -79,7 +79,7 @@ export function TrendChart({ measurements, thresholds }: TrendChartProps) {
             tickCount={6}
             stroke="var(--color-text-secondary)"
             fontSize={12}
-            label={{ value: 'State of Health (%)', angle: -90, position: 'insideLeft', style: { fill: 'var(--color-text-secondary)', fontSize: 12 } }}
+            label={{ value: 'SoH (%)', angle: -90, position: 'insideLeft', style: { fill: 'var(--color-text-secondary)', fontSize: 12 } }}
           />
           <Tooltip content={<TrendTooltip />} />
           <Line
