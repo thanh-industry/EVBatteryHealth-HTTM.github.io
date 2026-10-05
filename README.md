@@ -58,15 +58,41 @@ Vite 5 is used rather than Next.js because the target environment runs Node
 
 ---
 
-## Quick start (Windows PowerShell)
+## Quick start (Windows)
 
-```powershell
-.\start-all.ps1
+```
+start-all.cmd
 ```
 
-This starts the backend, waits until it answers, then starts the frontend.
+This starts the backend, waits until it actually answers, then starts the
+frontend. First run takes roughly 60-90 seconds because it installs
+dependencies and seeds the database. Then open http://localhost:5173
 
-Then open http://localhost:5173
+Use the `.cmd` files rather than the `.ps1` files directly. Many Windows
+machines set the PowerShell `LocalMachine` execution policy to `AllSigned` or
+`Restricted`, which refuses to run unsigned local scripts and fails with:
+
+```
+... is not digitally signed. You cannot run this script on the current system.
+```
+
+The `.cmd` wrappers avoid this by passing `-ExecutionPolicy Bypass` for that one
+process only. They change nothing on your machine and need no administrator
+rights.
+
+If you prefer to run the PowerShell scripts directly, either call them as:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\start-all.ps1
+```
+
+or allow local scripts for your user account once:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+Available launchers: `start-all.cmd`, `start-backend.cmd`, `start-frontend.cmd`.
 
 ## Manual start
 
@@ -266,8 +292,15 @@ never exposed.
 
 ## Troubleshooting
 
+**"is not digitally signed" / "cannot be loaded".** Your machine's PowerShell
+execution policy blocks unsigned local scripts. Run `start-all.cmd` instead of
+`start-all.ps1` - see Quick start above. Nothing needs to be changed on your
+machine.
+
 **Port already in use.** Stop the process using 8000 or 5173, or change the port
-in `frontend/vite.config.ts` and the uvicorn command.
+in `frontend/vite.config.ts` and the uvicorn command. If Vite reports "Port 5173
+is in use, trying another one" it will serve on 5174 or 5175 instead, but the
+`/api` proxy still points at port 8000, so the backend must be on 8000.
 
 **Node version too old.** Vite 5 needs Node 18.17 or newer. Check with
 `node --version`.
