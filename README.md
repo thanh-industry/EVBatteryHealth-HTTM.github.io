@@ -44,6 +44,8 @@ app/             Stage 3 - Streamlit web application
   components/    shared UI
   tests/
 mockup/          Static HTML+CSS UI/UX mockup (open index.html directly)
+  fonts/         Self-hosted woff2, so the mockup works with no network
+  handoff/       Engineering spec: tokens, components, patterns, traceability
 models/          Deployed model bundle (created by deploy_model.py)
 data/            SQLite database (created at runtime)
 ```
@@ -151,10 +153,10 @@ Measured results, stratified 80/20 split, `random_state=42`:
 | Logistic Regression (balanced) | 0.9397 | 0.5373 | 0.9350 | 0.6825 |
 | SVM | 0.9617 | 0.8131 | 0.5812 | 0.6779 |
 | SVM (balanced) | 0.9615 | 0.6892 | 0.8087 | 0.7442 |
-| Random Forest | 0.9480 | 0.7634 | 0.3610 | 0.4902 |
-| Random Forest (balanced) | 0.9420 | 0.7528 | 0.2419 | 0.3661 |
+| Random Forest | 0.9487 | 0.7687 | 0.3718 | 0.5012 |
+| Random Forest (balanced) | 0.9415 | 0.7529 | 0.2310 | 0.3536 |
 
-Random Forest illustrates the point: 94.8% accuracy, but it detects only 36% of
+Random Forest illustrates the point: 94.9% accuracy, but it detects only 37% of
 real failures.
 
 **Selected model: Logistic Regression**, the highest Failure-class F1 of the six
@@ -179,10 +181,23 @@ python deployment/verify_model.py         # deployed-model verification
 ## UI/UX mockup
 
 `mockup/` holds a standalone static mockup of the interface. It needs no build
-step or server - open `mockup/index.html` in a browser. It covers the overview,
-battery records, run classification, maintenance assessment, classification
-history, the ML workflow, and a gallery of loading / empty / error / no-model
-states. See `mockup/README.md`.
+step, server or network connection - open `mockup/index.html` in a browser.
+Fonts are self-hosted in `mockup/fonts/`, so it renders identically offline.
+
+Two parts:
+
+- **Five production screens** mirroring the running application: overview,
+  battery records, run classification (including the live step 1 -> step 2 ->
+  result flow), maintenance assessment, and classification history. Every
+  value shown is real - model metrics, feature medians and ranges, battery
+  serials and classification outcomes all come from the deployed bundle and
+  the application database.
+- **`mockup/handoff/`** - the engineering specification an implementer builds
+  from: design tokens with measured contrast ratios, every component with its
+  states and redlined dimensions, layout and responsive patterns, the states
+  catalogue, the ML workflow, and an FR-01..16 / UC-01..09 traceability table.
+
+See `mockup/README.md` and `mockup/handoff/README.md`.
 
 ---
 

@@ -1,220 +1,306 @@
-<title>EV Battery Failure Classification - Overview</title>
+<title>EV Battery Failure Classification</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="UI/UX mockup: overview and deployed-model status for the EV Battery Failure Classification system.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap">
+<meta name="description" content="Overview: deployed model status, database counts and recent activity for the EV Battery Failure Classification system.">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/app.css">
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <div class="app-shell">
 
-  <header class="topbar">
+  <aside class="sidebar">
     <a class="brand" href="index.html">
       <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><line x1="22" y1="10" x2="22" y2="14"/><path d="M11 9 9 13h3l-2 4"/></svg>
+        <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="8" rx="1.5"/><line x1="18" y1="8.5" x2="18" y2="11.5"/><line x1="5.5" y1="8" x2="5.5" y2="12"/></svg>
       </span>
-      <span class="brand-text">
-        <span class="brand-title">EV Battery Failure Classification</span>
-        <span class="brand-sub">UI/UX mockup - Group 5</span>
-      </span>
+      <span class="brand-title">EV Battery Failure<br>Classification</span>
     </a>
-    <span class="persona-tag">
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 18l3 3 6.6-6.3a4 4 0 0 0 5.1-5.4l-2.8 2.8-2-2 2.8-2.8Z"/></svg>
-      <span>EV Maintenance Specialist view</span>
-    </span>
-  </header>
 
-  <nav class="primary-nav" aria-label="Main">
-    <ul>
-      <li><a href="index.html" aria-current="page">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
-        <span>Overview</span></a></li>
-      <li><a href="battery-records.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="18" height="10" rx="2"/><line x1="22" y1="10" x2="22" y2="14"/><path d="M11 9 9 13h3l-2 4"/></svg>
-        <span>Battery Records</span></a></li>
-      <li><a href="run-classification.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
-        <span>Run Classification</span></a></li>
-      <li><a href="maintenance-assessment.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="2"/><rect x="9" y="2" width="6" height="4" rx="1"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-        <span>Maintenance Assessment</span></a></li>
-      <li><a href="classification-history.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
-        <span>Classification History</span></a></li>
-      <li><a href="ml-workflow.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8"/><rect x="11" y="7" width="3" height="13"/><rect x="16" y="3" width="3" height="17"/></svg>
-        <span>ML Workflow</span></a></li>
-      <li><a href="states.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-        <span>UX States</span></a></li>
-    </ul>
-  </nav>
+    <nav class="sidebar-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html" aria-current="page">
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 10 3l7 6.5"/><path d="M5 8.5V17h10V8.5"/><path d="M8 17v-5h4v5"/></svg>
+          <span>Home</span></a></li>
+        <li><a href="battery-records.html">
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="14" height="8" rx="1.5"/><line x1="18" y1="8.5" x2="18" y2="11.5"/><line x1="5.5" y1="8" x2="5.5" y2="12"/></svg>
+          <span>Battery Records</span></a></li>
+        <li><a href="run-classification.html">
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 1.5 3 11.5h5.5l-1 7 9-10H11l1-7Z"/></svg>
+          <span>Run Classification</span></a></li>
+        <li><a href="maintenance-assessment.html">
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="10" height="14" rx="1.5"/><rect x="7.5" y="1.5" width="5" height="3" rx="1"/><line x1="7.5" y1="9.5" x2="12.5" y2="9.5"/><line x1="7.5" y1="13" x2="12.5" y2="13"/></svg>
+          <span>Maintenance Assessment</span></a></li>
+        <li><a href="classification-history.html">
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><polyline points="10 6 10 10 13 12"/></svg>
+          <span>Classification History</span></a></li>
+      </ul>
+    </nav>
 
-  <main id="main-content" class="page">
+    <hr class="sidebar-divider">
 
-    <div class="page-header">
-      <div>
-        <span class="eyebrow">Overview</span>
-        <h1 class="page-title">EV Battery Failure Classification</h1>
-        <p class="page-lede">Decision support for EV Maintenance Specialists: search a battery record, run a binary
-          failure classification against the deployed model, and record the maintenance assessment and
-          recommendation that follows.</p>
-      </div>
-      <div class="page-header-actions">
-        <a class="btn btn-secondary" href="battery-records.html">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
-          Find a battery record
-        </a>
-        <a class="btn btn-primary" href="run-classification.html">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
-          Run a classification
-        </a>
-      </div>
+    <div class="model-chip">
+      <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2 3.5 4.5v5c0 4.3 2.8 7.3 6.5 8.5 3.7-1.2 6.5-4.2 6.5-8.5v-5L10 2Z"/><polyline points="7 10 9.3 12.3 13.5 7.3"/></svg>
+      <span>
+        <span class="model-chip-label">Model deployed</span>
+        <span class="model-chip-name">logistic_regression</span>
+      </span>
     </div>
 
-    <section aria-labelledby="what-heading">
-      <div class="card">
-        <h2 id="what-heading" class="section-heading">What this system does</h2>
-        <p>The EV Battery Failure Classification system predicts whether an electric-vehicle battery is heading
-          toward a <strong>Failure</strong> using a supervised model trained offline on operational battery data.
-          The result is strictly <strong>binary</strong> &mdash; <strong>Failure</strong> or <strong>No
-          Failure</strong> &mdash; there is no intermediate health tier. Three roles share the workflow: a
-          <strong>Data Scientist</strong> trains and exports the model offline (notebook-based, UC-01&ndash;03), a
-          <strong>Software Developer</strong> deploys and verifies it with command-line utilities (UC-04&ndash;05),
-          and the <strong>EV Maintenance Specialist</strong> &mdash; the user of this web application &mdash; runs
-          classifications against battery records and turns results into maintenance assessments and
-          recommendations (UC-06&ndash;09). This mockup shows only the Specialist-facing web application.</p>
-      </div>
-    </section>
+    <hr class="sidebar-divider">
 
-    <section aria-labelledby="model-status-heading">
-      <h2 id="model-status-heading" class="section-heading">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--color-no-failure)"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3Z"/><polyline points="8.5 12 11 14.5 15.5 9.5"/></svg>
-        Deployed model status
-        <span class="req-tag">FR-06</span>
-      </h2>
-      <div class="card">
-        <div style="display:flex; flex-wrap:wrap; gap:var(--space-xl); align-items:center; justify-content:space-between; margin-bottom:var(--space-xl);">
-          <div style="display:flex; align-items:center; gap:var(--space-lg);">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--color-primary)"><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
-            <div>
-              <div style="font:var(--text-section); color:var(--color-text-primary);">Logistic Regression</div>
-              <div class="hint">Trained 2026-10-18 09:32 ICT &middot; decision threshold 0.50 &middot; not class-weighted</div>
+    <div class="sidebar-info">
+      <div class="info-group">
+        <p>Vietnam National University, Ho Chi Minh City</p>
+        <p>University of Technology</p>
+        <p>Faculty of Computer Science and Engineering</p>
+      </div>
+      <div class="info-group">
+        <p>Course: Intelligent Systems</p>
+        <p>Instructor: Assoc. Prof. Quản Thành Thơ</p>
+      </div>
+      <div class="info-group">
+        <p class="info-strong">Group 5</p>
+        <p>Phạm Văn Thành &ndash; 2570496</p>
+        <p>Đồng Quang Trí &ndash; 2570523</p>
+      </div>
+    </div>
+  </aside>
+
+  <div class="content">
+    <main id="main-content" class="page">
+
+      <div class="page-header">
+        <span class="eyebrow">Overview</span>
+        <h1 class="page-title">EV Battery Failure Classification</h1>
+        <p class="page-lede">Binary classification of EV battery condition &mdash; Failure or No Failure &mdash; to support EV fleet maintenance decisions.</p>
+        <div class="page-header-actions">
+          <a class="btn btn-secondary" href="battery-records.html">
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><line x1="13.3" y1="13.3" x2="17" y2="17"/></svg>
+            Find a battery record
+          </a>
+          <a class="btn btn-primary" href="run-classification.html">
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 1.5 3 11.5h5.5l-1 7 9-10H11l1-7Z"/></svg>
+            Run a classification
+          </a>
+        </div>
+      </div>
+
+      <section aria-labelledby="what-heading">
+        <div class="card">
+          <h2 id="what-heading" class="card-title">What this system does</h2>
+          <p style="margin-bottom:0;">Electric vehicle batteries degrade and occasionally fail. This system lets an
+            <strong>EV Maintenance Specialist</strong> manage battery records, run a Failure / No Failure
+            classification using a model trained offline by the Data Scientist, and record a maintenance assessment
+            and recommendation against each result. The result is strictly binary &mdash; there is no intermediate
+            health tier.</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="model-status-heading">
+        <h2 id="model-status-heading" class="section-heading">
+          Deployed model status
+          <span class="req-tag">FR-06</span>
+        </h2>
+        <div class="card">
+          <div style="display:flex; flex-wrap:wrap; gap:var(--space-6); margin-bottom:var(--space-6);">
+            <div style="flex:1 1 160px;">
+              <div class="card-title" style="margin-bottom:var(--space-1);">Algorithm</div>
+              <div style="font:var(--text-h3); color:var(--c-text);">Logistic Regression</div>
+            </div>
+            <div style="flex:1 1 200px;">
+              <div class="card-title" style="margin-bottom:var(--space-1);">Trained at</div>
+              <div style="font:var(--text-h3); color:var(--c-text); font-family:var(--font-mono);">01 Nov 2026, 05:10 UTC</div>
+            </div>
+            <div style="flex:1 1 120px;">
+              <div class="card-title" style="margin-bottom:var(--space-1);">Features used</div>
+              <div style="font:var(--text-h3); color:var(--c-text); font-family:var(--font-mono);">67</div>
+            </div>
+            <div style="flex:1 1 140px;">
+              <div class="card-title" style="margin-bottom:var(--space-1);">Supports probability</div>
+              <div style="font:var(--text-h3); color:var(--c-text);">Yes</div>
             </div>
           </div>
-          <span class="badge badge-info">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg>
-            Active &middot; models/model_bundle.joblib
-          </span>
+
+          <div class="card-title">Failure-class metrics (from the deployed bundle)</div>
+          <div class="kpi-row">
+            <div class="kpi-card">
+              <div class="kpi-label">Precision</div>
+              <div class="kpi-value">0.838</div>
+              <div class="kpi-note">of predicted Failures, correct</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Recall</div>
+              <div class="kpi-value">0.693</div>
+              <div class="kpi-note">of real Failures, caught</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">F1-score</div>
+              <div class="kpi-value">0.759</div>
+              <div class="kpi-note">selection criterion</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Support</div>
+              <div class="kpi-value">277</div>
+              <div class="kpi-note">Failure rows in the 4,000-row test set</div>
+            </div>
+          </div>
+
+          <hr class="rule">
+
+          <div class="card-title">Confusion matrix on the held-out test set (4,000 rows, accuracy 0.9695)</div>
+          <div class="confusion-wrap">
+            <svg class="confusion-svg" viewBox="0 0 450 230" width="450" height="230" role="img" aria-label="Confusion matrix. Actual No Failure, predicted No Failure: 3686, true negative. Actual No Failure, predicted Failure: 37, false positive. Actual Failure, predicted No Failure: 85, false negative. Actual Failure, predicted Failure: 192, true positive.">
+              <text x="202" y="18" text-anchor="middle" style="font:var(--text-xs-label); fill:var(--c-text-muted); text-transform:uppercase; letter-spacing:var(--tracking-label);">No Failure</text>
+              <text x="367" y="18" text-anchor="middle" style="font:var(--text-xs-label); fill:var(--c-text-muted); text-transform:uppercase; letter-spacing:var(--tracking-label);">Failure</text>
+              <text x="8" y="72" style="font:var(--text-xs); fill:var(--c-text-muted);">Actual</text>
+              <text x="8" y="86" style="font:var(--text-xs); fill:var(--c-text-muted);">No Failure</text>
+              <text x="8" y="172" style="font:var(--text-xs); fill:var(--c-text-muted);">Actual</text>
+              <text x="8" y="186" style="font:var(--text-xs); fill:var(--c-text-muted);">Failure</text>
+
+              <rect x="120" y="30" width="165" height="100" rx="6" style="fill:var(--c-ok-bg); stroke:var(--c-ok-border);"/>
+              <text x="202" y="72" text-anchor="middle" style="font-family:var(--font-mono); font-weight:var(--fw-bold); font-size:var(--fs-h2); fill:var(--c-ok);">3,686</text>
+              <text x="202" y="94" text-anchor="middle" style="font:var(--text-xs); fill:var(--c-text-secondary);">Correctly called No Failure</text>
+              <text x="202" y="110" text-anchor="middle" style="font:var(--text-xs); fill:var(--c-text-muted);">True negative</text>
+
+              <rect x="285" y="30" width="165" height="100" rx="6" style="fill:var(--c-failure-bg); stroke:var(--c-failure-border);"/>
+              <text x="367" y="72" text-anchor="middle" style="font-family:var(--font-mono); font-weight:var(--fw-bold); font-size:var(--fs-h2); fill:var(--c-failure);">37</text>
+              <text x="367" y="94" text-anchor="middle" style="font:var(--text-xs); fill:var(--c-text-secondary);">False alarm</text>
+              <text x="367" y="110" text-anchor="middle" style="font:var(--text-xs); fill:var(--c-text-muted);">False positive</text>
+
+              <rect x="120" y="130" width="165" height="100" rx="6" style="fill:var(--c-failure-bg); stroke:var(--c-failure-border);"/>
+              <text x="202" y="172" text-anchor="middle" style="font-family:var(--font-mono); font-weight:var(--fw-bold); font-size:var(--fs-h2); fill:var(--c-failure);">85</text>
+              <text x="202" y="194" text-anchor="middle" style="font:var(--text-xs); fill:var(--c-text-secondary);">Missed failure</text>
+              <text x="202" y="210" text-anchor="middle" style="font:var(--text-xs); fill:var(--c-text-muted);">False negative</text>
+
+              <rect x="285" y="130" width="165" height="100" rx="6" style="fill:var(--c-ok-bg); stroke:var(--c-ok-border);"/>
+              <text x="367" y="172" text-anchor="middle" style="font-family:var(--font-mono); font-weight:var(--fw-bold); font-size:var(--fs-h2); fill:var(--c-ok);">192</text>
+              <text x="367" y="194" text-anchor="middle" style="font:var(--text-xs); fill:var(--c-text-secondary);">Correctly caught</text>
+              <text x="367" y="210" text-anchor="middle" style="font:var(--text-xs); fill:var(--c-text-muted);">True positive</text>
+            </svg>
+            <div class="confusion-legend">
+              <div class="legend-row"><span class="swatch" style="background:var(--c-ok);"></span>Correct prediction</div>
+              <div class="legend-row"><span class="swatch" style="background:var(--c-failure);"></span>Incorrect prediction</div>
+              <p class="hint" style="max-width:34ch; margin-top:var(--space-2);">Selection is driven by Failure-class recall/F1, not raw accuracy: a model
+                that always predicts No Failure would score 93.08% accuracy while catching zero real failures.</p>
+            </div>
+          </div>
         </div>
-        <div class="kpi-row">
+      </section>
+
+      <section aria-labelledby="counts-heading">
+        <h2 id="counts-heading" class="section-heading">Database summary</h2>
+        <div class="kpi-row kpi-row-3">
           <div class="kpi-card">
-            <div class="kpi-label">Accuracy</div>
-            <div class="kpi-value">96.95<span class="unit">%</span></div>
-            <div class="kpi-delta">whole test set, 4,000 rows</div>
+            <div class="kpi-label">Battery records</div>
+            <div class="kpi-value">25</div>
           </div>
           <div class="kpi-card">
-            <div class="kpi-label">Failure precision</div>
-            <div class="kpi-value">83.84<span class="unit">%</span></div>
-            <div class="kpi-delta">of predicted Failures, correct</div>
+            <div class="kpi-label">Classifications run</div>
+            <div class="kpi-value">27</div>
+            <div class="kpi-note">8 Failure &middot; 19 No Failure</div>
           </div>
           <div class="kpi-card">
-            <div class="kpi-label">Failure recall</div>
-            <div class="kpi-value">69.31<span class="unit">%</span></div>
-            <div class="kpi-delta">of real Failures, caught</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Failure F1</div>
-            <div class="kpi-value">0.759</div>
-            <div class="kpi-delta">selection criterion &mdash; see ML Workflow</div>
+            <div class="kpi-label">Assessments recorded</div>
+            <div class="kpi-value">16</div>
           </div>
         </div>
-        <p class="hint" style="margin-top:var(--space-xl);">Selected over Random Forest (94.80% accuracy, but only
-          36.10% Failure recall) and SVM because selection is driven by Failure-class F1/recall, never by raw
-          accuracy &mdash; a model that always predicts "No Failure" would score 93.08% accuracy while catching
-          zero real failures. Full comparison: <a href="ml-workflow.html">ML Workflow</a>.</p>
-      </div>
-    </section>
+      </section>
 
-    <section aria-labelledby="counts-heading">
-      <h2 id="counts-heading" class="section-heading">System activity</h2>
-      <div class="kpi-row">
-        <div class="kpi-card">
-          <div class="kpi-label">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline;vertical-align:-2px;margin-right:4px;"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
-            Battery records
+      <section aria-labelledby="activity-heading">
+        <h2 id="activity-heading" class="section-heading">Recent activity</h2>
+        <div class="card">
+          <div class="activity-list">
+            <div class="activity-row">
+              <span class="activity-icon is-ok" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.5"/><polyline points="6.3 10.2 8.7 12.6 13.7 7.2"/></svg></span>
+              <div class="activity-main">
+                <span class="activity-id">BAT-10008123</span>
+                <span class="activity-result">classified <strong>No Failure</strong> &middot; 0.0%</span>
+              </div>
+              <span class="activity-time">01 Nov, 05:33 UTC</span>
+            </div>
+            <div class="activity-row">
+              <span class="activity-icon is-ok" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.5"/><polyline points="6.3 10.2 8.7 12.6 13.7 7.2"/></svg></span>
+              <div class="activity-main">
+                <span class="activity-id">BAT-10008123</span>
+                <span class="activity-result">classified <strong>No Failure</strong> &middot; 0.0%</span>
+              </div>
+              <span class="activity-time">01 Nov, 05:27 UTC</span>
+            </div>
+            <div class="activity-row">
+              <span class="activity-icon is-failure" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="6.3 2 13.7 2 18 6.3 18 13.7 13.7 18 6.3 18 2 13.7 2 6.3"/><line x1="10" y1="7" x2="10" y2="11.2"/><line x1="10" y1="13.8" x2="10" y2="13.9"/></svg></span>
+              <div class="activity-main">
+                <span class="activity-id">BAT-10000942</span>
+                <span class="activity-result">classified <strong>Failure</strong> &middot; 80.3%</span>
+              </div>
+              <span class="activity-time">01 Nov, 05:12 UTC</span>
+            </div>
+            <div class="activity-row">
+              <span class="activity-icon is-ok" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.5"/><polyline points="6.3 10.2 8.7 12.6 13.7 7.2"/></svg></span>
+              <div class="activity-main">
+                <span class="activity-id">BAT-10017422</span>
+                <span class="activity-result">classified <strong>No Failure</strong> &middot; 0.0%</span>
+              </div>
+              <span class="activity-time">01 Nov, 05:12 UTC</span>
+            </div>
+            <div class="activity-row">
+              <span class="activity-icon is-ok" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.5"/><polyline points="6.3 10.2 8.7 12.6 13.7 7.2"/></svg></span>
+              <div class="activity-main">
+                <span class="activity-id">BAT-10006251</span>
+                <span class="activity-result">classified <strong>No Failure</strong> &middot; 0.0%</span>
+              </div>
+              <span class="activity-time">01 Nov, 05:12 UTC</span>
+            </div>
           </div>
-          <div class="kpi-value">128</div>
-          <div class="kpi-delta">across 112 vehicles</div>
+          <p class="hint" style="margin-top:var(--space-4); margin-bottom:0;"><a href="classification-history.html">View full classification history &rarr;</a></p>
         </div>
-        <div class="kpi-card">
-          <div class="kpi-label">Classifications run</div>
-          <div class="kpi-value">342</div>
-          <div class="kpi-delta">61 Failure &middot; 281 No Failure</div>
+      </section>
+
+      <section aria-labelledby="workflow-heading">
+        <h2 id="workflow-heading" class="section-heading">Specialist workflow <span class="req-tag">UC-06 &ndash; UC-09</span></h2>
+        <div class="grid grid-4">
+          <a class="card card-link" href="battery-records.html">
+            <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--c-primary); margin-bottom:var(--space-3);"><rect x="2" y="6" width="14" height="8" rx="1.5"/><line x1="18" y1="8.5" x2="18" y2="11.5"/><line x1="5.5" y1="8" x2="5.5" y2="12"/></svg>
+            <div class="card-title" style="margin-bottom:var(--space-1);">UC-06</div>
+            <h3 style="font:var(--text-body-medium); color:var(--c-text); margin-bottom:var(--space-1);">Manage battery records</h3>
+            <p class="hint" style="margin:0;">Search by serial or vehicle ID, view a record, or create a new one.</p>
+          </a>
+          <a class="card card-link" href="run-classification.html">
+            <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--c-primary); margin-bottom:var(--space-3);"><path d="M11 1.5 3 11.5h5.5l-1 7 9-10H11l1-7Z"/></svg>
+            <div class="card-title" style="margin-bottom:var(--space-1);">UC-07</div>
+            <h3 style="font:var(--text-body-medium); color:var(--c-text); margin-bottom:var(--space-1);">Run failure classification</h3>
+            <p class="hint" style="margin:0;">12 key parameters, 55 more pre-filled and grouped, then classify.</p>
+          </a>
+          <a class="card card-link" href="maintenance-assessment.html">
+            <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--c-primary); margin-bottom:var(--space-3);"><rect x="5" y="3" width="10" height="14" rx="1.5"/><rect x="7.5" y="1.5" width="5" height="3" rx="1"/><line x1="7.5" y1="9.5" x2="12.5" y2="9.5"/><line x1="7.5" y1="13" x2="12.5" y2="13"/></svg>
+            <div class="card-title" style="margin-bottom:var(--space-1);">UC-08</div>
+            <h3 style="font:var(--text-body-medium); color:var(--c-text); margin-bottom:var(--space-1);">Record maintenance assessment</h3>
+            <p class="hint" style="margin:0;">Attach an assessment and recommendation to a result.</p>
+          </a>
+          <a class="card card-link" href="classification-history.html">
+            <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--c-primary); margin-bottom:var(--space-3);"><circle cx="10" cy="10" r="7.5"/><polyline points="10 6 10 10 13 12"/></svg>
+            <div class="card-title" style="margin-bottom:var(--space-1);">UC-09</div>
+            <h3 style="font:var(--text-body-medium); color:var(--c-text); margin-bottom:var(--space-1);">View classification history</h3>
+            <p class="hint" style="margin:0;">Filterable, newest-first list of past classifications.</p>
+          </a>
         </div>
-        <div class="kpi-card">
-          <div class="kpi-label">Assessments recorded</div>
-          <div class="kpi-value">219</div>
-          <div class="kpi-delta">64% of classifications followed up</div>
+      </section>
+
+      <section aria-labelledby="course-heading">
+        <h2 id="course-heading" class="section-heading">Course and team</h2>
+        <div class="card" style="text-align:center;">
+          <p>Vietnam National University, Ho Chi Minh City &ndash; University of Technology</p>
+          <p>Faculty of Computer Science and Engineering</p>
+          <p>Course: Intelligent Systems</p>
+          <p>Instructor: Assoc. Prof. Quản Thành Thơ</p>
+          <p style="font-weight:var(--fw-semibold); color:var(--c-text);">Group 5</p>
+          <p>Phạm Văn Thành &ndash; 2570496</p>
+          <p style="margin-bottom:0;">Đồng Quang Trí &ndash; 2570523</p>
         </div>
-        <div class="kpi-card">
-          <div class="kpi-label">Observed Failure rate</div>
-          <div class="kpi-value">17.8<span class="unit">%</span></div>
-          <div class="kpi-delta">this fleet sample, not the training set</div>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section aria-labelledby="workflow-heading">
-      <h2 id="workflow-heading" class="section-heading">Specialist workflow <span class="req-tag">UC-06 &ndash; UC-09</span></h2>
-      <div class="grid grid-4">
-        <a class="card" href="battery-records.html" style="text-decoration:none; display:block;">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--color-primary); margin-bottom:var(--space-md);"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
-          <div class="card-title" style="margin-bottom:var(--space-sm);">UC-06</div>
-          <h3 style="font:var(--text-secondary); font-weight:600; color:var(--color-text-primary); margin-bottom:var(--space-sm);">Manage battery records</h3>
-          <p class="hint" style="margin:0;">Search by serial or vehicle ID, view and edit a record, or create a new one.</p>
-        </a>
-        <a class="card" href="run-classification.html" style="text-decoration:none; display:block;">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--color-primary); margin-bottom:var(--space-md);"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
-          <div class="card-title" style="margin-bottom:var(--space-sm);">UC-07</div>
-          <h3 style="font:var(--text-secondary); font-weight:600; color:var(--color-text-primary); margin-bottom:var(--space-sm);">Run failure classification</h3>
-          <p class="hint" style="margin:0;">Enter the 67 model parameters (12 key, rest pre-filled) and classify.</p>
-        </a>
-        <a class="card" href="maintenance-assessment.html" style="text-decoration:none; display:block;">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--color-primary); margin-bottom:var(--space-md);"><rect x="6" y="4" width="12" height="17" rx="2"/><rect x="9" y="2" width="6" height="4" rx="1"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-          <div class="card-title" style="margin-bottom:var(--space-sm);">UC-08</div>
-          <h3 style="font:var(--text-secondary); font-weight:600; color:var(--color-text-primary); margin-bottom:var(--space-sm);">Record maintenance assessment</h3>
-          <p class="hint" style="margin:0;">Attach an assessment and recommendation to a classification result.</p>
-        </a>
-        <a class="card" href="classification-history.html" style="text-decoration:none; display:block;">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--color-primary); margin-bottom:var(--space-md);"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
-          <div class="card-title" style="margin-bottom:var(--space-sm);">UC-09</div>
-          <h3 style="font:var(--text-secondary); font-weight:600; color:var(--color-text-primary); margin-bottom:var(--space-sm);">View classification history</h3>
-          <p class="hint" style="margin:0;">Filterable, newest-first list of past classifications and assessments.</p>
-        </a>
-      </div>
-    </section>
+      <p class="page-footnote">Static UI/UX mockup for offline review &middot; no backend, no network calls &middot; building this for real? See the <a href="handoff/index.html">engineering handoff</a> for implementation specs.</p>
 
-    <section aria-labelledby="course-heading">
-      <h2 id="course-heading" class="section-heading">Course and team</h2>
-      <div class="card" style="text-align:center;">
-        <p style="margin-bottom:var(--space-sm);">Vietnam National University, Ho Chi Minh City &ndash; University of Technology</p>
-        <p style="margin-bottom:var(--space-sm);">Faculty of Computer Science and Engineering</p>
-        <p style="margin-bottom:var(--space-sm);">Course: Intelligent Systems</p>
-        <p style="margin-bottom:var(--space-sm);">Instructor: Assoc. Prof. Qu&#7843;n Th&agrave;nh Th&#417;</p>
-        <p style="font-weight:600; color:var(--color-text-primary); margin-bottom:var(--space-sm);">Group 5</p>
-        <p style="margin-bottom:var(--space-sm);">Ph&#7841;m V&#259;n Th&agrave;nh &ndash; 2570496</p>
-        <p style="margin-bottom:0;">&#272;&#7891;ng Quang Tr&iacute; &ndash; 2570523</p>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="app-footer">
-    <p>Static UI/UX mockup &middot; Intelligent Systems, Group 5 &middot; VNU-HCM University of Technology &middot; no backend, sample data only</p>
-  </footer>
-
+    </main>
+  </div>
 </div>
 <script src="js/app.js"></script>

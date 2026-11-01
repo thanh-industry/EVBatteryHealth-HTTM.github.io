@@ -1,0 +1,510 @@
+<title>Components - EV Battery Failure Classification</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Component anatomy with redlines: buttons, inputs, cards, tables, the Failure/No Failure result panel, chips, expanders, modal, tabs, search, pagination.">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="handoff.css">
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="hd-shell">
+
+  <header class="hd-topbar">
+    <a class="hd-brand" href="index.html">
+      <span class="hd-brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="10" rx="1"/><rect x="14" y="17" width="7" height="4" rx="1"/></svg></span>
+      <span class="hd-brand-text"><span class="hd-brand-title">Engineering Handoff</span><span class="hd-brand-sub">EV Battery Failure Classification &middot; Group 5</span></span>
+    </a>
+    <a class="hd-app-link" href="../index.html">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5l7 7-7 7"/><path d="M3 12h18"/></svg>
+      View the app screens
+    </a>
+  </header>
+
+  <nav class="hd-nav" aria-label="Handoff section">
+    <ul>
+      <li><a href="index.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Overview</span></a></li>
+      <li><a href="design-tokens.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.6-.8 1.6-1.7 0-.5-.2-.9-.2-1.4a1.9 1.9 0 0 1 1.9-1.9h2.1A3.6 3.6 0 0 0 21 12.4 9 9 0 0 0 12 3Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.2" r="1"/><circle cx="15" cy="8" r="1"/></svg><span>Design Tokens</span></a></li>
+      <li><a href="components.html" aria-current="page"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 3 21 8 12 13 3 8 12 3"/><polyline points="3 13 12 18 21 13"/><polyline points="3 17.5 12 22.5 21 17.5"/></svg><span>Components</span></a></li>
+      <li><a href="patterns.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1"/><rect x="13" y="4" width="8" height="7" rx="1"/><rect x="13" y="14" width="8" height="6" rx="1"/></svg><span>Patterns</span></a></li>
+      <li><a href="states.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg><span>States</span></a></li>
+      <li><a href="ml-workflow.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8"/><rect x="11" y="7" width="3" height="13"/><rect x="16" y="3" width="3" height="17"/></svg><span>ML Pipeline</span></a></li>
+      <li><a href="traceability.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3h6v3H9z"/><polyline points="8.5 12.5 11 15 15.5 9.5"/></svg><span>Traceability</span></a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content" class="hd-main">
+
+    <div class="hd-page-header">
+      <span class="hd-eyebrow">Component library</span>
+      <h1 class="hd-page-title">Components</h1>
+      <p class="hd-page-lede">Every interactive element the app screens use, with a live example, every
+        interaction state, and the exact padding/height/radius/colour tokens to write as CSS. "Hover" and "Focus"
+        swatches are frozen renderings of those states (a static page cannot hold :hover); default/disabled
+        elements below are real and respond to your mouse and keyboard.</p>
+    </div>
+
+    <!-- ============================== BUTTON ============================== -->
+    <section class="hd-section" id="button" aria-labelledby="button-heading">
+      <h2 id="button-heading" class="hd-section-heading">Button</h2>
+      <div class="hd-card">
+        <div class="hd-card-title">Primary</div>
+        <div class="hd-specimen-stage" style="justify-content:flex-start;">
+          <button class="hd-btn hd-btn-primary">Run classification</button>
+          <button class="hd-btn hd-btn-primary" style="background:var(--c-primary-hover);">Run classification <span class="hd-req-tag" style="margin-left:4px;">hover</span></button>
+          <button class="hd-btn hd-btn-primary" style="outline:2px solid var(--c-primary); outline-offset:2px; box-shadow:var(--focus-ring);">Run classification <span class="hd-req-tag" style="margin-left:4px;">focus</span></button>
+          <button class="hd-btn hd-btn-primary" disabled>Run classification</button>
+        </div>
+        <div class="hd-card-title" style="margin-top:var(--space-6);">Secondary</div>
+        <div class="hd-specimen-stage" style="justify-content:flex-start;">
+          <button class="hd-btn hd-btn-secondary">Find a battery record</button>
+          <button class="hd-btn hd-btn-secondary" style="background:var(--c-bg);">Find a battery record <span class="hd-req-tag" style="margin-left:4px;">hover</span></button>
+          <button class="hd-btn hd-btn-secondary" style="outline:2px solid var(--c-primary); outline-offset:2px; box-shadow:var(--focus-ring);">Find a battery record <span class="hd-req-tag" style="margin-left:4px;">focus</span></button>
+          <button class="hd-btn hd-btn-secondary" disabled>Find a battery record</button>
+        </div>
+        <div class="hd-card-title" style="margin-top:var(--space-6);">Ghost</div>
+        <div class="hd-specimen-stage" style="justify-content:flex-start;">
+          <button class="hd-btn hd-btn-ghost">Cancel</button>
+          <button class="hd-btn hd-btn-ghost" style="background:var(--c-bg); color:var(--c-text);">Cancel <span class="hd-req-tag" style="margin-left:4px;">hover</span></button>
+          <button class="hd-btn hd-btn-ghost" style="outline:2px solid var(--c-primary); outline-offset:2px; box-shadow:var(--focus-ring);">Cancel <span class="hd-req-tag" style="margin-left:4px;">focus</span></button>
+          <button class="hd-btn hd-btn-ghost" disabled>Cancel</button>
+        </div>
+
+        <dl class="hd-spec-list">
+          <dt>Height</dt><dd>var(--control-h) &rarr; 40px (meets --touch-min 44px via the row's own vertical padding in the shell)</dd>
+          <dt>Padding</dt><dd>0 var(--space-5) &rarr; 0 20px horizontal, vertically centred by flex</dd>
+          <dt>Gap (icon to label)</dt><dd>var(--space-3) &rarr; 12px</dd>
+          <dt>Radius</dt><dd>var(--radius-md) &rarr; 6px</dd>
+          <dt>Type</dt><dd>var(--fs-sm)/var(--lh-sm) at var(--fw-semibold) &rarr; 13px/20px, weight 600</dd>
+          <dt>Primary &middot; default / hover</dt><dd>bg var(--c-primary) #1D4ED8 &rarr; var(--c-primary-hover) #1E40AF, text var(--c-on-primary)</dd>
+          <dt>Secondary &middot; default / hover</dt><dd>bg var(--c-surface), border var(--c-border-strong), text var(--c-primary) &rarr; hover bg var(--c-bg)</dd>
+          <dt>Ghost &middot; default / hover</dt><dd>bg transparent, text var(--c-text-secondary) &rarr; hover bg var(--c-bg), text var(--c-text)</dd>
+          <dt>Focus</dt><dd>outline 2px solid var(--c-primary), outline-offset 2px, plus var(--focus-ring) glow (see Design Tokens &rarr; Focus ring finding)</dd>
+          <dt>Disabled</dt><dd>opacity 0.5, cursor not-allowed, no hover/focus transition</dd>
+          <dt>Active (pressed)</dt><dd>translateY(1px) &mdash; no colour change, position only</dd>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============================== TEXT INPUT & SELECT ============================== -->
+    <section class="hd-section" id="input" aria-labelledby="input-heading">
+      <h2 id="input-heading" class="hd-section-heading">Text input &amp; select</h2>
+      <div class="hd-grid hd-grid-2">
+        <div class="hd-card">
+          <div class="hd-card-title">Default</div>
+          <div class="hd-field">
+            <label for="ci-soh">State of health</label>
+            <input class="hd-input" id="ci-soh" type="number" value="82.95">
+            <span class="hd-hint">% &middot; median 82.95, range 47.77&ndash;100.0</span>
+          </div>
+        </div>
+        <div class="hd-card">
+          <div class="hd-card-title">Focus</div>
+          <div class="hd-field">
+            <label for="ci-soh2">State of health</label>
+            <input class="hd-input" id="ci-soh2" type="number" value="82.95" style="border-color:var(--c-primary); outline:2px solid var(--c-primary); outline-offset:2px; box-shadow:var(--focus-ring);">
+            <span class="hd-hint">% &middot; median 82.95, range 47.77&ndash;100.0</span>
+          </div>
+        </div>
+        <div class="hd-card">
+          <div class="hd-card-title">Error</div>
+          <div class="hd-field has-error">
+            <label for="ci-soh3">State of health</label>
+            <input class="hd-input" id="ci-soh3" type="number" value="140" aria-invalid="true" aria-describedby="ci-soh3-err">
+            <span class="hd-field-error" id="ci-soh3-err">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.6 3.5 2.9 18a2 2 0 0 0 1.8 3h14.6a2 2 0 0 0 1.8-3L13.4 3.5a2 2 0 0 0-3.6 0Z"/><line x1="12" y1="9.5" x2="12" y2="13.5"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>
+              Must be between 0 and 100
+            </span>
+          </div>
+        </div>
+        <div class="hd-card">
+          <div class="hd-card-title">Disabled</div>
+          <div class="hd-field">
+            <label for="ci-soh4">State of health</label>
+            <input class="hd-input" id="ci-soh4" type="number" value="82.95" disabled style="opacity:0.5; cursor:not-allowed;">
+            <span class="hd-hint">Locked while a classification is running</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hd-grid hd-grid-2" style="margin-top:var(--space-6);">
+        <div class="hd-card">
+          <div class="hd-card-title">Select &middot; default</div>
+          <div class="hd-field">
+            <label for="ci-brand">Vehicle brand</label>
+            <select class="hd-select" id="ci-brand"><option selected>Mercedes-Benz</option><option>Tesla</option><option>Hyundai</option><option>BYD</option></select>
+            <span class="hd-hint">mode across the training set: Mercedes-Benz</span>
+          </div>
+        </div>
+        <div class="hd-card">
+          <div class="hd-card-title">Select &middot; error (unrecognised value)</div>
+          <div class="hd-field has-error">
+            <label for="ci-brand2">Vehicle brand</label>
+            <select class="hd-select" id="ci-brand2" aria-invalid="true" aria-describedby="ci-brand2-err"><option value="" selected disabled>-- choose --</option><option>Mercedes-Benz</option><option>Tesla</option></select>
+            <span class="hd-field-error" id="ci-brand2-err">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.6 3.5 2.9 18a2 2 0 0 0 1.8 3h14.6a2 2 0 0 0 1.8-3L13.4 3.5a2 2 0 0 0-3.6 0Z"/><line x1="12" y1="9.5" x2="12" y2="13.5"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>
+              Choose one of the listed options
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hd-card" style="margin-top:var(--space-6);">
+        <div class="hd-card-title">Textarea &middot; maintenance assessment &amp; recommendation (FR-15)</div>
+        <div class="hd-grid hd-grid-2">
+          <div class="hd-field">
+            <label for="ci-assess">Assessment</label>
+            <textarea class="hd-input" id="ci-assess" rows="3" style="min-height:96px; resize:vertical; font-family:var(--font-sans); padding-top:var(--space-3); padding-bottom:var(--space-3);">Elevated thermal and electrical stress indicators consistent with the model's Failure prediction.</textarea>
+          </div>
+          <div class="hd-field">
+            <label for="ci-rec">Recommendation</label>
+            <textarea class="hd-input" id="ci-rec" rows="3" style="min-height:96px; resize:vertical; font-family:var(--font-sans); padding-top:var(--space-3); padding-bottom:var(--space-3);">Schedule a pack inspection within 7 days; avoid fast-charging until the battery has been inspected.</textarea>
+          </div>
+        </div>
+        <p class="hd-hint" style="margin-top:var(--space-3);">Real recorded text from <code class="hd-inline-code">prod_content.md</code> ("Maintenance assessments"). Same token spec as the text input, with free-form height and top/bottom padding var(--space-3) instead of a fixed center-line.</p>
+      </div>
+
+      <dl class="hd-spec-list">
+        <dt>Height</dt><dd>var(--control-h) &rarr; 40px (textarea: min-height 96px, resizable vertically)</dd>
+        <dt>Padding</dt><dd>0 var(--space-4) &rarr; 0 16px horizontal</dd>
+        <dt>Radius</dt><dd>var(--radius-md) &rarr; 6px</dd>
+        <dt>Border, default</dt><dd>1px solid var(--c-border-strong)</dd>
+        <dt>Border, focus</dt><dd>1px solid var(--c-primary), plus 2px outline + var(--focus-ring) (see finding on Design Tokens)</dd>
+        <dt>Border, error</dt><dd>1px solid var(--c-failure)</dd>
+        <dt>Type (value)</dt><dd>var(--fs-sm) var(--font-mono) &rarr; numeric inputs use tabular figures; select uses var(--font-sans)</dd>
+        <dt>Label</dt><dd>var(--fs-sm) var(--fw-semibold), colour var(--c-text), var(--space-2) above the field</dd>
+        <dt>Helper text</dt><dd>var(--fs-xs), colour var(--c-text-muted) (use --c-text-secondary if the field sits on --c-surface-sunken, see Design Tokens finding)</dd>
+        <dt>Error text</dt><dd>var(--fs-xs) var(--fw-semibold), colour var(--c-failure), 14px alert-triangle icon, var(--space-2) gap</dd>
+        <dt>Accessibility</dt><dd>aria-invalid="true" + aria-describedby pointing at the error span id; error text is a sibling of the input, never only a colour change</dd>
+      </dl>
+    </section>
+
+    <!-- ============================== SEARCH FIELD ============================== -->
+    <section class="hd-section" id="search" aria-labelledby="search-heading">
+      <h2 id="search-heading" class="hd-section-heading">Search field</h2>
+      <div class="hd-card">
+        <div class="hd-field" style="max-width:420px;">
+          <label for="ci-search" class="visually-hidden">Search by battery serial or vehicle ID</label>
+          <div style="position:relative;">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position:absolute; left:var(--space-3); top:50%; transform:translateY(-50%); color:var(--c-text-muted);"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
+            <input class="hd-input" id="ci-search" type="search" placeholder="BAT-10000001 or EV100000" style="padding-left:36px; font-family:var(--font-sans);">
+          </div>
+        </div>
+        <p class="hd-hint" style="margin-top:var(--space-3);">Matches on either field (UC-06, FR-12). Filters the
+          results table live as you type; no submit button required.</p>
+      </div>
+      <dl class="hd-spec-list">
+        <dt>Container</dt><dd>same as text input (40px height, 6px radius) with a 16px search icon inset at var(--space-3) from the left</dd>
+        <dt>Icon</dt><dd>var(--c-text-muted), 16x16, 1.5px stroke, vertically centred, pointer-events:none</dd>
+        <dt>Input padding-left</dt><dd>36px to clear the icon (not on the --space scale exactly; it is icon-width 16px + 2 &times; var(--space-3) inset, derived from the icon geometry, not a new token)</dd>
+      </dl>
+    </section>
+
+    <!-- ============================== CARD ============================== -->
+    <section class="hd-section" id="card" aria-labelledby="card-heading">
+      <h2 id="card-heading" class="hd-section-heading">Card</h2>
+      <div class="hd-grid hd-grid-2">
+        <div class="hd-card">
+          <div class="hd-card-title">Deployed model status</div>
+          <p style="margin:0; color:var(--c-text-secondary);">The base content container for every grouped
+            block of information &mdash; KPI rows, forms, result panels.</p>
+        </div>
+        <div class="hd-specimen-stage" style="background:var(--c-surface); flex-direction:column; align-items:flex-start;">
+          <div class="hd-redline-frame" style="padding:var(--space-6); width:100%;">
+            <span class="hd-redline-label" style="top:-11px; left:var(--space-6);">padding: 24px (--space-6)</span>
+            <div style="height:48px; background:var(--c-primary-weak); border-radius:var(--radius-sm);"></div>
+          </div>
+        </div>
+      </div>
+      <dl class="hd-spec-list">
+        <dt>Background</dt><dd>var(--c-surface) #FFFFFF</dd>
+        <dt>Border</dt><dd>1px solid var(--c-border)</dd>
+        <dt>Radius</dt><dd>var(--radius-lg) &rarr; 10px</dd>
+        <dt>Shadow</dt><dd>var(--shadow-card)</dd>
+        <dt>Padding</dt><dd>var(--space-6) &rarr; 24px on all sides</dd>
+        <dt>Title (optional)</dt><dd>var(--fs-xs) uppercase, var(--tracking-label), var(--c-text-muted), var(--space-4) below it</dd>
+      </dl>
+    </section>
+
+    <!-- ============================== TABLE ============================== -->
+    <section class="hd-section" id="table" aria-labelledby="table-heading">
+      <h2 id="table-heading" class="hd-section-heading">Table</h2>
+      <p class="hd-section-sub">Real rows from <code class="hd-inline-code">prod_content.md</code> &mdash; the
+        first battery records and their most recent classification.</p>
+      <div class="hd-table-wrap">
+        <table class="hd-table" style="min-width:680px;">
+          <thead><tr><th>Battery serial</th><th>Vehicle ID</th><th class="num">Last updated (UTC)</th><th>Result</th><th class="num">P(Failure)</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">BAT-10008123</td><td class="mono">EV108123</td><td class="num">2026-11-01 05:33</td><td><span class="hd-badge hd-badge-pass">No Failure</span></td><td class="num">0.0003</td></tr>
+            <tr><td class="mono">BAT-10000942</td><td class="mono">EV100942</td><td class="num">2026-11-01 05:12</td><td><span class="hd-badge hd-badge-fail">Failure</span></td><td class="num">0.8030</td></tr>
+            <tr><td class="mono">BAT-10017422</td><td class="mono">EV117422</td><td class="num">2026-11-01 05:12</td><td><span class="hd-badge hd-badge-pass">No Failure</span></td><td class="num">0.0000</td></tr>
+            <tr><td class="mono">BAT-10006251</td><td class="mono">EV106251</td><td class="num">2026-11-01 05:12</td><td><span class="hd-badge hd-badge-pass">No Failure</span></td><td class="num">0.0000</td></tr>
+            <tr><td class="mono">BAT-10002440</td><td class="mono">EV102440</td><td class="num">2026-11-01 05:12</td><td><span class="hd-badge hd-badge-pass">No Failure</span></td><td class="num">0.0067</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="hd-table-wrap" style="margin-top:var(--space-5);">
+        <table class="hd-table" style="min-width:0;">
+          <thead><tr><th>Battery serial</th><th>Result</th></tr></thead>
+          <tbody><tr><td colspan="2" style="padding:0; border-bottom:none;">
+            <div class="hd-state-panel" style="border:none; border-radius:0;">
+              <svg class="hd-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
+              <strong style="color:var(--c-text);">No matching battery records</strong>
+              <span class="hd-hint">Empty-state row, shown in place of &lt;tbody&gt; content</span>
+            </div>
+          </td></tr></tbody>
+        </table>
+      </div>
+      <dl class="hd-spec-list">
+        <dt>Wrapper</dt><dd>overflow-x: auto; border 1px solid var(--c-border); radius var(--radius-lg) &mdash; this is what makes the table scroll instead of blowing out the page; see Patterns &rarr; min-width:0</dd>
+        <dt>Header cell</dt><dd>bg var(--c-surface-sunken), text var(--c-text-secondary) var(--fw-semibold), padding var(--space-3) var(--space-5), sticky top:0 inside the wrapper</dd>
+        <dt>Row cell</dt><dd>padding var(--space-3) var(--space-5), var(--fs-sm)/var(--lh-sm), border-bottom 1px solid var(--c-border), white-space:nowrap</dd>
+        <dt>Numeric cell</dt><dd>class "num": var(--font-mono), font-variant-numeric:tabular-nums, right-reading alignment left but digits column-align</dd>
+        <dt>Row hover</dt><dd>bg var(--c-bg)</dd>
+        <dt>Empty state</dt><dd>replaces tbody rows with a centred state panel (icon + heading + body text), never a bare "No data" string</dd>
+      </dl>
+    </section>
+
+    <!-- ============================== RESULT PANEL ============================== -->
+    <section class="hd-section" id="result-panel" aria-labelledby="result-panel-heading">
+      <h2 id="result-panel-heading" class="hd-section-heading">Classification result panel <span class="hd-req-tag">FR-14 &middot; the most important component</span></h2>
+      <p class="hd-section-sub">Color is never the only signal: every state carries a shape-distinct icon
+        (hexagon-with-exclamation for Failure, shield-with-check for No Failure) AND the literal word, at
+        var(--fs-h3) bold, in addition to the colour fill. Both states below use real rows from
+        <code class="hd-inline-code">prod_content.md</code>.</p>
+
+      <div class="hd-grid hd-grid-2">
+
+        <div class="hd-card" style="border-color:var(--c-failure-border);">
+          <span class="hd-result-chip is-failure">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7.5 2 16.5 2 22 7.5 22 16.5 16.5 22 7.5 22 2 16.5 2 7.5 7.5 2"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>
+            FAILURE
+          </span>
+          <p style="margin-top:var(--space-4); color:var(--c-text-secondary);">The model predicts this battery is
+            heading toward a failure. Record a maintenance assessment next.</p>
+          <dl style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-3) var(--space-5); margin:var(--space-5) 0 0;">
+            <div><dt class="hd-hint">Battery / vehicle</dt><dd class="mono" style="font-weight:600; color:var(--c-text); margin:2px 0 0;">BAT-10000942 / EV100942</dd></div>
+            <div><dt class="hd-hint">Model used</dt><dd style="font-weight:600; color:var(--c-text); margin:2px 0 0;">Logistic Regression</dd></div>
+            <div><dt class="hd-hint">Classified at</dt><dd class="mono" style="color:var(--c-text); margin:2px 0 0;">2026-11-01 05:12 UTC</dd></div>
+            <div><dt class="hd-hint">Decision threshold</dt><dd class="mono" style="color:var(--c-text); margin:2px 0 0;">0.50</dd></div>
+          </dl>
+          <div style="margin-top:var(--space-6);">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:var(--space-2);">
+              <span class="hd-card-title" style="margin-bottom:0;">Probability of failure</span>
+              <span class="mono" style="font-size:24px; font-weight:700; color:var(--c-failure);">80.30%</span>
+            </div>
+            <div role="img" aria-label="Probability of failure: 80.3 percent, above the 50 percent decision threshold" style="position:relative; height:14px; background:var(--c-surface-sunken); border-radius:var(--radius-pill); overflow:hidden;">
+              <div style="position:absolute; inset:0; width:80.3%; background:var(--c-failure); border-radius:var(--radius-pill);"></div>
+              <div style="position:absolute; top:-4px; left:50%; width:2px; height:22px; background:var(--c-text-secondary);"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-top:var(--space-2);"><span class="hd-hint">0%</span><span class="hd-hint">threshold 50%</span><span class="hd-hint">100%</span></div>
+          </div>
+        </div>
+
+        <div class="hd-card" style="border-color:var(--c-ok-border);">
+          <span class="hd-result-chip is-ok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3Z"/><polyline points="8.5 12 11 14.5 15.5 9.5"/></svg>
+            NO FAILURE
+          </span>
+          <p style="margin-top:var(--space-4); color:var(--c-text-secondary);">Submitted parameters are within
+            normal operating range; no failure indicators detected.</p>
+          <dl style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-3) var(--space-5); margin:var(--space-5) 0 0;">
+            <div><dt class="hd-hint">Battery / vehicle</dt><dd class="mono" style="font-weight:600; color:var(--c-text); margin:2px 0 0;">BAT-10008123 / EV108123</dd></div>
+            <div><dt class="hd-hint">Model used</dt><dd style="font-weight:600; color:var(--c-text); margin:2px 0 0;">Logistic Regression</dd></div>
+            <div><dt class="hd-hint">Classified at</dt><dd class="mono" style="color:var(--c-text); margin:2px 0 0;">2026-11-01 05:33 UTC</dd></div>
+            <div><dt class="hd-hint">Decision threshold</dt><dd class="mono" style="color:var(--c-text); margin:2px 0 0;">0.50</dd></div>
+          </dl>
+          <div style="margin-top:var(--space-6);">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:var(--space-2);">
+              <span class="hd-card-title" style="margin-bottom:0;">Probability of failure</span>
+              <span class="mono" style="font-size:24px; font-weight:700; color:var(--c-ok);">0.03%</span>
+            </div>
+            <div role="img" aria-label="Probability of failure: 0.03 percent, well below the 50 percent decision threshold" style="position:relative; height:14px; background:var(--c-surface-sunken); border-radius:var(--radius-pill); overflow:hidden;">
+              <div style="position:absolute; inset:0; width:0.03%; background:var(--c-ok); border-radius:var(--radius-pill);"></div>
+              <div style="position:absolute; top:-4px; left:50%; width:2px; height:22px; background:var(--c-text-secondary);"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-top:var(--space-2);"><span class="hd-hint">0%</span><span class="hd-hint">threshold 50%</span><span class="hd-hint">100%</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <dl class="hd-spec-list">
+        <dt>Container</dt><dd>standard .hd-card (10px radius, 24px padding), border-color swapped to var(--c-failure-border) / var(--c-ok-border) for the 1px accent edge &mdash; decorative only, never the sole signal (see Design Tokens finding)</dd>
+        <dt>Chip</dt><dd>padding var(--space-3) var(--space-5), radius var(--radius-md), font var(--fs-h3) var(--fw-bold), 22x22 icon at var(--space-3) gap from the text</dd>
+        <dt>Chip fill &middot; Failure</dt><dd>bg var(--c-failure-bg), text/icon var(--c-failure), border var(--c-failure-border)</dd>
+        <dt>Chip fill &middot; No Failure</dt><dd>bg var(--c-ok-bg), text/icon var(--c-ok), border var(--c-ok-border)</dd>
+        <dt>Probability bar</dt><dd>track var(--c-surface-sunken) 14px tall, fill var(--c-failure) or var(--c-ok), radius var(--radius-pill); a 2px tick at 50% marks the decision threshold in var(--c-text-secondary)</dd>
+        <dt>Metadata</dt><dd>2-column dl, label var(--fs-xs) var(--c-text-muted), value var(--fs-sm) var(--fw-semibold) var(--c-text), identifiers in var(--font-mono)</dd>
+        <dt>Required pairing</dt><dd>icon shape differs by state (hexagon-exclamation vs shield-check) so the signal survives greyscale/colour-blind rendering; the literal word "FAILURE"/"NO FAILURE" is always rendered, never color-only or icon-only</dd>
+      </dl>
+    </section>
+
+    <!-- ============================== STATUS CHIP ============================== -->
+    <section class="hd-section" id="chip" aria-labelledby="chip-heading">
+      <h2 id="chip-heading" class="hd-section-heading">Status chip</h2>
+      <div class="hd-specimen-stage" style="justify-content:flex-start;">
+        <span class="hd-badge hd-badge-info">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg>
+          Model deployed: logistic_regression
+        </span>
+        <span class="hd-badge hd-badge-warn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3Z"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16" x2="12" y2="16.1"/></svg>
+          No model deployed
+        </span>
+        <span class="hd-badge hd-badge-pass">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Assessment recorded
+        </span>
+        <span class="hd-badge hd-badge-neutral">Pending assessment</span>
+      </div>
+      <dl class="hd-spec-list">
+        <dt>Padding</dt><dd>var(--space-1) var(--space-3) &rarr; 4px 12px</dd>
+        <dt>Radius</dt><dd>var(--radius-pill)</dd>
+        <dt>Type</dt><dd>var(--fs-xs), var(--fw-semibold)</dd>
+        <dt>Icon</dt><dd>13x13, currentColor, 1.5px stroke, var(--space-2) gap</dd>
+        <dt>Tones</dt><dd>info (deployed model), warn (no model / pending), pass (recorded / success), neutral (informational, no state implied)</dd>
+      </dl>
+    </section>
+
+    <!-- ============================== EXPANDER ============================== -->
+    <section class="hd-section" id="expander" aria-labelledby="expander-heading">
+      <h2 id="expander-heading" class="hd-section-heading">Expander / accordion</h2>
+      <p class="hd-section-sub">Native <code class="hd-inline-code">&lt;details&gt;</code>/<code class="hd-inline-code">&lt;summary&gt;</code>
+        &mdash; no JS required, works with no-script and is keyboard operable by default. Counts are the real
+        per-group field counts from <code class="hd-inline-code">prod_content.md</code> (see
+        <a href="patterns.html#parameter-groups">Patterns &rarr; 12-key + 9-group pattern</a>).</p>
+      <details class="hd-expander" open>
+        <summary><span>Battery State</span><span class="hd-hint" style="margin-left:auto; margin-right:var(--space-3);">6 fields</span>
+          <svg class="hd-chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="hd-expander-body">
+          <p style="margin:0; color:var(--c-text-secondary);">Pre-filled with the training set's median/mode.
+            Expand to review or override a value before classifying (expanded state shown here).</p>
+        </div>
+      </details>
+      <details class="hd-expander">
+        <summary><span>Charging</span><span class="hd-hint" style="margin-left:auto; margin-right:var(--space-3);">12 fields</span>
+          <svg class="hd-chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="hd-expander-body"><p style="margin:0;">Collapsed state (default).</p></div>
+      </details>
+      <dl class="hd-spec-list">
+        <dt>Summary row</dt><dd>min-height var(--touch-min), padding var(--space-4) var(--space-5), bg var(--c-bg), font var(--fw-semibold)</dd>
+        <dt>Chevron</dt><dd>18x18, rotates 180deg on [open], transition var(--dur) var(--ease)</dd>
+        <dt>Body</dt><dd>padding var(--space-5), border-top 1px solid var(--c-border)</dd>
+        <dt>Stacking</dt><dd>var(--space-4) gap between sibling expanders</dd>
+      </dl>
+    </section>
+
+    <!-- ============================== TABS ============================== -->
+    <section class="hd-section" id="tabs" aria-labelledby="tabs-heading">
+      <h2 id="tabs-heading" class="hd-section-heading">Tabs</h2>
+      <p class="hd-section-sub">CSS-only (radio-driven), no JS dependency &mdash; used on Classification History to
+        switch between Table and Timeline views of the same data.</p>
+      <div class="hd-card hd-tabs">
+        <input type="radio" name="hd-demo-tabs" id="ht-1" checked>
+        <input type="radio" name="hd-demo-tabs" id="ht-2">
+        <input type="radio" name="hd-demo-tabs" id="ht-3">
+        <div class="hd-tab-list">
+          <label for="ht-1">Table</label>
+          <label for="ht-2">Timeline</label>
+          <label for="ht-3">Summary</label>
+        </div>
+        <div class="hd-tab-panels">
+          <div class="hd-tab-panel" id="htp-1"><p style="margin:0;">Sortable rows, newest classification first (UC-09).</p></div>
+          <div class="hd-tab-panel" id="htp-2"><p style="margin:0;">Vertical timeline, one entry per classification + assessment pair.</p></div>
+          <div class="hd-tab-panel" id="htp-3"><p style="margin:0;">Count of Failure vs No Failure over the selected range.</p></div>
+        </div>
+      </div>
+      <dl class="hd-spec-list">
+        <dt>Tab list</dt><dd>border-bottom 1px solid var(--c-border)</dd>
+        <dt>Tab label</dt><dd>min-height var(--touch-min), padding var(--space-3) var(--space-5), var(--fw-semibold)</dd>
+        <dt>Active tab</dt><dd>text var(--c-primary), 2px solid var(--c-primary) bottom border</dd>
+        <dt>Panel spacing</dt><dd>padding-top var(--space-5)</dd>
+      </dl>
+    </section>
+
+    <!-- ============================== PAGINATION ============================== -->
+    <section class="hd-section" id="pagination" aria-labelledby="pagination-heading">
+      <h2 id="pagination-heading" class="hd-section-heading">Pagination</h2>
+      <p class="hd-section-sub">For any list that can outgrow one screen &mdash; Battery Records and Classification
+        History (UC-06, UC-09) &mdash; shown here at 25 records / 10 per page as a worked example sized to the
+        real record count in <code class="hd-inline-code">prod_content.md</code>.</p>
+      <div class="hd-card" style="padding:0;">
+        <div class="hd-pagination">
+          <span class="hd-hint">Showing 1&ndash;10 of 25</span>
+          <div class="hd-page-controls">
+            <button class="hd-page-btn" disabled aria-label="Previous page">&larr;</button>
+            <button class="hd-page-btn" aria-current="page">1</button>
+            <button class="hd-page-btn">2</button>
+            <button class="hd-page-btn">3</button>
+            <button class="hd-page-btn" aria-label="Next page">&rarr;</button>
+          </div>
+        </div>
+      </div>
+      <dl class="hd-spec-list">
+        <dt>Button</dt><dd>min 40x40 (var(--control-h)), radius var(--radius-md), border var(--c-border-strong), var(--font-mono) digits</dd>
+        <dt>Current page</dt><dd>bg var(--c-primary), text var(--c-on-primary), var(--fw-semibold)</dd>
+        <dt>Disabled edge</dt><dd>opacity 0.45, cursor not-allowed (first page's Previous, last page's Next)</dd>
+        <dt>Row</dt><dd>padding var(--space-4) var(--space-5), top border 1px solid var(--c-border) separating it from the table</dd>
+      </dl>
+    </section>
+
+    <!-- ============================== MODAL ============================== -->
+    <section class="hd-section" id="modal" aria-labelledby="modal-heading">
+      <h2 id="modal-heading" class="hd-section-heading">Modal</h2>
+      <div class="hd-card">
+        <button type="button" class="hd-btn hd-btn-secondary" style="border-color:var(--c-failure); color:var(--c-failure);" data-hd-open="hd-demo-modal">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2m2 0-1 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 6"/></svg>
+          Delete battery record&hellip;
+        </button>
+        <p class="hd-hint" style="margin-top:var(--space-3);">Opens a native <code class="hd-inline-code">&lt;dialog&gt;</code> &mdash; full worked example on <a href="states.html#confirm">States &rarr; destructive confirmation</a>.</p>
+      </div>
+      <dl class="hd-spec-list">
+        <dt>Width</dt><dd>min(480px, 100vw - 2 &times; var(--space-6))</dd>
+        <dt>Radius</dt><dd>var(--radius-lg)</dd>
+        <dt>Shadow</dt><dd>var(--shadow-float)</dd>
+        <dt>Backdrop</dt><dd>rgba(15, 23, 42, 0.45) (the one place this handoff uses a raw value &mdash; tokens.css defines no backdrop-scrim token; flagged in the README)</dd>
+        <dt>Header / body / footer</dt><dd>each padded var(--space-5), divided by 1px solid var(--c-border)</dd>
+        <dt>Focus trap</dt><dd>native &lt;dialog&gt;.showModal() traps focus and restores it to the trigger on close</dd>
+      </dl>
+    </section>
+
+  </main>
+
+  <footer class="hd-footer">
+    <p>Engineering handoff &middot; EV Battery Failure Classification &middot; Intelligent Systems, Group 5 &middot; VNU-HCM University of Technology</p>
+  </footer>
+
+</div>
+
+<dialog class="hd-modal" id="hd-demo-modal">
+  <div class="hd-modal-header">
+    <h2>Delete battery record?</h2>
+    <button type="button" class="hd-icon-btn" data-hd-close aria-label="Close dialog">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+  </div>
+  <div class="hd-modal-body">
+    <p style="margin:0;">This removes <strong class="mono">BAT-10000942</strong> and its classification history
+      from the database. This cannot be undone.</p>
+  </div>
+  <div class="hd-modal-footer">
+    <button type="button" class="hd-btn hd-btn-ghost" data-hd-close>Cancel</button>
+    <button type="button" class="hd-btn hd-btn-primary" style="background:var(--c-failure);" data-hd-close>Delete record</button>
+  </div>
+</dialog>
+
+<script>
+  document.querySelectorAll('[data-hd-open]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var dlg = document.getElementById(btn.getAttribute('data-hd-open'));
+      if (dlg && dlg.showModal) dlg.showModal();
+    });
+  });
+  document.querySelectorAll('[data-hd-close]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var dlg = btn.closest('dialog');
+      if (dlg) dlg.close();
+    });
+  });
+</script>

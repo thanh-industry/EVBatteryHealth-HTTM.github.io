@@ -2,136 +2,179 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="UC-08: record a maintenance assessment and recommendation against a classification result.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/app.css">
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <div class="app-shell">
 
-  <header class="topbar">
+  <aside class="sidebar">
     <a class="brand" href="index.html">
       <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><line x1="22" y1="10" x2="22" y2="14"/><path d="M11 9 9 13h3l-2 4"/></svg>
+        <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="8" rx="1.5"/><line x1="18" y1="8.5" x2="18" y2="11.5"/><line x1="5.5" y1="8" x2="5.5" y2="12"/></svg>
       </span>
-      <span class="brand-text">
-        <span class="brand-title">EV Battery Failure Classification</span>
-        <span class="brand-sub">UI/UX mockup - Group 5</span>
-      </span>
+      <span class="brand-title">EV Battery Failure<br>Classification</span>
     </a>
-    <span class="persona-tag">
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 18l3 3 6.6-6.3a4 4 0 0 0 5.1-5.4l-2.8 2.8-2-2 2.8-2.8Z"/></svg>
-      <span>EV Maintenance Specialist view</span>
-    </span>
-  </header>
 
-  <nav class="primary-nav" aria-label="Main">
-    <ul>
-      <li><a href="index.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
-        <span>Overview</span></a></li>
-      <li><a href="battery-records.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="18" height="10" rx="2"/><line x1="22" y1="10" x2="22" y2="14"/><path d="M11 9 9 13h3l-2 4"/></svg>
-        <span>Battery Records</span></a></li>
-      <li><a href="run-classification.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
-        <span>Run Classification</span></a></li>
-      <li><a href="maintenance-assessment.html" aria-current="page">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="2"/><rect x="9" y="2" width="6" height="4" rx="1"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-        <span>Maintenance Assessment</span></a></li>
-      <li><a href="classification-history.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
-        <span>Classification History</span></a></li>
-      <li><a href="ml-workflow.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8"/><rect x="11" y="7" width="3" height="13"/><rect x="16" y="3" width="3" height="17"/></svg>
-        <span>ML Workflow</span></a></li>
-      <li><a href="states.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-        <span>UX States</span></a></li>
-    </ul>
-  </nav>
+    <nav class="sidebar-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 10 3l7 6.5"/><path d="M5 8.5V17h10V8.5"/><path d="M8 17v-5h4v5"/></svg>
+          <span>Home</span></a></li>
+        <li><a href="battery-records.html">
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="14" height="8" rx="1.5"/><line x1="18" y1="8.5" x2="18" y2="11.5"/><line x1="5.5" y1="8" x2="5.5" y2="12"/></svg>
+          <span>Battery Records</span></a></li>
+        <li><a href="run-classification.html">
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 1.5 3 11.5h5.5l-1 7 9-10H11l1-7Z"/></svg>
+          <span>Run Classification</span></a></li>
+        <li><a href="maintenance-assessment.html" aria-current="page">
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="10" height="14" rx="1.5"/><rect x="7.5" y="1.5" width="5" height="3" rx="1"/><line x1="7.5" y1="9.5" x2="12.5" y2="9.5"/><line x1="7.5" y1="13" x2="12.5" y2="13"/></svg>
+          <span>Maintenance Assessment</span></a></li>
+        <li><a href="classification-history.html">
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><polyline points="10 6 10 10 13 12"/></svg>
+          <span>Classification History</span></a></li>
+      </ul>
+    </nav>
 
-  <main id="main-content" class="page">
+    <hr class="sidebar-divider">
 
-    <div class="page-header">
-      <div>
-        <span class="eyebrow">UC-08 &middot; FR-09, FR-15</span>
-        <h1 class="page-title">Maintenance assessment</h1>
-        <p class="page-lede">Record what you found and what should happen next. The assessment is stored against
-          this classification result and appears in the classification history.</p>
-      </div>
+    <div class="model-chip">
+      <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2 3.5 4.5v5c0 4.3 2.8 7.3 6.5 8.5 3.7-1.2 6.5-4.2 6.5-8.5v-5L10 2Z"/><polyline points="7 10 9.3 12.3 13.5 7.3"/></svg>
+      <span>
+        <span class="model-chip-label">Model deployed</span>
+        <span class="model-chip-name">logistic_regression</span>
+      </span>
     </div>
 
-    <section aria-labelledby="linked-heading">
-      <h2 id="linked-heading" class="section-heading">Classification result</h2>
-      <div class="card">
-        <div style="display:flex; flex-wrap:wrap; gap:var(--space-xl); align-items:flex-start; justify-content:space-between;">
-          <div>
-            <span class="result-badge is-failure">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7.5 2 16.5 2 22 7.5 22 16.5 16.5 22 7.5 22 2 16.5 2 7.5 7.5 2"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>
-              Failure
-            </span>
-            <p class="hint" style="margin-top:var(--space-md);">Probability of failure: <strong class="mono" style="color:var(--color-failure);">81.2%</strong> (threshold 50%)</p>
-          </div>
-          <dl class="record-summary">
-            <div><dt>Battery / vehicle</dt><dd>BAT-10000042 / EV100042</dd></div>
-            <div><dt>Model used</dt><dd style="font-family:var(--font-sans); font-weight:600;">Logistic Regression</dd></div>
-            <div><dt>Classified at</dt><dd>2026-10-30 08:14 ICT</dd></div>
-          </dl>
-        </div>
-        <p class="hint" style="margin-top:var(--space-lg); margin-bottom:0;">
-          <a href="run-classification.html">View the full classification result &rarr;</a>
-        </p>
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-info">
+      <div class="info-group">
+        <p>Vietnam National University, Ho Chi Minh City</p>
+        <p>University of Technology</p>
+        <p>Faculty of Computer Science and Engineering</p>
       </div>
-    </section>
+      <div class="info-group">
+        <p>Course: Intelligent Systems</p>
+        <p>Instructor: Assoc. Prof. Quản Thành Thơ</p>
+      </div>
+      <div class="info-group">
+        <p class="info-strong">Group 5</p>
+        <p>Phạm Văn Thành &ndash; 2570496</p>
+        <p>Đồng Quang Trí &ndash; 2570523</p>
+      </div>
+    </div>
+  </aside>
 
-    <section aria-labelledby="form-heading">
-      <h2 id="form-heading" class="section-heading">Your assessment</h2>
-      <div class="card">
-        <form id="assessment-form">
-          <div class="field">
-            <label for="a-assessed-by">Assessed by</label>
-            <input class="input" type="text" id="a-assessed-by" value="Nguy&#7877;n Minh Kh&ocirc;i" style="font-family:var(--font-sans);">
-          </div>
-          <div class="field">
-            <label for="a-assessment">Assessment <span aria-hidden="true">*</span></label>
-            <textarea class="textarea" id="a-assessment" required rows="5">Cell temperature peaks and voltage imbalance are both elevated relative to this battery's service history. Internal resistance has risen since the last inspection, consistent with accelerated capacity fade. The BMS logged 5 warnings and 3 sensor faults in the most recent charge cycle, and the battery is 214 days past its last scheduled service.</textarea>
-            <span class="hint">What you observed, in your own words. Visible to anyone reviewing this record later.</span>
-          </div>
-          <div class="field">
-            <label for="a-recommendation">Recommendation <span aria-hidden="true">*</span></label>
-            <textarea class="textarea" id="a-recommendation" required rows="5">Schedule a physical inspection within 7 days. Prioritize diagnostics on the thermal management loop and cell-balancing circuit. Restrict fast charging to Level 2 (slow) until root cause is confirmed, and flag the vehicle to fleet dispatch to limit high-load routes in the interim.</textarea>
-            <span class="hint">The maintenance action you recommend based on this result.</span>
-          </div>
-          <div style="display:flex; gap:var(--space-md); flex-wrap:wrap;">
-            <button type="submit" class="btn btn-primary">Save assessment</button>
-            <a class="btn btn-ghost" href="run-classification.html">Cancel</a>
-          </div>
-        </form>
+  <div class="content">
+    <main id="main-content" class="page">
 
-        <div id="assessment-confirm" hidden>
-          <div class="alert alert-success">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg>
+      <div class="page-header">
+        <span class="eyebrow">UC-08 &middot; FR-09, FR-15</span>
+        <h1 class="page-title">Maintenance assessment</h1>
+        <p class="page-lede">Record what you found and what should happen next. The assessment is stored against this classification result and appears in the classification history.</p>
+      </div>
+
+      <section aria-labelledby="picker-heading">
+        <h2 id="picker-heading" class="section-heading">Classification awaiting assessment</h2>
+        <div class="field" style="margin-bottom:0;">
+          <label for="assessment-picker" class="visually-hidden">Choose a classification to assess</label>
+          <select class="select" id="assessment-picker">
+            <option>BAT-10008123 / EV108123 &ndash; No Failure &ndash; 01 Nov 2026, 05:33 UTC</option>
+            <option>BAT-10008123 / EV108123 &ndash; No Failure &ndash; 01 Nov 2026, 05:27 UTC</option>
+            <option>BAT-10008123 / EV108123 &ndash; No Failure &ndash; 01 Nov 2026, 05:12 UTC</option>
+            <option selected>BAT-10000942 / EV100942 &ndash; Failure &ndash; 01 Nov 2026, 05:12 UTC</option>
+            <option>BAT-10017422 / EV117422 &ndash; No Failure &ndash; 01 Nov 2026, 05:12 UTC</option>
+            <option>BAT-10006251 / EV106251 &ndash; No Failure &ndash; 01 Nov 2026, 05:12 UTC</option>
+            <option>BAT-10002440 / EV102440 &ndash; No Failure &ndash; 01 Nov 2026, 05:12 UTC</option>
+            <option>BAT-10011679 / EV111679 &ndash; No Failure &ndash; 01 Nov 2026, 05:12 UTC</option>
+          </select>
+        </div>
+      </section>
+
+      <section aria-labelledby="linked-heading">
+        <h2 id="linked-heading" class="section-heading">Classification result</h2>
+        <div class="card">
+          <div style="display:flex; flex-wrap:wrap; gap:var(--space-6); align-items:flex-start; justify-content:space-between;">
             <div>
-              <h3>Assessment recorded</h3>
-              <p>Your assessment and recommendation have been saved against this classification result for
-                BAT-10000042.</p>
+              <span class="result-badge is-failure">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6.3 2 13.7 2 18 6.3 18 13.7 13.7 18 6.3 18 2 13.7 2 6.3"/><line x1="10" y1="7" x2="10" y2="11.2"/><line x1="10" y1="13.8" x2="10" y2="13.9"/></svg>
+                FAILURE
+              </span>
+              <p class="hint" style="margin-top:var(--space-3);">Failure probability: <strong class="mono" style="color:var(--c-failure);">80.30%</strong> (decision threshold 50%)</p>
+            </div>
+            <dl class="record-summary">
+              <div><dt>Battery / vehicle</dt><dd>BAT-10000942 / EV100942</dd></div>
+              <div><dt>Model used</dt><dd class="sans">Logistic Regression</dd></div>
+              <div><dt>Classified at</dt><dd>01 Nov 2026, 05:12 UTC</dd></div>
+            </dl>
+          </div>
+          <p class="hint" style="margin-top:var(--space-4); margin-bottom:0;">
+            <a href="run-classification.html">View the full classification result &rarr;</a>
+          </p>
+        </div>
+      </section>
+
+      <section aria-labelledby="form-heading">
+        <h2 id="form-heading" class="section-heading">Your assessment</h2>
+        <div class="card">
+          <form id="assessment-form">
+            <div class="field">
+              <label for="a-assessed-by">Assessed by</label>
+              <input class="input" type="text" id="a-assessed-by" style="font-family:var(--font-sans);" placeholder="e.g. EV Maintenance Specialist name">
+            </div>
+            <div class="field">
+              <label for="a-assessment">Assessment <span aria-hidden="true">*</span></label>
+              <textarea class="textarea" id="a-assessment" style="font-family:var(--font-sans);" required rows="4" placeholder="e.g. Elevated thermal and electrical stress indicators consistent with the model's Failure prediction."></textarea>
+              <span class="hint">What you observed, in your own words. Visible to anyone reviewing this record later.</span>
+            </div>
+            <div class="field">
+              <label for="a-recommendation">Recommendation <span aria-hidden="true">*</span></label>
+              <textarea class="textarea" id="a-recommendation" style="font-family:var(--font-sans);" required rows="4" placeholder="e.g. Schedule a pack inspection within 7 days; avoid fast-charging until the battery has been inspected."></textarea>
+              <span class="hint">The maintenance action you recommend based on this result.</span>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Save assessment</button>
+              <a class="btn btn-ghost" href="run-classification.html">Cancel</a>
+            </div>
+          </form>
+
+          <div id="assessment-confirm" hidden>
+            <div class="alert alert-success">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><polyline points="6.3 10.2 8.7 12.6 13.7 7.2"/></svg>
+              <div>
+                <h3>Assessment recorded</h3>
+                <p>Your assessment and recommendation have been saved against this classification result for BAT-10000942 (FR-15).</p>
+              </div>
+            </div>
+            <div class="form-actions" style="margin-top:var(--space-5);">
+              <a class="btn btn-primary" href="classification-history.html">View in classification history</a>
+              <button type="button" class="btn btn-secondary" id="assessment-edit-again">Edit assessment</button>
             </div>
           </div>
-          <div style="display:flex; gap:var(--space-md); flex-wrap:wrap; margin-top:var(--space-xl);">
-            <a class="btn btn-primary" href="classification-history.html">View in classification history</a>
-            <button type="button" class="btn btn-secondary" id="assessment-edit-again">Edit assessment</button>
+        </div>
+      </section>
+
+      <section aria-labelledby="examples-heading">
+        <h2 id="examples-heading" class="section-heading">Recorded examples <span class="req-tag">16 saved &middot; demo seed</span></h2>
+        <div class="card">
+          <p class="hint" style="margin-bottom:var(--space-4);">Two assessment patterns recur across the seeded database, one per result type:</p>
+          <div class="grid grid-2">
+            <div>
+              <span class="badge badge-failure" style="margin-bottom:var(--space-2);">Failure results</span>
+              <p style="margin-bottom:var(--space-2);">"Elevated thermal and electrical stress indicators consistent with the model's Failure prediction."</p>
+              <p class="hint" style="margin-bottom:0;">"Schedule a pack inspection within 7 days; avoid fast-charging until the battery has been inspected."</p>
+            </div>
+            <div>
+              <span class="badge badge-ok" style="margin-bottom:var(--space-2);">No Failure results</span>
+              <p style="margin-bottom:var(--space-2);">"Submitted parameters are within normal operating range; no failure indicators detected."</p>
+              <p class="hint" style="margin-bottom:0;">"Continue the routine maintenance schedule; re-check at the next service interval."</p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-  </main>
-
-  <footer class="app-footer">
-    <p>Static UI/UX mockup &middot; Intelligent Systems, Group 5 &middot; VNU-HCM University of Technology &middot; no backend, sample data only</p>
-  </footer>
-
+    </main>
+  </div>
 </div>
 <script src="js/app.js"></script>

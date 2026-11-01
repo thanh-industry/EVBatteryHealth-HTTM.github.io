@@ -1,443 +1,330 @@
 <title>Run Classification - EV Battery Failure Classification</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="UC-07: enter battery parameters and run a Failure / No Failure classification.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap">
+<meta name="description" content="UC-07: select a battery record, confirm parameters, and run a Failure / No Failure classification.">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/app.css">
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <div class="app-shell">
 
-  <header class="topbar">
+  <aside class="sidebar">
     <a class="brand" href="index.html">
       <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><line x1="22" y1="10" x2="22" y2="14"/><path d="M11 9 9 13h3l-2 4"/></svg>
+        <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="8" rx="1.5"/><line x1="18" y1="8.5" x2="18" y2="11.5"/><line x1="5.5" y1="8" x2="5.5" y2="12"/></svg>
       </span>
-      <span class="brand-text">
-        <span class="brand-title">EV Battery Failure Classification</span>
-        <span class="brand-sub">UI/UX mockup - Group 5</span>
-      </span>
+      <span class="brand-title">EV Battery Failure<br>Classification</span>
     </a>
-    <span class="persona-tag">
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 18l3 3 6.6-6.3a4 4 0 0 0 5.1-5.4l-2.8 2.8-2-2 2.8-2.8Z"/></svg>
-      <span>EV Maintenance Specialist view</span>
-    </span>
-  </header>
 
-  <nav class="primary-nav" aria-label="Main">
-    <ul>
-      <li><a href="index.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
-        <span>Overview</span></a></li>
-      <li><a href="battery-records.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="18" height="10" rx="2"/><line x1="22" y1="10" x2="22" y2="14"/><path d="M11 9 9 13h3l-2 4"/></svg>
-        <span>Battery Records</span></a></li>
-      <li><a href="run-classification.html" aria-current="page">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
-        <span>Run Classification</span></a></li>
-      <li><a href="maintenance-assessment.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="2"/><rect x="9" y="2" width="6" height="4" rx="1"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-        <span>Maintenance Assessment</span></a></li>
-      <li><a href="classification-history.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
-        <span>Classification History</span></a></li>
-      <li><a href="ml-workflow.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8"/><rect x="11" y="7" width="3" height="13"/><rect x="16" y="3" width="3" height="17"/></svg>
-        <span>ML Workflow</span></a></li>
-      <li><a href="states.html">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-        <span>UX States</span></a></li>
-    </ul>
-  </nav>
+    <nav class="sidebar-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 10 3l7 6.5"/><path d="M5 8.5V17h10V8.5"/><path d="M8 17v-5h4v5"/></svg>
+          <span>Home</span></a></li>
+        <li><a href="battery-records.html">
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="14" height="8" rx="1.5"/><line x1="18" y1="8.5" x2="18" y2="11.5"/><line x1="5.5" y1="8" x2="5.5" y2="12"/></svg>
+          <span>Battery Records</span></a></li>
+        <li><a href="run-classification.html" aria-current="page">
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 1.5 3 11.5h5.5l-1 7 9-10H11l1-7Z"/></svg>
+          <span>Run Classification</span></a></li>
+        <li><a href="maintenance-assessment.html">
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="10" height="14" rx="1.5"/><rect x="7.5" y="1.5" width="5" height="3" rx="1"/><line x1="7.5" y1="9.5" x2="12.5" y2="9.5"/><line x1="7.5" y1="13" x2="12.5" y2="13"/></svg>
+          <span>Maintenance Assessment</span></a></li>
+        <li><a href="classification-history.html">
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><polyline points="10 6 10 10 13 12"/></svg>
+          <span>Classification History</span></a></li>
+      </ul>
+    </nav>
 
-  <main id="main-content" class="page">
+    <hr class="sidebar-divider">
 
-    <div class="page-header">
-      <div>
-        <span class="eyebrow">UC-07 &middot; FR-07, FR-08, FR-13, FR-14</span>
+    <div class="model-chip">
+      <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2 3.5 4.5v5c0 4.3 2.8 7.3 6.5 8.5 3.7-1.2 6.5-4.2 6.5-8.5v-5L10 2Z"/><polyline points="7 10 9.3 12.3 13.5 7.3"/></svg>
+      <span>
+        <span class="model-chip-label">Model deployed</span>
+        <span class="model-chip-name">logistic_regression</span>
+      </span>
+    </div>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-info">
+      <div class="info-group">
+        <p>Vietnam National University, Ho Chi Minh City</p>
+        <p>University of Technology</p>
+        <p>Faculty of Computer Science and Engineering</p>
+      </div>
+      <div class="info-group">
+        <p>Course: Intelligent Systems</p>
+        <p>Instructor: Assoc. Prof. Quản Thành Thơ</p>
+      </div>
+      <div class="info-group">
+        <p class="info-strong">Group 5</p>
+        <p>Phạm Văn Thành &ndash; 2570496</p>
+        <p>Đồng Quang Trí &ndash; 2570523</p>
+      </div>
+    </div>
+  </aside>
+
+  <div class="content">
+    <main id="main-content" class="page">
+
+      <div class="page-header">
+        <span class="eyebrow">UC-07 &middot; FR-06, FR-07, FR-08, FR-13, FR-14</span>
         <h1 class="page-title">Run classification</h1>
-        <p class="page-lede">The deployed model takes 67 parameters. The 12 shown below are the most predictive
-          and are always visible; the remaining 55 are grouped and pre-filled so you only need to open a group to
-          correct a value.</p>
+        <p class="page-lede">Select a battery record, confirm its parameters, and classify it as Failure or No Failure. The deployed model takes 67 inputs: 12 key parameters are always visible, the remaining 55 are grouped and pre-filled with training-set defaults.</p>
       </div>
-    </div>
 
-    <div class="alert alert-info" style="margin-bottom:var(--space-2xl);">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><line x1="12" y1="7.5" x2="12" y2="7.6"/></svg>
-      <div>
-        <h3>Classifying for battery <span class="mono">BAT-10000042</span> / vehicle <span class="mono">EV100042</span></h3>
-        <p>Battery-spec fields are pre-filled from this record. <a href="battery-records.html#record-detail">Change battery record</a>.</p>
-      </div>
-    </div>
-
-    <form onsubmit="return false;">
-
-      <section aria-labelledby="key-params-heading">
-        <h2 id="key-params-heading" class="section-heading">
-          Key parameters
-          <span class="req-tag">top 12 of 67</span>
-        </h2>
-        <p class="hint" style="margin-bottom:var(--space-lg);">Ranked by absolute standardized coefficient
-          magnitude in the deployed Logistic Regression model. These are the values most worth double-checking
-          before classifying.</p>
+      <section id="step-1" aria-labelledby="step1-heading">
+        <h2 id="step1-heading" class="section-heading">1. Select a battery record</h2>
         <div class="card">
-          <div class="form-grid">
-            <div class="field">
-              <label for="k-thermal">Thermal runaway risk<span class="key-tag">KEY</span></label>
-              <input class="input" type="number" id="k-thermal" value="78.6" min="0" max="100" step="0.1">
-              <span class="hint unit">index, 0-100 &middot; group: risk</span>
-            </div>
-            <div class="field">
-              <label for="k-soh">State of health<span class="key-tag">KEY</span></label>
-              <input class="input" type="number" id="k-soh" value="61.4" min="0" max="100" step="0.1">
-              <span class="hint unit">% &middot; group: battery state</span>
-            </div>
-            <div class="field">
-              <label for="k-caploss">Capacity loss<span class="key-tag">KEY</span></label>
-              <input class="input" type="number" id="k-caploss" value="27.3" min="0" max="100" step="0.1">
-              <span class="hint unit">% &middot; group: battery state</span>
-            </div>
-            <div class="field">
-              <label for="k-resist">Internal resistance<span class="key-tag">KEY</span></label>
-              <input class="input" type="number" id="k-resist" value="0.84" min="0" max="5" step="0.01">
-              <span class="hint unit">&Omega; &middot; group: electrical</span>
-            </div>
-            <div class="field">
-              <label for="k-vimb">Voltage imbalance<span class="key-tag">KEY</span></label>
-              <input class="input" type="number" id="k-vimb" value="71.2" min="0" max="100" step="0.1">
-              <span class="hint unit">index, 0-100 &middot; group: risk</span>
-            </div>
-            <div class="field">
-              <label for="k-tmax">Max cell temperature<span class="key-tag">KEY</span></label>
-              <input class="input" type="number" id="k-tmax" value="46.8" min="-20" max="80" step="0.1">
-              <span class="hint unit">&deg;C &middot; group: electrical</span>
-            </div>
-            <div class="field">
-              <label for="k-stress">Battery stress index<span class="key-tag">KEY</span></label>
-              <input class="input" type="number" id="k-stress" value="81.0" min="0" max="100" step="0.1">
-              <span class="hint unit">index, 0-100 &middot; group: risk</span>
-            </div>
-            <div class="field">
-              <label for="k-bms">BMS warning count<span class="key-tag">KEY</span></label>
-              <input class="input" type="number" id="k-bms" value="5" min="0" max="50" step="1">
-              <span class="hint unit">count &middot; group: risk</span>
-            </div>
-            <div class="field">
-              <label for="k-sensor">Sensor fault count<span class="key-tag">KEY</span></label>
-              <input class="input" type="number" id="k-sensor" value="3" min="0" max="50" step="1">
-              <span class="hint unit">count &middot; group: risk</span>
-            </div>
-            <div class="field">
-              <label for="k-aging">Aging score<span class="key-tag">KEY</span></label>
-              <input class="input" type="number" id="k-aging" value="85.3" min="0" max="100" step="0.1">
-              <span class="hint unit">index, 0-100 &middot; group: risk</span>
-            </div>
-            <div class="field">
-              <label for="k-cycles">Charge cycle count<span class="key-tag">KEY</span></label>
-              <input class="input" type="number" id="k-cycles" value="2140" min="0" max="10000" step="1">
-              <span class="hint unit">cycles &middot; group: battery state</span>
-            </div>
-            <div class="field">
-              <label for="k-faults">Previous faults<span class="key-tag">KEY</span></label>
-              <input class="input" type="number" id="k-faults" value="4" min="0" max="50" step="1">
-              <span class="hint unit">count &middot; group: maintenance</span>
-            </div>
+          <div class="field">
+            <label for="step1-search">Search by battery serial or vehicle ID</label>
+            <input class="input" type="search" id="step1-search" placeholder="BAT-10000001 or EV100000" autocomplete="off">
+          </div>
+          <div class="table-wrapper">
+            <table id="step1-table">
+              <caption class="visually-hidden">Battery records available for classification</caption>
+              <thead>
+                <tr><th scope="col">Serial</th><th scope="col">Vehicle ID</th><th scope="col"><span class="visually-hidden">Select</span></th></tr>
+              </thead>
+              <tbody>
+                <tr data-search="bat-10008123 ev108123"><td class="mono">BAT-10008123</td><td class="mono">EV108123</td><td><button type="button" class="btn btn-sm btn-secondary select-record-btn" data-result="No Failure" data-prob="0.0" data-at="01 Nov 2026, 05:33 UTC" data-serial="BAT-10008123" data-vehicle="EV108123">Select</button></td></tr>
+                <tr data-search="bat-10000942 ev100942"><td class="mono">BAT-10000942</td><td class="mono">EV100942</td><td><button type="button" class="btn btn-sm btn-secondary select-record-btn" data-result="Failure" data-prob="80.3" data-at="01 Nov 2026, 05:12 UTC" data-serial="BAT-10000942" data-vehicle="EV100942">Select</button></td></tr>
+                <tr data-search="bat-10017422 ev117422"><td class="mono">BAT-10017422</td><td class="mono">EV117422</td><td><button type="button" class="btn btn-sm btn-secondary select-record-btn" data-result="No Failure" data-prob="0.0" data-at="01 Nov 2026, 05:12 UTC" data-serial="BAT-10017422" data-vehicle="EV117422">Select</button></td></tr>
+                <tr data-search="bat-10006251 ev106251"><td class="mono">BAT-10006251</td><td class="mono">EV106251</td><td><button type="button" class="btn btn-sm btn-secondary select-record-btn" data-result="No Failure" data-prob="0.0" data-at="01 Nov 2026, 05:12 UTC" data-serial="BAT-10006251" data-vehicle="EV106251">Select</button></td></tr>
+                <tr data-search="bat-10002440 ev102440"><td class="mono">BAT-10002440</td><td class="mono">EV102440</td><td><button type="button" class="btn btn-sm btn-secondary select-record-btn" data-result="No Failure" data-prob="0.7" data-at="01 Nov 2026, 05:12 UTC" data-serial="BAT-10002440" data-vehicle="EV102440">Select</button></td></tr>
+                <tr data-search="bat-10011679 ev111679"><td class="mono">BAT-10011679</td><td class="mono">EV111679</td><td><button type="button" class="btn btn-sm btn-secondary select-record-btn" data-result="No Failure" data-prob="0.8" data-at="01 Nov 2026, 05:12 UTC" data-serial="BAT-10011679" data-vehicle="EV111679">Select</button></td></tr>
+                <tr data-search="bat-10008143 ev108143"><td class="mono">BAT-10008143</td><td class="mono">EV108143</td><td><button type="button" class="btn btn-sm btn-secondary select-record-btn" data-result="Failure" data-prob="67.5" data-at="01 Nov 2026, 05:12 UTC" data-serial="BAT-10008143" data-vehicle="EV108143">Select</button></td></tr>
+                <tr data-search="bat-10010920 ev110920"><td class="mono">BAT-10010920</td><td class="mono">EV110920</td><td><button type="button" class="btn btn-sm btn-secondary select-record-btn" data-result="No Failure" data-prob="0.0" data-at="01 Nov 2026, 05:12 UTC" data-serial="BAT-10010920" data-vehicle="EV110920">Select</button></td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
-      <section aria-labelledby="groups-heading">
-        <h2 id="groups-heading" class="section-heading">Remaining parameters (55)</h2>
-        <p class="hint" style="margin-bottom:var(--space-lg);">Grouped as in the model's feature specification.
-          Battery-spec values come from the battery record; the rest default to the training set's median
-          (numeric) or mode (categorical) and can be overridden if you have a fresher reading.</p>
+      <section id="step-2" hidden aria-labelledby="step2-heading">
+        <h2 id="step2-heading" class="section-heading">2. Confirm parameters and classify</h2>
 
-        <details class="expander">
-          <summary>
-            <span>Battery spec</span>
-            <span class="count">11 fields &middot; from battery record</span>
-            <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="expander-body">
-            <div class="form-grid">
-              <div class="field"><label for="g-brand">Vehicle brand</label>
-                <select class="select" id="g-brand"><option selected>Hyundai</option><option>Tesla</option><option>Ford</option><option>Volkswagen</option><option>Tata</option><option>BYD</option><option>Kia</option><option>MG</option><option>Nissan</option></select>
-              </div>
-              <div class="field"><label for="g-model">Vehicle model</label>
-                <input class="input" type="text" id="g-model" value="Kona Electric"></div>
-              <div class="field"><label for="g-vtype">Vehicle type</label>
-                <select class="select" id="g-vtype"><option selected>Sedan</option><option>SUV</option><option>Crossover</option><option>Hatchback</option><option>Truck</option></select>
-              </div>
-              <div class="field"><label for="g-year">Manufacturing year</label>
-                <input class="input" type="number" id="g-year" value="2019" min="2005" max="2026"></div>
-              <div class="field"><label for="g-bmfr">Battery manufacturer</label>
-                <input class="input" type="text" id="g-bmfr" value="SK On"></div>
-              <div class="field"><label for="g-chem">Battery chemistry</label>
-                <select class="select" id="g-chem"><option selected>NMC</option><option>LFP</option><option>NCA</option><option>LTO</option></select>
-              </div>
-              <div class="field"><label for="g-cap">Battery capacity</label>
-                <input class="input" type="number" id="g-cap" value="64.8" step="0.1"><span class="hint unit">kWh</span></div>
-              <div class="field"><label for="g-drive">Drive type</label>
-                <select class="select" id="g-drive"><option selected>FWD</option><option>RWD</option><option>AWD</option></select>
-              </div>
-              <div class="field"><label for="g-odo">Odometer</label>
-                <input class="input" type="number" id="g-odo" value="86420" step="0.1"><span class="hint unit">km</span></div>
-              <div class="field"><label for="g-age">Vehicle age</label>
-                <input class="input" type="number" id="g-age" value="7.2" step="0.1"><span class="hint unit">years</span></div>
-              <div class="field"><label for="g-fleet">Fleet or private</label>
-                <select class="select" id="g-fleet"><option selected>Fleet</option><option>Private</option></select>
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <details class="expander">
-          <summary>
-            <span>Battery state</span>
-            <span class="count">4 fields &middot; defaults</span>
-            <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="expander-body">
-            <div class="form-grid">
-              <div class="field"><label for="g-bhealth">Battery health</label>
-                <input class="input" type="number" id="g-bhealth" value="63.5" step="0.1"><span class="hint unit">% &middot; default: median</span></div>
-              <div class="field"><label for="g-soc">State of charge</label>
-                <input class="input" type="number" id="g-soc" value="42.0" step="0.1"><span class="hint unit">% &middot; default: median</span></div>
-              <div class="field"><label for="g-dod">Depth of discharge</label>
-                <input class="input" type="number" id="g-dod" value="58.0" step="0.1"><span class="hint unit">% &middot; default: median</span></div>
-              <div class="field"><label for="g-remcap">Remaining capacity</label>
-                <input class="input" type="number" id="g-remcap" value="41.2" step="0.1"><span class="hint unit">kWh &middot; default: median</span></div>
-            </div>
-          </div>
-        </details>
-
-        <details class="expander">
-          <summary>
-            <span>Electrical</span>
-            <span class="count">6 fields &middot; defaults</span>
-            <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="expander-body">
-            <div class="form-grid">
-              <div class="field"><label for="g-vavg">Cell voltage (avg)</label>
-                <input class="input" type="number" id="g-vavg" value="3.61" step="0.001"><span class="hint unit">V &middot; default: median</span></div>
-              <div class="field"><label for="g-vstd">Cell voltage (std dev)</label>
-                <input class="input" type="number" id="g-vstd" value="0.021" step="0.001"><span class="hint unit">V &middot; default: median</span></div>
-              <div class="field"><label for="g-pvolt">Pack voltage</label>
-                <input class="input" type="number" id="g-pvolt" value="356.2" step="0.1"><span class="hint unit">V &middot; default: median</span></div>
-              <div class="field"><label for="g-tavg">Cell temperature (avg)</label>
-                <input class="input" type="number" id="g-tavg" value="34.7" step="0.1"><span class="hint unit">&deg;C &middot; default: median</span></div>
-              <div class="field"><label for="g-ceff">Charge efficiency</label>
-                <input class="input" type="number" id="g-ceff" value="91.8" step="0.1"><span class="hint unit">% &middot; default: median</span></div>
-              <div class="field"><label for="g-deff">Discharge efficiency</label>
-                <input class="input" type="number" id="g-deff" value="90.4" step="0.1"><span class="hint unit">% &middot; default: median</span></div>
-            </div>
-          </div>
-        </details>
-
-        <details class="expander">
-          <summary>
-            <span>Charging</span>
-            <span class="count">9 fields &middot; defaults</span>
-            <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="expander-body">
-            <div class="form-grid">
-              <div class="field"><label for="g-ccycles">Charging cycles, last month</label>
-                <input class="input" type="number" id="g-ccycles" value="22" step="1"><span class="hint unit">count &middot; default: median</span></div>
-              <div class="field"><label for="g-fastr">Fast-charge ratio</label>
-                <input class="input" type="number" id="g-fastr" value="58.0" step="0.1"><span class="hint unit">% &middot; default: median</span></div>
-              <div class="field"><label for="g-slowr">Slow-charge ratio</label>
-                <input class="input" type="number" id="g-slowr" value="42.0" step="0.1"><span class="hint unit">% &middot; default: median</span></div>
-              <div class="field"><label for="g-cpower">Average charge power</label>
-                <input class="input" type="number" id="g-cpower" value="68.5" step="0.1"><span class="hint unit">kW &middot; default: median</span></div>
-              <div class="field"><label for="g-ctime">Average charging time</label>
-                <input class="input" type="number" id="g-ctime" value="47.0" step="0.1"><span class="hint unit">minutes &middot; default: median</span></div>
-              <div class="field"><label for="g-overn">Overnight charging ratio</label>
-                <input class="input" type="number" id="g-overn" value="31.0" step="0.1"><span class="hint unit">% &middot; default: median</span></div>
-              <div class="field"><label for="g-home">Home charging ratio</label>
-                <input class="input" type="number" id="g-home" value="28.0" step="0.1"><span class="hint unit">% &middot; default: median</span></div>
-              <div class="field"><label for="g-cint">Charging interruptions</label>
-                <input class="input" type="number" id="g-cint" value="4" step="1"><span class="hint unit">count &middot; default: median</span></div>
-              <div class="field"><label for="g-ovch">Overcharge events</label>
-                <input class="input" type="number" id="g-ovch" value="2" step="1"><span class="hint unit">count &middot; default: median</span></div>
-            </div>
-          </div>
-        </details>
-
-        <details class="expander">
-          <summary>
-            <span>Driving</span>
-            <span class="count">8 fields &middot; defaults</span>
-            <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="expander-body">
-            <div class="form-grid">
-              <div class="field"><label for="g-speed">Average speed</label>
-                <input class="input" type="number" id="g-speed" value="54.3" step="0.1"><span class="hint unit">km/h &middot; default: median</span></div>
-              <div class="field"><label for="g-trip">Average trip distance</label>
-                <input class="input" type="number" id="g-trip" value="38.6" step="0.1"><span class="hint unit">km &middot; default: median</span></div>
-              <div class="field"><label for="g-accel">Aggressive acceleration score</label>
-                <input class="input" type="number" id="g-accel" value="67.0" step="0.1"><span class="hint unit">index, 0-100 &middot; default: median</span></div>
-              <div class="field"><label for="g-brake">Hard braking score</label>
-                <input class="input" type="number" id="g-brake" value="61.0" step="0.1"><span class="hint unit">index, 0-100 &middot; default: median</span></div>
-              <div class="field"><label for="g-regen">Regenerative braking usage</label>
-                <input class="input" type="number" id="g-regen" value="38.0" step="0.1"><span class="hint unit">% &middot; default: median</span></div>
-              <div class="field"><label for="g-hwy">Highway driving ratio</label>
-                <input class="input" type="number" id="g-hwy" value="47.0" step="0.1"><span class="hint unit">% &middot; default: median</span></div>
-              <div class="field"><label for="g-city">City driving ratio</label>
-                <input class="input" type="number" id="g-city" value="53.0" step="0.1"><span class="hint unit">% &middot; default: median</span></div>
-              <div class="field"><label for="g-daily">Daily distance</label>
-                <input class="input" type="number" id="g-daily" value="92.5" step="0.1"><span class="hint unit">km &middot; default: median</span></div>
-            </div>
-          </div>
-        </details>
-
-        <details class="expander">
-          <summary>
-            <span>Environment</span>
-            <span class="count">7 fields &middot; defaults</span>
-            <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="expander-body">
-            <div class="form-grid">
-              <div class="field"><label for="g-atemp">Average ambient temperature</label>
-                <input class="input" type="number" id="g-atemp" value="29.4" step="0.1"><span class="hint unit">&deg;C &middot; default: median</span></div>
-              <div class="field"><label for="g-maxtemp">Maximum temperature</label>
-                <input class="input" type="number" id="g-maxtemp" value="41.8" step="0.1"><span class="hint unit">&deg;C &middot; default: median</span></div>
-              <div class="field"><label for="g-mintemp">Minimum temperature</label>
-                <input class="input" type="number" id="g-mintemp" value="19.2" step="0.1"><span class="hint unit">&deg;C &middot; default: median</span></div>
-              <div class="field"><label for="g-humid">Humidity</label>
-                <input class="input" type="number" id="g-humid" value="55.0" step="0.1"><span class="hint unit">% &middot; default: median</span></div>
-              <div class="field"><label for="g-alt">Altitude</label>
-                <input class="input" type="number" id="g-alt" value="620" step="1"><span class="hint unit">m &middot; default: median</span></div>
-              <div class="field"><label for="g-terrain">Terrain type</label>
-                <select class="select" id="g-terrain"><option selected>Flat</option><option>Coastal</option><option>Desert</option><option>Mountain</option><option>Urban</option></select>
-              </div>
-              <div class="field"><label for="g-dust">Dust exposure</label>
-                <input class="input" type="number" id="g-dust" value="48.0" step="0.1"><span class="hint unit">index, 0-100 &middot; default: median</span></div>
-            </div>
-          </div>
-        </details>
-
-        <details class="expander">
-          <summary>
-            <span>Maintenance</span>
-            <span class="count">4 fields &middot; defaults</span>
-            <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="expander-body">
-            <div class="form-grid">
-              <div class="field"><label for="g-lastsvc">Days since last service</label>
-                <input class="input" type="number" id="g-lastsvc" value="214" step="1"><span class="hint unit">days &middot; default: median</span></div>
-              <div class="field"><label for="g-cooling">Cooling system health</label>
-                <input class="input" type="number" id="g-cooling" value="58.0" step="0.1"><span class="hint unit">index, 0-100 &middot; default: median</span></div>
-              <div class="field"><label for="g-firmware">Firmware updates</label>
-                <input class="input" type="number" id="g-firmware" value="1" step="1"><span class="hint unit">count &middot; default: median</span></div>
-              <div class="field"><label for="g-mscore">Maintenance score</label>
-                <input class="input" type="number" id="g-mscore" value="49.0" step="0.1"><span class="hint unit">index, 0-100 &middot; default: median</span></div>
-            </div>
-          </div>
-        </details>
-
-        <details class="expander">
-          <summary>
-            <span>Risk (remaining)</span>
-            <span class="count">6 fields &middot; defaults</span>
-            <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="expander-body">
-            <div class="form-grid">
-              <div class="field"><label for="g-tvar">Temperature variance</label>
-                <input class="input" type="number" id="g-tvar" value="9.8" step="0.1"><span class="hint unit">&deg;C &middot; default: median</span></div>
-              <div class="field"><label for="g-abnv">Abnormal voltage events</label>
-                <input class="input" type="number" id="g-abnv" value="3" step="1"><span class="hint unit">count &middot; default: median</span></div>
-              <div class="field"><label for="g-thealth">Thermal health score</label>
-                <input class="input" type="number" id="g-thealth" value="41.0" step="0.1"><span class="hint unit">index, 0-100 &middot; default: median</span></div>
-              <div class="field"><label for="g-cqual">Charging quality score</label>
-                <input class="input" type="number" id="g-cqual" value="54.0" step="0.1"><span class="hint unit">index, 0-100 &middot; default: median</span></div>
-              <div class="field"><label for="g-dstress">Driving stress score</label>
-                <input class="input" type="number" id="g-dstress" value="69.0" step="0.1"><span class="hint unit">index, 0-100 &middot; default: median</span></div>
-              <div class="field"><label for="g-remlife">Predicted remaining life</label>
-                <input class="input" type="number" id="g-remlife" value="2140" step="1"><span class="hint unit">cycles &middot; default: median</span></div>
-            </div>
-          </div>
-        </details>
-      </section>
-
-      <div style="margin-top:var(--space-2xl); display:flex; gap:var(--space-md); align-items:center; flex-wrap:wrap;">
-        <button type="button" class="btn btn-primary" id="run-classification-btn">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
-          Run classification
-        </button>
-        <span class="hint">All 67 values are sent to the model; validation runs against the feature specification before inference (FR-07).</span>
-      </div>
-    </form>
-
-    <div id="classification-loading" class="card" hidden style="margin-top:var(--space-2xl);">
-      <div class="loading-row">
-        <span class="spinner" role="status" aria-label="Running classification"></span>
-        <span>Validating inputs and running inference with the deployed model&hellip;</span>
-      </div>
-    </div>
-
-    <section id="classification-result" hidden aria-labelledby="result-heading" style="margin-top:var(--space-2xl);">
-      <h2 id="result-heading" class="section-heading">
-        Result
-        <span class="req-tag">FR-14</span>
-      </h2>
-      <div class="card">
-        <div style="display:flex; flex-wrap:wrap; gap:var(--space-xl); align-items:flex-start; justify-content:space-between;">
+        <div class="alert alert-info" style="margin-bottom:var(--space-6);">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><line x1="10" y1="9" x2="10" y2="14"/><circle cx="10" cy="6.3" r="0.9" fill="currentColor" stroke="none"/></svg>
           <div>
-            <span class="result-badge is-failure">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7.5 2 16.5 2 22 7.5 22 16.5 16.5 22 7.5 22 2 16.5 2 7.5 7.5 2"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>
-              Failure
-            </span>
-            <p class="hint" style="margin-top:var(--space-md);">The model predicts this battery is heading toward a failure. Record a maintenance assessment below.</p>
-          </div>
-          <dl class="record-summary">
-            <div><dt>Battery / vehicle</dt><dd>BAT-10000042 / EV100042</dd></div>
-            <div><dt>Model used</dt><dd style="font-family:var(--font-sans); font-weight:600;">Logistic Regression</dd></div>
-            <div><dt>Classified at</dt><dd>2026-10-30 08:14 ICT</dd></div>
-            <div><dt>Decision threshold</dt><dd>0.50</dd></div>
-          </dl>
-        </div>
-
-        <div style="margin-top:var(--space-2xl);">
-          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:var(--space-sm);">
-            <span class="card-title" style="margin-bottom:0;">Probability of failure</span>
-            <span class="mono" style="font:var(--text-kpi); font-size:24px; color:var(--color-failure);">81.2%</span>
-          </div>
-          <div role="img" aria-label="Probability of failure: 81.2 percent, above the 50 percent decision threshold" style="position:relative; height:14px; background:var(--color-muted); border-radius:var(--radius-pill); overflow:hidden;">
-            <div style="position:absolute; inset:0; width:81.2%; background:var(--color-failure); border-radius:var(--radius-pill);"></div>
-            <div style="position:absolute; top:-4px; left:50%; width:2px; height:22px; background:var(--color-text-secondary);" title="Decision threshold 0.50"></div>
-          </div>
-          <div style="display:flex; justify-content:space-between; margin-top:var(--space-sm);">
-            <span class="hint">0%</span>
-            <span class="hint">threshold 50%</span>
-            <span class="hint">100%</span>
+            <h3>Classifying for battery <span class="mono" id="selected-record-serial">BAT-10000942</span> / vehicle <span class="mono" id="selected-record-vehicle">EV100942</span></h3>
+            <p><button type="button" class="btn btn-ghost btn-sm" id="change-record-btn" style="padding-left:0;">Change battery record</button></p>
           </div>
         </div>
 
-        <hr class="rule">
+        <form onsubmit="return false;">
 
-        <div style="display:flex; gap:var(--space-md); flex-wrap:wrap;">
-          <a class="btn btn-primary" href="maintenance-assessment.html">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="2"/><rect x="9" y="2" width="6" height="4" rx="1"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-            Record maintenance assessment
-          </a>
-          <a class="btn btn-secondary" href="battery-records.html#record-detail">Back to battery record</a>
+          <h3 class="section-heading" style="font:var(--text-h3);">
+            Key parameters
+            <span class="req-tag">top 12 of 67</span>
+          </h3>
+          <p class="hint" style="margin-bottom:var(--space-4);">Pre-filled with the training dataset's per-field median
+            (numeric) or mode (categorical). These are the 12 fields most worth reviewing before classifying.</p>
+          <div class="card" style="margin-bottom:var(--space-6);">
+            <div class="form-grid">
+              <div class="field">
+                <label for="k-brand">Vehicle Brand<span class="key-tag">KEY</span></label>
+                <input class="input" type="text" id="k-brand" value="Mercedes-Benz" style="font-family:var(--font-sans);">
+                <span class="hint">categorical &middot; group: identity</span>
+              </div>
+              <div class="field">
+                <label for="k-model">Vehicle Model<span class="key-tag">KEY</span></label>
+                <input class="input" type="text" id="k-model" value="Air" style="font-family:var(--font-sans);">
+                <span class="hint">categorical &middot; group: identity</span>
+              </div>
+              <div class="field">
+                <label for="k-drive">Drive Type<span class="key-tag">KEY</span></label>
+                <select class="select" id="k-drive">
+                  <option selected>AWD</option>
+                  <option>FWD</option>
+                  <option>RWD</option>
+                </select>
+                <span class="hint">categorical &middot; group: identity</span>
+              </div>
+              <div class="field">
+                <label for="k-fleet">Fleet or Private<span class="key-tag">KEY</span></label>
+                <select class="select" id="k-fleet">
+                  <option selected>Private</option>
+                  <option>Fleet</option>
+                </select>
+                <span class="hint">categorical &middot; group: identity</span>
+              </div>
+              <div class="field">
+                <label for="k-soh">State of Health (%)<span class="key-tag">KEY</span></label>
+                <div class="stepper-input">
+                  <button type="button" class="stepper-btn" data-step="dec" data-target="k-soh" aria-label="Decrease State of Health"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="4" y1="10" x2="16" y2="10"/></svg></button>
+                  <input class="input" type="number" id="k-soh" value="82.95" min="47.77" max="100" step="0.01">
+                  <button type="button" class="stepper-btn" data-step="inc" data-target="k-soh" aria-label="Increase State of Health"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button>
+                </div>
+                <span class="hint">range 47.77&ndash;100.0 &middot; group: battery_state</span>
+              </div>
+              <div class="field">
+                <label for="k-caploss">Capacity Loss (%)<span class="key-tag">KEY</span></label>
+                <div class="stepper-input">
+                  <button type="button" class="stepper-btn" data-step="dec" data-target="k-caploss" aria-label="Decrease Capacity Loss"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="4" y1="10" x2="16" y2="10"/></svg></button>
+                  <input class="input" type="number" id="k-caploss" value="17.01" min="0.2" max="52.97" step="0.01">
+                  <button type="button" class="stepper-btn" data-step="inc" data-target="k-caploss" aria-label="Increase Capacity Loss"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button>
+                </div>
+                <span class="hint">range 0.2&ndash;52.97 &middot; group: battery_state</span>
+              </div>
+              <div class="field">
+                <label for="k-faults">Previous Fault Count<span class="key-tag">KEY</span></label>
+                <div class="stepper-input">
+                  <button type="button" class="stepper-btn" data-step="dec" data-target="k-faults" aria-label="Decrease Previous Fault Count"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="4" y1="10" x2="16" y2="10"/></svg></button>
+                  <input class="input" type="number" id="k-faults" value="1" min="0" max="6" step="1">
+                  <button type="button" class="stepper-btn" data-step="inc" data-target="k-faults" aria-label="Increase Previous Fault Count"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button>
+                </div>
+                <span class="hint">range 0&ndash;6 &middot; group: maintenance</span>
+              </div>
+              <div class="field">
+                <label for="k-thermal">Thermal Runaway Risk Score<span class="key-tag">KEY</span></label>
+                <div class="stepper-input">
+                  <button type="button" class="stepper-btn" data-step="dec" data-target="k-thermal" aria-label="Decrease Thermal Runaway Risk Score"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="4" y1="10" x2="16" y2="10"/></svg></button>
+                  <input class="input" type="number" id="k-thermal" value="14.55" min="0" max="100" step="0.01">
+                  <button type="button" class="stepper-btn" data-step="inc" data-target="k-thermal" aria-label="Increase Thermal Runaway Risk Score"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button>
+                </div>
+                <span class="hint">range 0&ndash;100 &middot; group: risk</span>
+              </div>
+              <div class="field">
+                <label for="k-bms">BMS Warning Count<span class="key-tag">KEY</span></label>
+                <div class="stepper-input">
+                  <button type="button" class="stepper-btn" data-step="dec" data-target="k-bms" aria-label="Decrease BMS Warning Count"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="4" y1="10" x2="16" y2="10"/></svg></button>
+                  <input class="input" type="number" id="k-bms" value="1" min="0" max="7" step="1">
+                  <button type="button" class="stepper-btn" data-step="inc" data-target="k-bms" aria-label="Increase BMS Warning Count"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button>
+                </div>
+                <span class="hint">range 0&ndash;7 &middot; group: risk</span>
+              </div>
+              <div class="field">
+                <label for="k-abnv">Abnormal Voltage Events (count)<span class="key-tag">KEY</span></label>
+                <div class="stepper-input">
+                  <button type="button" class="stepper-btn" data-step="dec" data-target="k-abnv" aria-label="Decrease Abnormal Voltage Events"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="4" y1="10" x2="16" y2="10"/></svg></button>
+                  <input class="input" type="number" id="k-abnv" value="0" min="0" max="5" step="1">
+                  <button type="button" class="stepper-btn" data-step="inc" data-target="k-abnv" aria-label="Increase Abnormal Voltage Events"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button>
+                </div>
+                <span class="hint">range 0&ndash;5 &middot; group: risk</span>
+              </div>
+              <div class="field">
+                <label for="k-stress">Battery Stress Index<span class="key-tag">KEY</span></label>
+                <div class="stepper-input">
+                  <button type="button" class="stepper-btn" data-step="dec" data-target="k-stress" aria-label="Decrease Battery Stress Index"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="4" y1="10" x2="16" y2="10"/></svg></button>
+                  <input class="input" type="number" id="k-stress" value="48.07" min="2.85" max="93.62" step="0.01">
+                  <button type="button" class="stepper-btn" data-step="inc" data-target="k-stress" aria-label="Increase Battery Stress Index"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button>
+                </div>
+                <span class="hint">range 2.85&ndash;93.62 &middot; group: risk</span>
+              </div>
+              <div class="field">
+                <label for="k-thealth">Thermal Health Score<span class="key-tag">KEY</span></label>
+                <div class="stepper-input">
+                  <button type="button" class="stepper-btn" data-step="dec" data-target="k-thealth" aria-label="Decrease Thermal Health Score"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="4" y1="10" x2="16" y2="10"/></svg></button>
+                  <input class="input" type="number" id="k-thealth" value="85.14" min="18" max="100" step="0.01">
+                  <button type="button" class="stepper-btn" data-step="inc" data-target="k-thealth" aria-label="Increase Thermal Health Score"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg></button>
+                </div>
+                <span class="hint">range 18&ndash;100 &middot; group: risk</span>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="section-heading" style="font:var(--text-h3);">Remaining parameters (55)</h3>
+          <p class="hint" style="margin-bottom:var(--space-4);">Grouped as in the model's feature specification. Every
+            field in these groups defaults to the training set's per-field median (numeric) or mode (categorical) and
+            follows the same input pattern as the 12 key parameters above; open a group to review or override a value.</p>
+
+          <details class="expander"><summary><span>Identity</span><span class="count">4 fields</span><svg class="chev" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 7.5 10 12.5 15 7.5"/></svg></summary>
+            <div class="expander-body"><p>4 additional identity fields (beyond the 4 key fields above), pre-filled with training-set defaults.</p></div>
+          </details>
+          <details class="expander"><summary><span>Battery Specification</span><span class="count">3 fields</span><svg class="chev" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 7.5 10 12.5 15 7.5"/></svg></summary>
+            <div class="expander-body"><p>3 fields covering battery hardware specification, pre-filled with training-set defaults.</p></div>
+          </details>
+          <details class="expander"><summary><span>Battery State</span><span class="count">6 fields</span><svg class="chev" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 7.5 10 12.5 15 7.5"/></svg></summary>
+            <div class="expander-body"><p>6 additional battery-state fields (beyond State of Health and Capacity Loss above), pre-filled with training-set defaults.</p></div>
+          </details>
+          <details class="expander"><summary><span>Electrical</span><span class="count">8 fields</span><svg class="chev" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 7.5 10 12.5 15 7.5"/></svg></summary>
+            <div class="expander-body"><p>8 electrical-measurement fields, pre-filled with training-set defaults.</p></div>
+          </details>
+          <details class="expander"><summary><span>Charging</span><span class="count">12 fields</span><svg class="chev" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 7.5 10 12.5 15 7.5"/></svg></summary>
+            <div class="expander-body"><p>12 charging-behavior fields, pre-filled with training-set defaults.</p></div>
+          </details>
+          <details class="expander"><summary><span>Driving</span><span class="count">9 fields</span><svg class="chev" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 7.5 10 12.5 15 7.5"/></svg></summary>
+            <div class="expander-body"><p>9 driving-behavior fields, pre-filled with training-set defaults.</p></div>
+          </details>
+          <details class="expander"><summary><span>Environment</span><span class="count">7 fields</span><svg class="chev" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 7.5 10 12.5 15 7.5"/></svg></summary>
+            <div class="expander-body"><p>7 operating-environment fields, pre-filled with training-set defaults.</p></div>
+          </details>
+          <details class="expander"><summary><span>Maintenance</span><span class="count">4 fields</span><svg class="chev" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 7.5 10 12.5 15 7.5"/></svg></summary>
+            <div class="expander-body"><p>4 additional maintenance fields (beyond Previous Fault Count above), pre-filled with training-set defaults.</p></div>
+          </details>
+          <details class="expander"><summary><span>Risk Indicators</span><span class="count">2 fields</span><svg class="chev" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 7.5 10 12.5 15 7.5"/></svg></summary>
+            <div class="expander-body"><p>2 additional risk fields (beyond the 5 key risk fields above), pre-filled with training-set defaults.</p></div>
+          </details>
+
+          <div class="form-actions" style="margin-top:var(--space-6);">
+            <button type="button" class="btn btn-primary" id="run-classification-btn">
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 1.5 3 11.5h5.5l-1 7 9-10H11l1-7Z"/></svg>
+              Classify
+            </button>
+            <span class="hint">All 67 values are validated against the feature specification before inference (FR-07, FR-08).</span>
+          </div>
+        </form>
+
+        <div id="classification-loading" class="card" hidden style="margin-top:var(--space-6);">
+          <div class="loading-row">
+            <span class="spinner" role="status" aria-label="Running classification"></span>
+            <span>Validating inputs and running inference with the deployed model&hellip;</span>
+          </div>
         </div>
-      </div>
-    </section>
 
-  </main>
+        <section id="classification-result" hidden aria-labelledby="result-heading" style="margin-top:var(--space-6);">
+          <h2 id="result-heading" class="section-heading">
+            Classification result
+            <span class="req-tag">FR-14</span>
+          </h2>
+          <div class="card">
+            <div style="display:flex; flex-wrap:wrap; gap:var(--space-6); align-items:flex-start; justify-content:space-between;">
+              <div>
+                <span class="result-badge is-failure" id="result-badge">
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6.3 2 13.7 2 18 6.3 18 13.7 13.7 18 6.3 18 2 13.7 2 6.3"/><line x1="10" y1="7" x2="10" y2="11.2"/><line x1="10" y1="13.8" x2="10" y2="13.9"/></svg>
+                  FAILURE
+                </span>
+                <p class="hint" id="result-hint" style="margin-top:var(--space-3); max-width:46ch;">The model predicts this battery is heading toward a failure. Record a maintenance assessment below.</p>
+              </div>
+              <dl class="record-summary">
+                <div><dt>Battery / vehicle</dt><dd id="result-record">BAT-10000942 / EV100942</dd></div>
+                <div><dt>Model used</dt><dd class="sans">Logistic Regression</dd></div>
+                <div><dt>Classified at</dt><dd id="result-at">01 Nov 2026, 05:12 UTC</dd></div>
+                <div><dt>Decision threshold</dt><dd>0.50</dd></div>
+              </dl>
+            </div>
 
-  <footer class="app-footer">
-    <p>Static UI/UX mockup &middot; Intelligent Systems, Group 5 &middot; VNU-HCM University of Technology &middot; no backend, sample data only</p>
-  </footer>
+            <div style="margin-top:var(--space-6);">
+              <div class="prob-meter-head">
+                <span class="card-title" style="margin-bottom:0;">Failure probability</span>
+                <span class="prob-meter-value is-failure" id="result-prob">80.30%</span>
+              </div>
+              <svg class="prob-meter-svg" id="result-meter" viewBox="0 0 400 24" role="img" aria-label="Failure probability 80.30 percent, above the 50 percent decision threshold">
+                <rect x="0" y="6" width="400" height="12" rx="6" style="fill:var(--c-surface-sunken); stroke:var(--c-border);"/>
+                <rect x="0" y="6" width="321.2" height="12" rx="6" id="result-bar" style="fill:var(--c-failure);"/>
+                <line x1="200" y1="0" x2="200" y2="24" style="stroke:var(--c-text-secondary); stroke-width:1.5;"/>
+              </svg>
+              <div class="prob-meter-scale"><span>0%</span><span>threshold 50%</span><span>100%</span></div>
+            </div>
 
+            <hr class="rule">
+
+            <div class="form-actions">
+              <a class="btn btn-primary" href="maintenance-assessment.html">
+                <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="10" height="14" rx="1.5"/><rect x="7.5" y="1.5" width="5" height="3" rx="1"/><line x1="7.5" y1="9.5" x2="12.5" y2="9.5"/><line x1="7.5" y1="13" x2="12.5" y2="13"/></svg>
+                Record maintenance assessment
+              </a>
+              <a class="btn btn-secondary" href="battery-records.html#record-detail">Back to battery record</a>
+            </div>
+          </div>
+        </section>
+
+      </section>
+
+    </main>
+  </div>
 </div>
 <script src="js/app.js"></script>

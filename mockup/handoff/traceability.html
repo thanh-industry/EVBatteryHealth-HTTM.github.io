@@ -1,0 +1,111 @@
+<title>Traceability - EV Battery Failure Classification</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Requirements coverage: every FR-01 to FR-16 and UC-01 to UC-09 mapped to the screen or component that satisfies it.">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="handoff.css">
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="hd-shell">
+
+  <header class="hd-topbar">
+    <a class="hd-brand" href="index.html">
+      <span class="hd-brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="10" rx="1"/><rect x="14" y="17" width="7" height="4" rx="1"/></svg></span>
+      <span class="hd-brand-text"><span class="hd-brand-title">Engineering Handoff</span><span class="hd-brand-sub">EV Battery Failure Classification &middot; Group 5</span></span>
+    </a>
+    <a class="hd-app-link" href="../index.html">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5l7 7-7 7"/><path d="M3 12h18"/></svg>
+      View the app screens
+    </a>
+  </header>
+
+  <nav class="hd-nav" aria-label="Handoff section">
+    <ul>
+      <li><a href="index.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Overview</span></a></li>
+      <li><a href="design-tokens.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.6-.8 1.6-1.7 0-.5-.2-.9-.2-1.4a1.9 1.9 0 0 1 1.9-1.9h2.1A3.6 3.6 0 0 0 21 12.4 9 9 0 0 0 12 3Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.2" r="1"/><circle cx="15" cy="8" r="1"/></svg><span>Design Tokens</span></a></li>
+      <li><a href="components.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 3 21 8 12 13 3 8 12 3"/><polyline points="3 13 12 18 21 13"/><polyline points="3 17.5 12 22.5 21 17.5"/></svg><span>Components</span></a></li>
+      <li><a href="patterns.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1"/><rect x="13" y="4" width="8" height="7" rx="1"/><rect x="13" y="14" width="8" height="6" rx="1"/></svg><span>Patterns</span></a></li>
+      <li><a href="states.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg><span>States</span></a></li>
+      <li><a href="ml-workflow.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8"/><rect x="11" y="7" width="3" height="13"/><rect x="16" y="3" width="3" height="17"/></svg><span>ML Pipeline</span></a></li>
+      <li><a href="traceability.html" aria-current="page"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3h6v3H9z"/><polyline points="8.5 12.5 11 15 15.5 9.5"/></svg><span>Traceability</span></a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content" class="hd-main">
+
+    <div class="hd-page-header">
+      <span class="hd-eyebrow">Requirements coverage</span>
+      <h1 class="hd-page-title">Traceability</h1>
+      <p class="hd-page-lede">Every functional requirement and use case from the spec, mapped to the screen or
+        component that satisfies it. "App screen" links to the visual mockup; "Handoff spec" links to the
+        redlined component or pattern an engineer implements against.</p>
+    </div>
+
+    <!-- ============================== FR TABLE ============================== -->
+    <section class="hd-section" id="fr" aria-labelledby="fr-heading">
+      <h2 id="fr-heading" class="hd-section-heading">Functional requirements <span class="hd-req-tag">16 of 16 covered</span></h2>
+      <div class="hd-table-wrap">
+        <table class="hd-table">
+          <thead><tr><th>ID</th><th class="wrap" style="min-width:260px;">Requirement</th><th>App screen</th><th>Handoff spec</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">FR-01</td><td class="wrap">Offline pipeline supports importing EV battery datasets in CSV format</td><td colspan="1" style="color:var(--c-text-muted);">Offline notebook, no screen</td><td><a href="ml-workflow.html#dataset">ML Pipeline &rarr; Dataset</a></td></tr>
+            <tr><td class="mono">FR-02</td><td class="wrap">Preprocessing: missing values, categorical encoding, feature scaling</td><td colspan="1" style="color:var(--c-text-muted);">Offline notebook, no screen</td><td><a href="ml-workflow.html#preprocessing">ML Pipeline &rarr; Preprocessing</a></td></tr>
+            <tr><td class="mono">FR-03</td><td class="wrap">Train Logistic Regression, SVM, and Random Forest models</td><td colspan="1" style="color:var(--c-text-muted);">Offline notebook, no screen</td><td><a href="ml-workflow.html#model-comparison">ML Pipeline &rarr; Model comparison</a></td></tr>
+            <tr><td class="mono">FR-04</td><td class="wrap">Evaluation results: Accuracy, Precision, Recall, F1, Confusion Matrix, minority-class attention</td><td colspan="1" style="color:var(--c-text-muted);">Offline notebook, no screen</td><td><a href="ml-workflow.html#model-comparison">ML Pipeline &rarr; Model comparison</a></td></tr>
+            <tr><td class="mono">FR-05</td><td class="wrap">Export selected model, preprocessing pipeline, and feature definitions</td><td colspan="1" style="color:var(--c-text-muted);">Offline notebook, no screen</td><td><a href="ml-workflow.html#workflow">ML Pipeline &rarr; Stage 1 output</a></td></tr>
+            <tr><td class="mono">FR-06</td><td class="wrap">App loads the exported trained model and preprocessing pipeline</td><td><a href="../index.html">Overview</a></td><td><a href="states.html#no-model">States &rarr; No model deployed</a></td></tr>
+            <tr><td class="mono">FR-07</td><td class="wrap">Validate battery input parameters against feature definitions before classifying</td><td><a href="../run-classification.html">Run Classification</a></td><td><a href="states.html#validation">States &rarr; Validation error</a>, <a href="components.html#input">Components &rarr; Input</a></td></tr>
+            <tr><td class="mono">FR-08</td><td class="wrap">Execute classification inference using the deployed model</td><td><a href="../run-classification.html">Run Classification</a></td><td><a href="components.html#result-panel">Components &rarr; Result panel</a></td></tr>
+            <tr><td class="mono">FR-09</td><td class="wrap">Store and retrieve battery records, classification results, and assessments in a local database</td><td><a href="../battery-records.html">Battery Records</a>, <a href="../classification-history.html">Classification History</a></td><td><a href="components.html#table">Components &rarr; Table</a></td></tr>
+            <tr><td class="mono">FR-10</td><td class="wrap">Deployment utility validates and deploys an exported pipeline + feature definitions</td><td colspan="1" style="color:var(--c-text-muted);">CLI utility, no screen</td><td><a href="ml-workflow.html#workflow">ML Pipeline &rarr; Stage 2</a></td></tr>
+            <tr><td class="mono">FR-11</td><td class="wrap">Verification utility tests model loading, input validation, and classification outputs with sample data</td><td colspan="1" style="color:var(--c-text-muted);">CLI utility, no screen</td><td><a href="ml-workflow.html#workflow">ML Pipeline &rarr; Stage 2</a>, <a href="states.html#no-model">States &rarr; No model deployed</a></td></tr>
+            <tr><td class="mono">FR-12</td><td class="wrap">Search battery records by serial or vehicle identifier; create, view, update</td><td><a href="../battery-records.html">Battery Records</a></td><td><a href="components.html#search">Components &rarr; Search field</a>, <a href="states.html#not-found">States &rarr; Not found</a></td></tr>
+            <tr><td class="mono">FR-13</td><td class="wrap">Enter required battery parameters and request failure classification</td><td><a href="../run-classification.html">Run Classification</a></td><td><a href="patterns.html#run-flow">Patterns &rarr; Run Classification flow</a></td></tr>
+            <tr><td class="mono">FR-14</td><td class="wrap">Display the classification result as Failure or No Failure, with the associated battery record</td><td><a href="../run-classification.html">Run Classification</a></td><td><a href="components.html#result-panel">Components &rarr; Result panel</a></td></tr>
+            <tr><td class="mono">FR-15</td><td class="wrap">Record maintenance assessments and recommendations against a classification result</td><td><a href="../maintenance-assessment.html">Maintenance Assessment</a></td><td><a href="components.html#input">Components &rarr; Input (textarea)</a></td></tr>
+            <tr><td class="mono">FR-16</td><td class="wrap">View previous classification results and maintenance assessments</td><td><a href="../classification-history.html">Classification History</a></td><td><a href="components.html#pagination">Components &rarr; Pagination</a>, <a href="components.html#tabs">Components &rarr; Tabs</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============================== UC TABLE ============================== -->
+    <section class="hd-section" id="uc" aria-labelledby="uc-heading">
+      <h2 id="uc-heading" class="hd-section-heading">Use cases <span class="hd-req-tag">9 of 9 covered</span></h2>
+      <div class="hd-table-wrap">
+        <table class="hd-table">
+          <thead><tr><th>ID</th><th>Actor</th><th class="wrap" style="min-width:220px;">Use case</th><th>Related FR</th><th>App screen</th><th>Handoff spec</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">UC-01</td><td>Data Scientist</td><td class="wrap">Prepare Dataset</td><td class="mono">FR-01, 02</td><td colspan="1" style="color:var(--c-text-muted);">Offline notebook, no screen</td><td><a href="ml-workflow.html#dataset">ML Pipeline &rarr; Dataset</a></td></tr>
+            <tr><td class="mono">UC-02</td><td>Data Scientist</td><td class="wrap">Train and Evaluate Models</td><td class="mono">FR-03, 04</td><td colspan="1" style="color:var(--c-text-muted);">Offline notebook, no screen</td><td><a href="ml-workflow.html#model-comparison">ML Pipeline &rarr; Model comparison</a></td></tr>
+            <tr><td class="mono">UC-03</td><td>Data Scientist</td><td class="wrap">Export Classification Model</td><td class="mono">FR-05</td><td colspan="1" style="color:var(--c-text-muted);">Offline notebook, no screen</td><td><a href="ml-workflow.html#workflow">ML Pipeline &rarr; Stage 1</a></td></tr>
+            <tr><td class="mono">UC-04</td><td>Software Developer</td><td class="wrap">Deploy Classification Model</td><td class="mono">FR-06, 10</td><td style="color:var(--c-text-muted);">CLI utility, no screen</td><td><a href="ml-workflow.html#workflow">ML Pipeline &rarr; Stage 2</a></td></tr>
+            <tr><td class="mono">UC-05</td><td>Software Developer</td><td class="wrap">Verify Model Integration</td><td class="mono">FR-07, 08, 11</td><td style="color:var(--c-text-muted);">CLI utility, no screen</td><td><a href="ml-workflow.html#workflow">ML Pipeline &rarr; Stage 2</a>, <a href="states.html#no-model">States &rarr; No model deployed</a></td></tr>
+            <tr><td class="mono">UC-06</td><td>EV Maintenance Specialist</td><td class="wrap">Manage Battery Records</td><td class="mono">FR-09, 12</td><td><a href="../battery-records.html">Battery Records</a></td><td><a href="components.html#search">Components &rarr; Search</a>, <a href="states.html#not-found">States &rarr; Not found</a>, <a href="states.html#confirm">States &rarr; Confirm delete</a></td></tr>
+            <tr><td class="mono">UC-07</td><td>EV Maintenance Specialist</td><td class="wrap">Run Failure Classification</td><td class="mono">FR-06, 07, 08, 13, 14</td><td><a href="../run-classification.html">Run Classification</a></td><td><a href="patterns.html#run-flow">Patterns &rarr; Run Classification flow</a>, <a href="patterns.html#parameter-groups">Patterns &rarr; 12-key + 9-group</a>, <a href="components.html#result-panel">Components &rarr; Result panel</a></td></tr>
+            <tr><td class="mono">UC-08</td><td>EV Maintenance Specialist</td><td class="wrap">Record Maintenance Assessment</td><td class="mono">FR-09, 15</td><td><a href="../maintenance-assessment.html">Maintenance Assessment</a></td><td><a href="components.html#input">Components &rarr; Input (textarea)</a></td></tr>
+            <tr><td class="mono">UC-09</td><td>EV Maintenance Specialist</td><td class="wrap">View Classification History</td><td class="mono">FR-09, 16</td><td><a href="../classification-history.html">Classification History</a></td><td><a href="components.html#pagination">Components &rarr; Pagination</a>, <a href="states.html#empty">States &rarr; Empty</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="hd-section" aria-labelledby="scope-heading">
+      <h2 id="scope-heading" class="hd-section-heading">Deliberately out of scope</h2>
+      <div class="hd-card">
+        <p style="margin:0;">Per spec section 1.3: the system is an academic prototype. It does not connect to
+          real vehicles, retrain models automatically during operation, or perform physical maintenance actions.
+          UC-01&ndash;05 (Data Scientist / Software Developer use cases) are documented on <a href="ml-workflow.html">ML
+          Pipeline</a> as offline, notebook- and CLI-based workflows &mdash; this mockup does not invent UI screens
+          for them, matching the architecture diagram in spec 5.1, where only the Streamlit web application (stage
+          3) is a web UI.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="hd-footer">
+    <p>Engineering handoff &middot; EV Battery Failure Classification &middot; Intelligent Systems, Group 5 &middot; VNU-HCM University of Technology</p>
+  </footer>
+
+</div>

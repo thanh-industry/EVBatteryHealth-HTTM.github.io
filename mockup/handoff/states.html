@@ -1,0 +1,254 @@
+<title>States - EV Battery Failure Classification</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The states catalogue: loading, empty, no-model-deployed, validation error, not-found, and destructive-action confirmation, with which screens show each.">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="handoff.css">
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="hd-shell">
+
+  <header class="hd-topbar">
+    <a class="hd-brand" href="index.html">
+      <span class="hd-brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="10" rx="1"/><rect x="14" y="17" width="7" height="4" rx="1"/></svg></span>
+      <span class="hd-brand-text"><span class="hd-brand-title">Engineering Handoff</span><span class="hd-brand-sub">EV Battery Failure Classification &middot; Group 5</span></span>
+    </a>
+    <a class="hd-app-link" href="../index.html">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5l7 7-7 7"/><path d="M3 12h18"/></svg>
+      View the app screens
+    </a>
+  </header>
+
+  <nav class="hd-nav" aria-label="Handoff section">
+    <ul>
+      <li><a href="index.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Overview</span></a></li>
+      <li><a href="design-tokens.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.6-.8 1.6-1.7 0-.5-.2-.9-.2-1.4a1.9 1.9 0 0 1 1.9-1.9h2.1A3.6 3.6 0 0 0 21 12.4 9 9 0 0 0 12 3Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.2" r="1"/><circle cx="15" cy="8" r="1"/></svg><span>Design Tokens</span></a></li>
+      <li><a href="components.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 3 21 8 12 13 3 8 12 3"/><polyline points="3 13 12 18 21 13"/><polyline points="3 17.5 12 22.5 21 17.5"/></svg><span>Components</span></a></li>
+      <li><a href="patterns.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1"/><rect x="13" y="4" width="8" height="7" rx="1"/><rect x="13" y="14" width="8" height="6" rx="1"/></svg><span>Patterns</span></a></li>
+      <li><a href="states.html" aria-current="page"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg><span>States</span></a></li>
+      <li><a href="ml-workflow.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8"/><rect x="11" y="7" width="3" height="13"/><rect x="16" y="3" width="3" height="17"/></svg><span>ML Pipeline</span></a></li>
+      <li><a href="traceability.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3h6v3H9z"/><polyline points="8.5 12.5 11 15 15.5 9.5"/></svg><span>Traceability</span></a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content" class="hd-main">
+
+    <div class="hd-page-header">
+      <span class="hd-eyebrow">States catalogue</span>
+      <h1 class="hd-page-title">States</h1>
+      <p class="hd-page-lede">Every data view needs more than its happy path. This page collects the loading,
+        empty, blocked, invalid, missing and destructive states so none of them get designed in a hurry during
+        implementation.</p>
+    </div>
+
+    <!-- ============================== LOADING ============================== -->
+    <section class="hd-section" id="loading" aria-labelledby="loading-heading">
+      <h2 id="loading-heading" class="hd-section-heading">Loading</h2>
+      <p class="hd-section-sub">Shown while the deployed model runs inference, or while a table is being read
+        from the local SQLite database.</p>
+      <div class="hd-grid hd-grid-2">
+        <div class="hd-card">
+          <div class="hd-card-title">Inline loading row</div>
+          <div class="hd-loading-row">
+            <span class="hd-spinner" role="status" aria-label="Loading"></span>
+            <span>Validating inputs and running inference with the deployed model&hellip;</span>
+          </div>
+        </div>
+        <div class="hd-card">
+          <div class="hd-card-title">Skeleton content</div>
+          <div class="hd-skeleton hd-skeleton-line w-40"></div>
+          <div class="hd-skeleton hd-skeleton-line w-80"></div>
+          <div class="hd-skeleton hd-skeleton-line w-60"></div>
+          <div class="hd-skeleton hd-skeleton-block" style="margin-top:var(--space-3);"></div>
+        </div>
+      </div>
+      <p class="hd-hint" style="margin-top:var(--space-3);">Shown on: Run Classification (while inference runs),
+        Battery Records / Classification History (while the table loads).</p>
+    </section>
+
+    <!-- ============================== EMPTY ============================== -->
+    <section class="hd-section" id="empty" aria-labelledby="empty-heading">
+      <h2 id="empty-heading" class="hd-section-heading">Empty (no records)</h2>
+      <p class="hd-section-sub">A collection view that genuinely has zero rows &mdash; different from Not-found
+        below, which is a single record that cannot be located.</p>
+      <div class="hd-state-panel">
+        <svg class="hd-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
+        <h3 style="font-size:var(--fs-h3); line-height:var(--lh-h3);">No battery records yet</h3>
+        <p>No batteries have been added to the system. Create the first record to begin running classifications.</p>
+        <button type="button" class="hd-btn hd-btn-primary">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          New battery record
+        </button>
+      </div>
+      <p class="hd-hint" style="margin-top:var(--space-3);">Shown on: Battery Records (no records), Classification
+        History (no classifications), Classification History filtered to zero matches.</p>
+    </section>
+
+    <!-- ============================== NO MODEL DEPLOYED ============================== -->
+    <section class="hd-section" id="no-model" aria-labelledby="nomodel-heading">
+      <h2 id="nomodel-heading" class="hd-section-heading">No model deployed <span class="hd-req-tag">spec section 5, stage 2</span></h2>
+      <p class="hd-section-sub">Per the 3-stage workflow (spec 4.3), stage 2 &mdash; Model Deployment &amp;
+        Verification &mdash; must complete before stage 3 can classify anything. The system never fabricates a
+        result; if <code class="hd-inline-code">models/model_bundle.joblib</code> is missing or fails
+        verification, classification is simply unavailable.</p>
+      <div class="hd-state-panel">
+        <svg class="hd-state-icon" viewBox="0 0 24 24" fill="none" stroke="var(--c-warn)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3Z"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16" x2="12" y2="16.1"/></svg>
+        <h3 style="font-size:var(--fs-h3); line-height:var(--lh-h3);">No model deployed yet</h3>
+        <p>Classification is unavailable until a Software Developer deploys a validated model bundle (UC-04,
+          FR-10) and it passes verification (UC-05, FR-11). Battery records can still be viewed and edited.</p>
+        <button type="button" class="hd-btn hd-btn-secondary" disabled>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
+          Run classification (disabled)
+        </button>
+      </div>
+      <p class="hd-hint" style="margin-top:var(--space-3);">Shown on: Run Classification (replaces the entire form),
+        Overview (the "Model deployed" chip switches to its warn tone &mdash; see Components &rarr; Status chip).</p>
+    </section>
+
+    <!-- ============================== VALIDATION ERROR ============================== -->
+    <section class="hd-section" id="validation" aria-labelledby="error-heading">
+      <h2 id="error-heading" class="hd-section-heading">Validation error <span class="hd-req-tag">FR-07</span></h2>
+      <p class="hd-section-sub">All three failure modes the deployed model's feature specification can reject:
+        out-of-range numeric, a required field left blank, and an unrecognised categorical value. Errors sit next
+        to the field, never only in the banner.</p>
+      <div class="hd-card">
+        <div class="hd-alert hd-alert-critical" style="margin-bottom:var(--space-6);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.6 3.5 2.9 18a2 2 0 0 0 1.8 3h14.6a2 2 0 0 0 1.8-3L13.4 3.5a2 2 0 0 0-3.6 0Z"/><line x1="12" y1="9.5" x2="12" y2="13.5"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>
+          <div>
+            <h3>3 fields need attention</h3>
+            <p>Fix the highlighted fields below before running the classification.</p>
+          </div>
+        </div>
+        <div class="hd-grid hd-grid-3">
+          <div class="hd-field has-error">
+            <label for="st-soh">State of Health (%)</label>
+            <input class="hd-input" id="st-soh" type="number" value="140" aria-invalid="true" aria-describedby="st-soh-err">
+            <span class="hd-field-error" id="st-soh-err">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.6 3.5 2.9 18a2 2 0 0 0 1.8 3h14.6a2 2 0 0 0 1.8-3L13.4 3.5a2 2 0 0 0-3.6 0Z"/><line x1="12" y1="9.5" x2="12" y2="13.5"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>
+              Must be between 0 and 100
+            </span>
+          </div>
+          <div class="hd-field has-error">
+            <label for="st-faults">Previous Fault Count</label>
+            <input class="hd-input" id="st-faults" type="number" value="" aria-invalid="true" aria-describedby="st-faults-err">
+            <span class="hd-field-error" id="st-faults-err">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.6 3.5 2.9 18a2 2 0 0 0 1.8 3h14.6a2 2 0 0 0 1.8-3L13.4 3.5a2 2 0 0 0-3.6 0Z"/><line x1="12" y1="9.5" x2="12" y2="13.5"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>
+              Required field
+            </span>
+          </div>
+          <div class="hd-field has-error">
+            <label for="st-drive">Drive Type</label>
+            <select class="hd-select" id="st-drive" aria-invalid="true" aria-describedby="st-drive-err">
+              <option value="" selected disabled>XWD (unrecognised)</option>
+              <option>AWD</option><option>FWD</option><option>RWD</option>
+            </select>
+            <span class="hd-field-error" id="st-drive-err">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.6 3.5 2.9 18a2 2 0 0 0 1.8 3h14.6a2 2 0 0 0 1.8-3L13.4 3.5a2 2 0 0 0-3.6 0Z"/><line x1="12" y1="9.5" x2="12" y2="13.5"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>
+              Choose one of the listed options
+            </span>
+          </div>
+        </div>
+        <div class="hd-field" style="margin-top:var(--space-5); max-width:220px;">
+          <label for="st-cap">Capacity Loss (%)</label>
+          <input class="hd-input" id="st-cap" type="number" value="17.01">
+          <span class="hd-hint">valid, shown for contrast</span>
+        </div>
+      </div>
+      <p class="hd-hint" style="margin-top:var(--space-3);">Shown on: Run Classification (submitting the form),
+        Battery Records (editing/creating a record).</p>
+    </section>
+
+    <!-- ============================== NOT FOUND ============================== -->
+    <section class="hd-section" id="not-found" aria-labelledby="notfound-heading">
+      <h2 id="notfound-heading" class="hd-section-heading">Not found</h2>
+      <p class="hd-section-sub">A specific record that cannot be located &mdash; a stale link, a mistyped serial
+        in the URL, or a deleted record. Distinct from Empty: the collection is not necessarily empty, this one
+        lookup just failed.</p>
+      <div class="hd-state-panel">
+        <svg class="hd-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
+        <h3 style="font-size:var(--fs-h3); line-height:var(--lh-h3);">No matching battery record</h3>
+        <p>No record matches <span class="mono">BAT-99999999</span>. Check the serial number, or create a new
+          battery record.</p>
+        <div style="display:flex; gap:var(--space-3); flex-wrap:wrap; justify-content:center;">
+          <button type="button" class="hd-btn hd-btn-secondary">Back to Battery Records</button>
+          <button type="button" class="hd-btn hd-btn-primary">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            New battery record
+          </button>
+        </div>
+      </div>
+      <p class="hd-hint" style="margin-top:var(--space-3);">Shown on: Battery Records (search with zero matches, or
+        a direct link to a record id that no longer exists), Run Classification (the pre-selected record from a
+        deep link cannot be found).</p>
+    </section>
+
+    <!-- ============================== DESTRUCTIVE CONFIRMATION ============================== -->
+    <section class="hd-section" id="confirm" aria-labelledby="confirm-heading">
+      <h2 id="confirm-heading" class="hd-section-heading">Destructive-action confirmation</h2>
+      <p class="hd-section-sub">Shown before an irreversible action such as deleting a battery record. The dialog
+        names the exact record and states the consequence in full sentences, never just "Are you sure?".</p>
+      <div class="hd-card">
+        <button type="button" class="hd-btn hd-btn-secondary" style="border-color:var(--c-failure); color:var(--c-failure);" data-hd-open="st-confirm-modal">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2m2 0-1 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 6"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+          Delete battery record&hellip;
+        </button>
+      </div>
+      <p class="hd-hint" style="margin-top:var(--space-3);">Shown on: Battery Records (record detail / row actions).</p>
+    </section>
+
+    <!-- ============================== WHERE EACH STATE APPEARS ============================== -->
+    <section class="hd-section" id="coverage" aria-labelledby="coverage-heading">
+      <h2 id="coverage-heading" class="hd-section-heading">Which screens show which state</h2>
+      <div class="hd-table-wrap">
+        <table class="hd-table">
+          <thead><tr><th>Screen</th><th>Loading</th><th>Empty</th><th>No model</th><th>Validation</th><th>Not found</th><th>Confirm</th></tr></thead>
+          <tbody>
+            <tr><td>Overview</td><td>&ndash;</td><td>&ndash;</td><td class="hd-cov-pass"><span class="hd-cov-dot"></span>yes</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td></tr>
+            <tr><td>Battery Records</td><td class="hd-cov-pass"><span class="hd-cov-dot"></span>yes</td><td class="hd-cov-pass"><span class="hd-cov-dot"></span>yes</td><td>&ndash;</td><td class="hd-cov-pass"><span class="hd-cov-dot"></span>yes</td><td class="hd-cov-pass"><span class="hd-cov-dot"></span>yes</td><td class="hd-cov-pass"><span class="hd-cov-dot"></span>yes</td></tr>
+            <tr><td>Run Classification</td><td class="hd-cov-pass"><span class="hd-cov-dot"></span>yes</td><td>&ndash;</td><td class="hd-cov-pass"><span class="hd-cov-dot"></span>yes</td><td class="hd-cov-pass"><span class="hd-cov-dot"></span>yes</td><td class="hd-cov-pass"><span class="hd-cov-dot"></span>yes</td><td>&ndash;</td></tr>
+            <tr><td>Maintenance Assessment</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td class="hd-cov-pass"><span class="hd-cov-dot"></span>yes</td><td>&ndash;</td><td>&ndash;</td></tr>
+            <tr><td>Classification History</td><td class="hd-cov-pass"><span class="hd-cov-dot"></span>yes</td><td class="hd-cov-pass"><span class="hd-cov-dot"></span>yes</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="hd-footer">
+    <p>Engineering handoff &middot; EV Battery Failure Classification &middot; Intelligent Systems, Group 5 &middot; VNU-HCM University of Technology</p>
+  </footer>
+
+</div>
+
+<dialog class="hd-modal" id="st-confirm-modal">
+  <div class="hd-modal-header">
+    <h2>Delete battery record?</h2>
+    <button type="button" class="hd-icon-btn" data-hd-close aria-label="Close dialog">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+  </div>
+  <div class="hd-modal-body">
+    <p style="margin:0;">This removes <strong class="mono">BAT-10000942</strong> and its classification history
+      from the database. This cannot be undone.</p>
+  </div>
+  <div class="hd-modal-footer">
+    <button type="button" class="hd-btn hd-btn-ghost" data-hd-close>Cancel</button>
+    <button type="button" class="hd-btn hd-btn-primary" style="background:var(--c-failure);" data-hd-close>Delete record</button>
+  </div>
+</dialog>
+
+<script>
+  document.querySelectorAll('[data-hd-open]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var dlg = document.getElementById(btn.getAttribute('data-hd-open'));
+      if (dlg && dlg.showModal) dlg.showModal();
+    });
+  });
+  document.querySelectorAll('[data-hd-close]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var dlg = btn.closest('dialog');
+      if (dlg) dlg.close();
+    });
+  });
+</script>

@@ -1,0 +1,364 @@
+<title>ML Pipeline - EV Battery Failure Classification</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The 3-stage ML workflow, dataset facts, preprocessing pipeline, and the six-candidate model comparison with the accuracy-paradox insight.">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="handoff.css">
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="hd-shell">
+
+  <header class="hd-topbar">
+    <a class="hd-brand" href="index.html">
+      <span class="hd-brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="10" rx="1"/><rect x="14" y="17" width="7" height="4" rx="1"/></svg></span>
+      <span class="hd-brand-text"><span class="hd-brand-title">Engineering Handoff</span><span class="hd-brand-sub">EV Battery Failure Classification &middot; Group 5</span></span>
+    </a>
+    <a class="hd-app-link" href="../index.html">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5l7 7-7 7"/><path d="M3 12h18"/></svg>
+      View the app screens
+    </a>
+  </header>
+
+  <nav class="hd-nav" aria-label="Handoff section">
+    <ul>
+      <li><a href="index.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Overview</span></a></li>
+      <li><a href="design-tokens.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.6-.8 1.6-1.7 0-.5-.2-.9-.2-1.4a1.9 1.9 0 0 1 1.9-1.9h2.1A3.6 3.6 0 0 0 21 12.4 9 9 0 0 0 12 3Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.2" r="1"/><circle cx="15" cy="8" r="1"/></svg><span>Design Tokens</span></a></li>
+      <li><a href="components.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 3 21 8 12 13 3 8 12 3"/><polyline points="3 13 12 18 21 13"/><polyline points="3 17.5 12 22.5 21 17.5"/></svg><span>Components</span></a></li>
+      <li><a href="patterns.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1"/><rect x="13" y="4" width="8" height="7" rx="1"/><rect x="13" y="14" width="8" height="6" rx="1"/></svg><span>Patterns</span></a></li>
+      <li><a href="states.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg><span>States</span></a></li>
+      <li><a href="ml-workflow.html" aria-current="page"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8"/><rect x="11" y="7" width="3" height="13"/><rect x="16" y="3" width="3" height="17"/></svg><span>ML Pipeline</span></a></li>
+      <li><a href="traceability.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3h6v3H9z"/><polyline points="8.5 12.5 11 15 15.5 9.5"/></svg><span>Traceability</span></a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content" class="hd-main">
+
+    <div class="hd-page-header">
+      <span class="hd-eyebrow">ML pipeline documentation</span>
+      <h1 class="hd-page-title">ML Pipeline</h1>
+      <p class="hd-page-lede">How the deployed model came to exist: the three stages from spec section 4.3, the
+        real dataset facts, the preprocessing it goes through, and why the comparison between six trained
+        candidates ends in Logistic Regression rather than the higher-accuracy Random Forest.</p>
+    </div>
+
+    <!-- ============================== 3-STAGE WORKFLOW ============================== -->
+    <section class="hd-section" id="workflow" aria-labelledby="workflow-heading">
+      <h2 id="workflow-heading" class="hd-section-heading">The three-stage workflow <span class="hd-req-tag">spec 4.3</span></h2>
+      <div class="hd-diagram">
+        <svg viewBox="0 0 880 300" role="img" aria-labelledby="wf-title">
+          <title id="wf-title">Three stages: Stage 1, Machine Learning Development, run by the Data Scientist, producing a trained model with preprocessing pipeline and feature definitions; Stage 2, Model Deployment and Verification, run by the Software Developer, producing a deployed, verified model; Stage 3, Battery Classification and Maintenance Assessment, run by the EV Maintenance Specialist, the only stage this application's screens cover. An arrow runs left to right between each stage.</title>
+
+          <rect x="10" y="20" width="260" height="250" rx="10" fill="var(--c-surface)" stroke="var(--c-border-strong)"/>
+          <text x="140" y="46" text-anchor="middle" font-family="var(--font-mono)" font-size="11" fill="var(--c-primary)" font-weight="700">STAGE 1</text>
+          <text x="140" y="66" text-anchor="middle" font-family="var(--font-sans)" font-size="13" fill="var(--c-text)" font-weight="600">ML Development</text>
+          <text x="140" y="82" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--c-text-muted)">Data Scientist &middot; offline, Colab/Jupyter</text>
+          <rect x="26" y="94" width="228" height="26" rx="4" fill="var(--c-primary-weak)"/><text x="140" y="111" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--c-primary)">1. Import &amp; preprocess dataset (UC-01)</text>
+          <rect x="26" y="126" width="228" height="26" rx="4" fill="var(--c-primary-weak)"/><text x="140" y="143" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--c-primary)">2. Train &amp; evaluate 3 algorithms (UC-02)</text>
+          <rect x="26" y="158" width="228" height="26" rx="4" fill="var(--c-primary-weak)"/><text x="140" y="175" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--c-primary)">3. Compare &amp; export selected model (UC-03)</text>
+          <text x="140" y="204" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--c-text-muted)">FR-01, FR-02, FR-03, FR-04, FR-05</text>
+          <text x="140" y="246" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--c-text-secondary)">output: model + pipeline</text>
+          <text x="140" y="260" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--c-text-secondary)">+ feature definitions</text>
+
+          <path d="M274 145 L314 145" stroke="var(--c-border-strong)" stroke-width="2" marker-end="url(#wfarrow)"/>
+
+          <rect x="320" y="20" width="240" height="250" rx="10" fill="var(--c-surface)" stroke="var(--c-border-strong)"/>
+          <text x="440" y="46" text-anchor="middle" font-family="var(--font-mono)" font-size="11" fill="var(--c-info)" font-weight="700">STAGE 2</text>
+          <text x="440" y="66" text-anchor="middle" font-family="var(--font-sans)" font-size="13" fill="var(--c-text)" font-weight="600">Deployment &amp; Verification</text>
+          <text x="440" y="82" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--c-text-muted)">Software Developer &middot; CLI utilities</text>
+          <rect x="336" y="94" width="208" height="26" rx="4" fill="var(--c-info-bg)"/><text x="440" y="111" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--c-info)">4. Validate &amp; deploy model (UC-04)</text>
+          <rect x="336" y="126" width="208" height="26" rx="4" fill="var(--c-info-bg)"/><text x="440" y="143" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--c-info)">5. Verify loading, inputs, outputs (UC-05)</text>
+          <text x="440" y="178" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--c-text-muted)">FR-06, FR-07, FR-08, FR-10, FR-11</text>
+          <rect x="336" y="196" width="208" height="56" rx="6" fill="var(--c-warn-bg)" stroke="var(--c-warn-border)"/>
+          <text x="440" y="214" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--c-warn)" font-weight="600">Gate: until this stage passes,</text>
+          <text x="440" y="228" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--c-warn)" font-weight="600">Stage 3 shows "No model</text>
+          <text x="440" y="242" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--c-warn)" font-weight="600">deployed yet" (States page)</text>
+
+          <path d="M564 145 L604 145" stroke="var(--c-border-strong)" stroke-width="2" marker-end="url(#wfarrow)"/>
+
+          <rect x="610" y="20" width="260" height="250" rx="10" fill="var(--c-surface)" stroke="var(--c-ok-border)" stroke-width="2"/>
+          <text x="740" y="46" text-anchor="middle" font-family="var(--font-mono)" font-size="11" fill="var(--c-ok)" font-weight="700">STAGE 3</text>
+          <text x="740" y="66" text-anchor="middle" font-family="var(--font-sans)" font-size="13" fill="var(--c-text)" font-weight="600">Classification &amp; Assessment</text>
+          <text x="740" y="82" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--c-text-muted)">EV Maintenance Specialist &middot; this web app</text>
+          <rect x="626" y="94" width="228" height="22" rx="4" fill="var(--c-ok-bg)"/><text x="740" y="109" text-anchor="middle" font-family="var(--font-sans)" font-size="9.5" fill="var(--c-ok)">6. Search / create record (UC-06)</text>
+          <rect x="626" y="120" width="228" height="22" rx="4" fill="var(--c-ok-bg)"/><text x="740" y="135" text-anchor="middle" font-family="var(--font-sans)" font-size="9.5" fill="var(--c-ok)">7. Enter params, classify (UC-07)</text>
+          <rect x="626" y="146" width="228" height="22" rx="4" fill="var(--c-ok-bg)"/><text x="740" y="161" text-anchor="middle" font-family="var(--font-sans)" font-size="9.5" fill="var(--c-ok)">8. Record assessment (UC-08)</text>
+          <rect x="626" y="172" width="228" height="22" rx="4" fill="var(--c-ok-bg)"/><text x="740" y="187" text-anchor="middle" font-family="var(--font-sans)" font-size="9.5" fill="var(--c-ok)">9. View history (UC-09)</text>
+          <text x="740" y="210" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--c-text-muted)">FR-09, FR-12&ndash;FR-16</text>
+          <text x="740" y="248" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--c-text-secondary)" font-weight="600">&larr; every other page in</text>
+          <text x="740" y="260" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--c-text-secondary)" font-weight="600">this mockup documents this stage</text>
+
+          <defs><marker id="wfarrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="var(--c-border-strong)"/></marker></defs>
+        </svg>
+        <p class="hd-diagram-caption">The model provides decision SUPPORT only &mdash; final maintenance actions
+          remain the specialist's responsibility and are never performed automatically by the system (spec 4.3,
+          closing note).</p>
+      </div>
+    </section>
+
+    <!-- ============================== DATASET FACTS ============================== -->
+    <section class="hd-section" id="dataset" aria-labelledby="dataset-heading">
+      <h2 id="dataset-heading" class="hd-section-heading">Dataset <span class="hd-req-tag">spec 6.1</span></h2>
+      <p class="hd-section-sub">EV Battery Failure Prediction Dataset (Kaggle). Target label
+        <code class="hd-inline-code">battery_failure</code>: 0 = No Failure, 1 = Failure.</p>
+
+      <div class="hd-kpi-row">
+        <div class="hd-kpi"><div class="hd-kpi-label">Rows</div><div class="hd-kpi-value">20,000</div><div class="hd-kpi-sub">records</div></div>
+        <div class="hd-kpi"><div class="hd-kpi-label">Columns</div><div class="hd-kpi-value">70</div><div class="hd-kpi-sub">2 identifiers + 1 target + 67 features</div></div>
+        <div class="hd-kpi"><div class="hd-kpi-label">Model features</div><div class="hd-kpi-value">67</div><div class="hd-kpi-sub">after dropping identifiers</div></div>
+        <div class="hd-kpi"><div class="hd-kpi-label">Train / test split</div><div class="hd-kpi-value" style="font-size:28px;">16,000 / 4,000</div><div class="hd-kpi-sub">stratified, 80/20</div></div>
+      </div>
+
+      <div class="hd-diagram" style="margin-top:var(--space-6);">
+        <svg viewBox="0 0 800 110" role="img" aria-labelledby="split-title">
+          <title id="split-title">Class split: 18,616 No Failure records, 93.08 percent of the dataset, and 1,384 Failure records, 6.92 percent, shown as a single proportional bar.</title>
+          <text x="0" y="16" font-family="var(--font-sans)" font-size="12" fill="var(--c-text-secondary)" font-weight="600">20,000 rows, by class</text>
+          <rect x="0" y="30" width="745.4" height="40" rx="6" fill="var(--c-ok)"/>
+          <rect x="745.4" y="30" width="54.6" height="40" rx="6" fill="var(--c-failure)"/>
+          <rect x="739.4" y="30" width="18" height="40" fill="var(--c-failure)"/>
+          <text x="20" y="55" font-family="var(--font-mono)" font-size="13" fill="var(--c-on-primary)" font-weight="700">No Failure &middot; 18,616 &middot; 93.08%</text>
+          <text x="800" y="90" text-anchor="end" font-family="var(--font-mono)" font-size="12" fill="var(--c-failure)" font-weight="700">Failure &middot; 1,384 &middot; 6.92%</text>
+          <line x1="745.4" y1="90" x2="745.4" y2="76" stroke="var(--c-failure)"/>
+        </svg>
+        <p class="hd-diagram-caption">A stratified 20% test split of this ratio yields 4,000 rows at 3,723 No
+          Failure / 277 Failure &mdash; exactly the support figures in the deployed model's confusion matrix below,
+          confirming the split preserved the class distribution as FR-02 and spec 6.1 require.</p>
+      </div>
+    </section>
+
+    <!-- ============================== PREPROCESSING ============================== -->
+    <section class="hd-section" id="preprocessing" aria-labelledby="prep-heading">
+      <h2 id="prep-heading" class="hd-section-heading">Preprocessing pipeline <span class="hd-req-tag">FR-02</span></h2>
+      <div class="hd-diagram">
+        <svg viewBox="0 0 880 130" role="img" aria-labelledby="prep-title">
+          <title id="prep-title">Preprocessing pipeline: raw CSV with 20000 rows and 70 columns, then drop the two identifier columns battery_serial and vehicle_id, then handle missing values, then encode categorical features, then scale numeric features, then a stratified train/test split fit on training data only, producing the 67-feature model input.</title>
+          <g font-family="var(--font-sans)" font-size="10">
+            <rect x="0" y="20" width="118" height="70" rx="8" fill="var(--c-surface)" stroke="var(--c-border-strong)"/>
+            <text x="59" y="48" text-anchor="middle" fill="var(--c-text)" font-weight="600">Raw CSV</text>
+            <text x="59" y="64" text-anchor="middle" fill="var(--c-text-muted)" font-size="9">20,000 &times; 70</text>
+
+            <path d="M122 55 L150 55" stroke="var(--c-border-strong)" stroke-width="1.5" marker-end="url(#pparrow)"/>
+            <rect x="154" y="20" width="118" height="70" rx="8" fill="var(--c-surface)" stroke="var(--c-border-strong)"/>
+            <text x="213" y="42" text-anchor="middle" fill="var(--c-text)" font-weight="600">Drop IDs</text>
+            <text x="213" y="58" text-anchor="middle" fill="var(--c-text-muted)" font-size="9">battery_serial,</text>
+            <text x="213" y="70" text-anchor="middle" fill="var(--c-text-muted)" font-size="9">vehicle_id</text>
+
+            <path d="M276 55 L304 55" stroke="var(--c-border-strong)" stroke-width="1.5" marker-end="url(#pparrow)"/>
+            <rect x="308" y="20" width="118" height="70" rx="8" fill="var(--c-surface)" stroke="var(--c-border-strong)"/>
+            <text x="367" y="48" text-anchor="middle" fill="var(--c-text)" font-weight="600">Missing</text>
+            <text x="367" y="64" text-anchor="middle" fill="var(--c-text-muted)" font-size="9">values handled</text>
+
+            <path d="M430 55 L458 55" stroke="var(--c-border-strong)" stroke-width="1.5" marker-end="url(#pparrow)"/>
+            <rect x="462" y="20" width="118" height="70" rx="8" fill="var(--c-surface)" stroke="var(--c-border-strong)"/>
+            <text x="521" y="48" text-anchor="middle" fill="var(--c-text)" font-weight="600">Encode</text>
+            <text x="521" y="64" text-anchor="middle" fill="var(--c-text-muted)" font-size="9">categoricals</text>
+
+            <path d="M584 55 L612 55" stroke="var(--c-border-strong)" stroke-width="1.5" marker-end="url(#pparrow)"/>
+            <rect x="616" y="20" width="118" height="70" rx="8" fill="var(--c-surface)" stroke="var(--c-border-strong)"/>
+            <text x="675" y="48" text-anchor="middle" fill="var(--c-text)" font-weight="600">Scale</text>
+            <text x="675" y="64" text-anchor="middle" fill="var(--c-text-muted)" font-size="9">numeric features</text>
+
+            <path d="M738 55 L766 55" stroke="var(--c-border-strong)" stroke-width="1.5" marker-end="url(#pparrow)"/>
+            <rect x="770" y="10" width="110" height="90" rx="8" fill="var(--c-primary-weak)" stroke="var(--c-primary)"/>
+            <text x="825" y="38" text-anchor="middle" fill="var(--c-primary)" font-weight="700">Stratified</text>
+            <text x="825" y="52" text-anchor="middle" fill="var(--c-primary)" font-weight="700">split</text>
+            <text x="825" y="70" text-anchor="middle" fill="var(--c-primary)" font-size="9">16,000 / 4,000</text>
+            <text x="825" y="84" text-anchor="middle" fill="var(--c-primary)" font-size="9">fit on train only</text>
+          </g>
+          <defs><marker id="pparrow" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7 Z" fill="var(--c-border-strong)"/></marker></defs>
+        </svg>
+        <p class="hd-diagram-caption">Preprocessing parameters (scaler means/variances, category encodings) are
+          fit on the training split only, then applied unchanged to the test split and to every live
+          classification &mdash; this is what prevents data leakage (spec 6.1).</p>
+      </div>
+    </section>
+
+    <!-- ============================== MODEL COMPARISON ============================== -->
+    <section class="hd-section" id="model-comparison" aria-labelledby="mc-heading">
+      <h2 id="mc-heading" class="hd-section-heading">Model comparison <span class="hd-req-tag">spec 6.2, 6.3</span></h2>
+      <p class="hd-section-sub">Three algorithms, each trained plain and class-weighted ("balanced") &mdash; six
+        real candidates, plus one illustrative baseline added here to make the point unmissable.</p>
+
+      <div class="hd-alert hd-alert-critical">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.6 3.5 2.9 18a2 2 0 0 0 1.8 3h14.6a2 2 0 0 0 1.8-3L13.4 3.5a2 2 0 0 0-3.6 0Z"/><line x1="12" y1="9.5" x2="12" y2="13.5"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>
+        <div>
+          <h3>Accuracy is the wrong metric to select on</h3>
+          <p>A trivial model that always predicts "No Failure" scores <strong>93.08% accuracy</strong> and catches
+            <strong>zero</strong> real failures. Random Forest reaches <strong>94.87% accuracy</strong> yet its
+            recall is only <strong>37.18%</strong> &mdash; it still misses almost two in three real failures. This
+            is why spec 6.3 requires selection on Failure-class Precision/Recall/F1, never on accuracy.</p>
+        </div>
+      </div>
+
+      <div class="hd-diagram" style="margin-top:var(--space-6);">
+        <svg viewBox="0 0 880 470" role="img" aria-labelledby="mc-chart-title">
+          <title id="mc-chart-title">Grouped bar chart, accuracy versus Failure-class recall, for seven models on a single 0 to 100 percent axis. Trivial baseline: 93.1 percent accuracy, 0.0 percent recall. Logistic Regression, the deployed model: 97.0 percent accuracy, 69.3 percent recall. Logistic Regression balanced: 94.0 percent accuracy, 93.5 percent recall. SVM: 96.2 percent accuracy, 58.1 percent recall. SVM balanced: 96.2 percent accuracy, 80.9 percent recall. Random Forest: 94.9 percent accuracy, 37.2 percent recall. Random Forest balanced: 94.2 percent accuracy, 23.1 percent recall. The grey accuracy bars are all similarly tall; the red recall bars vary enormously, collapsing to zero for the trivial baseline.</title>
+
+          <!-- gridlines -->
+          <g font-family="var(--font-sans)" font-size="10" fill="var(--c-text-muted)">
+            <line x1="56" y1="354" x2="840" y2="354" stroke="var(--c-border)"/>
+            <line x1="56" y1="271.5" x2="840" y2="271.5" stroke="var(--c-grid)"/>
+            <line x1="56" y1="189" x2="840" y2="189" stroke="var(--c-grid)"/>
+            <line x1="56" y1="106.5" x2="840" y2="106.5" stroke="var(--c-grid)"/>
+            <line x1="56" y1="24" x2="840" y2="24" stroke="var(--c-grid)"/>
+            <text x="48" y="358" text-anchor="end">0%</text>
+            <text x="48" y="275.5" text-anchor="end">25%</text>
+            <text x="48" y="193" text-anchor="end">50%</text>
+            <text x="48" y="110.5" text-anchor="end">75%</text>
+            <text x="48" y="28" text-anchor="end">100%</text>
+          </g>
+
+          <!-- reference line: dataset No-Failure share (labelled in the caption below, not
+               inline, to avoid colliding with the bar value labels clustered at this height) -->
+          <line x1="56" y1="46.8" x2="840" y2="46.8" stroke="var(--c-series-muted)" stroke-width="1.5" stroke-dasharray="5 4"/>
+
+          <!-- bars: generated from the python geometry computed for this chart -->
+          <g>
+            <!-- Trivial baseline -->
+            <rect x="78" y="46.8" width="30" height="307.2" rx="4" fill="var(--c-series-muted)"/>
+            <rect x="116" y="354" width="30" height="0" rx="4" fill="var(--c-failure)"/>
+            <text x="93" y="40" text-anchor="middle" font-family="var(--font-mono)" font-size="10.5" fill="var(--c-text-secondary)">93.1</text>
+            <text x="131" y="368" text-anchor="middle" font-family="var(--font-mono)" font-size="10.5" fill="var(--c-failure)" font-weight="700">0.0</text>
+
+            <!-- Logistic Regression (deployed) -->
+            <rect x="182" y="18" width="130" height="340" rx="6" fill="var(--c-primary-weak)" opacity="0.55"/>
+            <rect x="190" y="34.1" width="30" height="319.9" rx="4" fill="var(--c-series-muted)"/>
+            <rect x="228" y="125.3" width="30" height="228.7" rx="4" fill="var(--c-failure)"/>
+            <text x="205" y="28" text-anchor="middle" font-family="var(--font-mono)" font-size="10.5" fill="var(--c-text-secondary)">97.0</text>
+            <text x="243" y="119" text-anchor="middle" font-family="var(--font-mono)" font-size="10.5" fill="var(--c-failure)" font-weight="700">69.3</text>
+            <text x="224" y="10" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--c-primary)" font-weight="700">DEPLOYED</text>
+
+            <!-- LogReg balanced -->
+            <rect x="302" y="43.9" width="30" height="310.1" rx="4" fill="var(--c-series-muted)"/>
+            <rect x="340" y="45.4" width="30" height="308.6" rx="4" fill="var(--c-failure)"/>
+            <text x="317" y="37" text-anchor="middle" font-family="var(--font-mono)" font-size="10.5" fill="var(--c-text-secondary)">94.0</text>
+            <text x="355" y="39" text-anchor="middle" font-family="var(--font-mono)" font-size="10.5" fill="var(--c-failure)" font-weight="700">93.5</text>
+
+            <!-- SVM -->
+            <rect x="414" y="36.6" width="30" height="317.4" rx="4" fill="var(--c-series-muted)"/>
+            <rect x="452" y="162.2" width="30" height="191.8" rx="4" fill="var(--c-failure)"/>
+            <text x="429" y="30" text-anchor="middle" font-family="var(--font-mono)" font-size="10.5" fill="var(--c-text-secondary)">96.2</text>
+            <text x="467" y="156" text-anchor="middle" font-family="var(--font-mono)" font-size="10.5" fill="var(--c-failure)" font-weight="700">58.1</text>
+
+            <!-- SVM balanced -->
+            <rect x="526" y="36.7" width="30" height="317.3" rx="4" fill="var(--c-series-muted)"/>
+            <rect x="564" y="87.1" width="30" height="266.9" rx="4" fill="var(--c-failure)"/>
+            <text x="541" y="30" text-anchor="middle" font-family="var(--font-mono)" font-size="10.5" fill="var(--c-text-secondary)">96.2</text>
+            <text x="579" y="81" text-anchor="middle" font-family="var(--font-mono)" font-size="10.5" fill="var(--c-failure)" font-weight="700">80.9</text>
+
+            <!-- Random Forest -->
+            <rect x="638" y="40.9" width="30" height="313.1" rx="4" fill="var(--c-series-muted)"/>
+            <rect x="676" y="231.3" width="30" height="122.7" rx="4" fill="var(--c-failure)"/>
+            <text x="653" y="34" text-anchor="middle" font-family="var(--font-mono)" font-size="10.5" fill="var(--c-text-secondary)">94.9</text>
+            <text x="691" y="225" text-anchor="middle" font-family="var(--font-mono)" font-size="10.5" fill="var(--c-failure)" font-weight="700">37.2</text>
+
+            <!-- RF balanced -->
+            <rect x="750" y="43.3" width="30" height="310.7" rx="4" fill="var(--c-series-muted)"/>
+            <rect x="788" y="277.8" width="30" height="76.2" rx="4" fill="var(--c-failure)"/>
+            <text x="765" y="37" text-anchor="middle" font-family="var(--font-mono)" font-size="10.5" fill="var(--c-text-secondary)">94.2</text>
+            <text x="803" y="271.8" text-anchor="middle" font-family="var(--font-mono)" font-size="10.5" fill="var(--c-failure)" font-weight="700">23.1</text>
+          </g>
+
+          <!-- x axis category labels -->
+          <g font-family="var(--font-sans)" font-size="10.5" fill="var(--c-text-secondary)">
+            <text x="112" y="398" text-anchor="middle">Trivial</text>
+            <text x="112" y="411" text-anchor="middle">baseline</text>
+            <text x="224" y="398" text-anchor="middle" font-weight="700" fill="var(--c-text)">Logistic</text>
+            <text x="224" y="411" text-anchor="middle" font-weight="700" fill="var(--c-text)">Regression</text>
+            <text x="336" y="398" text-anchor="middle">LogReg</text>
+            <text x="336" y="411" text-anchor="middle">(balanced)</text>
+            <text x="448" y="398" text-anchor="middle">SVM</text>
+            <text x="560" y="398" text-anchor="middle">SVM</text>
+            <text x="560" y="411" text-anchor="middle">(balanced)</text>
+            <text x="672" y="398" text-anchor="middle">Random</text>
+            <text x="672" y="411" text-anchor="middle">Forest</text>
+            <text x="784" y="398" text-anchor="middle">RF</text>
+            <text x="784" y="411" text-anchor="middle">(balanced)</text>
+          </g>
+
+          <!-- legend -->
+          <g font-family="var(--font-sans)" font-size="11" fill="var(--c-text-secondary)">
+            <rect x="260" y="440" width="12" height="12" rx="2" fill="var(--c-series-muted)"/>
+            <text x="278" y="450">Accuracy (misleading alone)</text>
+            <rect x="500" y="440" width="12" height="12" rx="2" fill="var(--c-failure)"/>
+            <text x="518" y="450">Failure-class Recall (selection signal)</text>
+          </g>
+        </svg>
+        <p class="hd-diagram-caption">One axis, 0&ndash;100%. Grey bars (accuracy) all look similarly reassuring,
+          including the trivial baseline that never predicts a single failure; red bars (Failure recall) are
+          where the real differences &mdash; and the trivial baseline's complete failure &mdash; actually show up.
+          The dashed line marks 93.08%, the dataset's No-Failure share: every accuracy bar sits at or above it,
+          which is exactly why accuracy alone cannot separate a real model from the trivial baseline. Values
+          rounded to 1 decimal for the chart; exact figures in the table below.</p>
+      </div>
+
+      <div class="hd-table-wrap" style="margin-top:var(--space-6);">
+        <table class="hd-table">
+          <thead><tr><th>Algorithm</th><th>class_weight</th><th class="num">Accuracy</th><th class="num">Precision (Failure)</th><th class="num">Recall (Failure)</th><th class="num">F1 (Failure)</th></tr></thead>
+          <tbody>
+            <tr style="background:var(--c-surface-sunken);"><td>Trivial baseline (always "No Failure")</td><td>&ndash;</td><td class="num">0.9308</td><td class="num">&ndash;</td><td class="num">0.0000</td><td class="num">0.0000</td></tr>
+            <tr style="background:var(--c-primary-weak);"><td>Logistic Regression <span class="hd-badge hd-badge-info" style="margin-left:var(--space-2);">deployed</span></td><td>&ndash;</td><td class="num">0.9695</td><td class="num">0.8384</td><td class="num">0.6931</td><td class="num">0.7589</td></tr>
+            <tr><td>Logistic Regression</td><td>balanced</td><td class="num">0.9397</td><td class="num">0.5373</td><td class="num">0.9350</td><td class="num">0.6825</td></tr>
+            <tr><td>SVM</td><td>&ndash;</td><td class="num">0.9617</td><td class="num">0.8131</td><td class="num">0.5812</td><td class="num">0.6779</td></tr>
+            <tr><td>SVM</td><td>balanced</td><td class="num">0.9615</td><td class="num">0.6892</td><td class="num">0.8087</td><td class="num">0.7442</td></tr>
+            <tr><td>Random Forest</td><td>&ndash;</td><td class="num">0.9487</td><td class="num">0.7687</td><td class="num">0.3718</td><td class="num">0.5012</td></tr>
+            <tr><td>Random Forest</td><td>balanced</td><td class="num">0.9415</td><td class="num">0.7529</td><td class="num">0.2310</td><td class="num">0.3536</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="hd-hint" style="margin-top:var(--space-3);">All six real rows and the deployed model's confusion
+        matrix are from <code class="hd-inline-code">prod_content.md</code> ("All six trained candidates" /
+        "Deployed model"). The trivial-baseline row is not a trained candidate &mdash; it is the arithmetic
+        consequence of the stated 93.08%/6.92% class split (spec 6.1), included to make the paradox concrete.</p>
+
+      <div class="hd-grid hd-grid-2" style="margin-top:var(--space-6);">
+        <div class="hd-card">
+          <div class="hd-card-title">Deployed model: confusion matrix</div>
+          <svg viewBox="0 0 320 210" role="img" aria-label="Confusion matrix for the deployed Logistic Regression model on the 4000-row test set: true negative 3686, false positive 37, false negative 85, true positive 192.">
+            <g font-family="var(--font-sans)" font-size="11">
+              <text x="160" y="14" text-anchor="middle" fill="var(--c-text-muted)" font-size="10">Predicted</text>
+              <text x="90" y="28" text-anchor="middle" fill="var(--c-text-secondary)">No Failure</text>
+              <text x="230" y="28" text-anchor="middle" fill="var(--c-text-secondary)">Failure</text>
+              <text x="14" y="100" text-anchor="middle" fill="var(--c-text-secondary)" transform="rotate(-90 14 100)">Actual</text>
+
+              <rect x="30" y="36" width="120" height="70" fill="var(--c-ok-bg)" stroke="var(--c-border)"/>
+              <text x="90" y="66" text-anchor="middle" fill="var(--c-ok)" font-size="22" font-weight="700" font-family="var(--font-mono)">3686</text>
+              <text x="90" y="86" text-anchor="middle" fill="var(--c-text-muted)" font-size="9">TN</text>
+
+              <rect x="150" y="36" width="120" height="70" fill="var(--c-failure-bg)" stroke="var(--c-border)"/>
+              <text x="210" y="66" text-anchor="middle" fill="var(--c-failure)" font-size="22" font-weight="700" font-family="var(--font-mono)">37</text>
+              <text x="210" y="86" text-anchor="middle" fill="var(--c-text-muted)" font-size="9">FP</text>
+
+              <rect x="30" y="106" width="120" height="70" fill="var(--c-failure-bg)" stroke="var(--c-border)"/>
+              <text x="90" y="136" text-anchor="middle" fill="var(--c-failure)" font-size="22" font-weight="700" font-family="var(--font-mono)">85</text>
+              <text x="90" y="156" text-anchor="middle" fill="var(--c-text-muted)" font-size="9">FN</text>
+
+              <rect x="150" y="106" width="120" height="70" fill="var(--c-ok-bg)" stroke="var(--c-border)"/>
+              <text x="210" y="136" text-anchor="middle" fill="var(--c-ok)" font-size="22" font-weight="700" font-family="var(--font-mono)">192</text>
+              <text x="210" y="156" text-anchor="middle" fill="var(--c-text-muted)" font-size="9">TP</text>
+
+              <text x="10" y="76" text-anchor="middle" fill="var(--c-text-secondary)" font-size="9" transform="rotate(-90 10 76)">No Failure</text>
+              <text x="10" y="146" text-anchor="middle" fill="var(--c-text-secondary)" font-size="9" transform="rotate(-90 10 146)">Failure</text>
+            </g>
+          </svg>
+          <p class="hd-hint">3,723 real No Failure + 277 real Failure = 4,000 test rows. 192/(192+85) = 69.31%
+            recall; 192/(192+37) = 83.84% precision &mdash; both match the stated metrics exactly.</p>
+        </div>
+        <div class="hd-card">
+          <div class="hd-card-title">Why Logistic Regression over Random Forest</div>
+          <p style="color:var(--c-text-secondary);">Random Forest's plain variant has the second-highest accuracy
+            (94.87%) of all six candidates, but its Failure F1 (0.5012) is the <strong>worst</strong> of the three
+            plain (non-balanced) models &mdash; it is good at the easy 93% of cases and poor at the 7% that matter
+            operationally. Logistic Regression's plain variant has both the highest accuracy (96.95%)
+            <em>and</em> the highest Failure F1 (0.7589) of all six candidates, so it wins on the criterion spec
+            6.3 actually names, without even needing the accuracy/F1 trade-off the balanced variants make.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="hd-footer">
+    <p>Engineering handoff &middot; EV Battery Failure Classification &middot; Intelligent Systems, Group 5 &middot; VNU-HCM University of Technology</p>
+  </footer>
+
+</div>

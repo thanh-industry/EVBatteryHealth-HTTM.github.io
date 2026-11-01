@@ -1,0 +1,378 @@
+<title>Design Tokens - EV Battery Failure Classification</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Live specimen reference for every token in tokens.css: colour, type scale, spacing, radius, elevation, with measured WCAG contrast ratios.">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="handoff.css">
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="hd-shell">
+
+  <header class="hd-topbar">
+    <a class="hd-brand" href="index.html">
+      <span class="hd-brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="10" rx="1"/><rect x="14" y="17" width="7" height="4" rx="1"/></svg></span>
+      <span class="hd-brand-text"><span class="hd-brand-title">Engineering Handoff</span><span class="hd-brand-sub">EV Battery Failure Classification &middot; Group 5</span></span>
+    </a>
+    <a class="hd-app-link" href="../index.html">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5l7 7-7 7"/><path d="M3 12h18"/></svg>
+      View the app screens
+    </a>
+  </header>
+
+  <nav class="hd-nav" aria-label="Handoff section">
+    <ul>
+      <li><a href="index.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Overview</span></a></li>
+      <li><a href="design-tokens.html" aria-current="page"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.6-.8 1.6-1.7 0-.5-.2-.9-.2-1.4a1.9 1.9 0 0 1 1.9-1.9h2.1A3.6 3.6 0 0 0 21 12.4 9 9 0 0 0 12 3Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.2" r="1"/><circle cx="15" cy="8" r="1"/></svg><span>Design Tokens</span></a></li>
+      <li><a href="components.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 3 21 8 12 13 3 8 12 3"/><polyline points="3 13 12 18 21 13"/><polyline points="3 17.5 12 22.5 21 17.5"/></svg><span>Components</span></a></li>
+      <li><a href="patterns.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1"/><rect x="13" y="4" width="8" height="7" rx="1"/><rect x="13" y="14" width="8" height="6" rx="1"/></svg><span>Patterns</span></a></li>
+      <li><a href="states.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg><span>States</span></a></li>
+      <li><a href="ml-workflow.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8"/><rect x="11" y="7" width="3" height="13"/><rect x="16" y="3" width="3" height="17"/></svg><span>ML Pipeline</span></a></li>
+      <li><a href="traceability.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3h6v3H9z"/><polyline points="8.5 12.5 11 15 15.5 9.5"/></svg><span>Traceability</span></a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content" class="hd-main">
+
+    <div class="hd-page-header">
+      <span class="hd-eyebrow">Token reference</span>
+      <h1 class="hd-page-title">Design tokens</h1>
+      <p class="hd-page-lede">Every custom property defined in <code class="hd-inline-code">tokens.css</code>,
+        rendered as a live specimen. Contrast ratios below are computed with the WCAG 2.1 relative-luminance
+        formula from each token's actual hex pair, not estimated &mdash; where a pair fails, that is stated
+        plainly, including two places where it fails and <code class="hd-inline-code">tokens.css</code>'s own
+        comment overstates the number (noted inline).</p>
+    </div>
+
+    <!-- ============================== TYPEFACES ============================== -->
+    <section class="hd-section" aria-labelledby="type-families-heading">
+      <h2 id="type-families-heading" class="hd-section-heading">Typefaces</h2>
+      <p class="hd-section-sub">Two families, self-hosted in <code class="hd-inline-code">../fonts/</code>. Inter
+        for UI text (tall x-height, unambiguous 1/l/I). JetBrains Mono for numerals and identifiers (tabular
+        figures, so columns of numbers never shift width). Both carry a Vietnamese subset.</p>
+      <div class="hd-grid hd-grid-2">
+        <div class="hd-card">
+          <div class="hd-card-title">--font-sans &middot; Inter</div>
+          <p style="font-family:var(--font-sans); font-size:28px; line-height:1.3; color:var(--c-text); margin-bottom:var(--space-3);">Aa Bb Cc 0123</p>
+          <p style="font-family:var(--font-sans); font-size:var(--fs-body); color:var(--c-text); margin-bottom:var(--space-2);">Ph&#7841;m V&#259;n Th&agrave;nh &middot; &#272;&#7891;ng Quang Tr&iacute; &middot; Qu&#7843;n Th&agrave;nh Th&#417;</p>
+          <p style="font-family:var(--font-sans); font-size:var(--fs-sm); color:var(--c-text-muted); margin:0;">Vietnamese diacritics subset (U+1EA0&ndash;1EF9 and friends) &mdash; weights 400/500/600/700 self-hosted.</p>
+        </div>
+        <div class="hd-card">
+          <div class="hd-card-title">--font-mono &middot; JetBrains Mono</div>
+          <p class="mono" style="font-size:28px; line-height:1.3; color:var(--c-text); margin-bottom:var(--space-3);">0123 456789</p>
+          <p class="mono" style="font-size:var(--fs-body); color:var(--c-text); margin-bottom:var(--space-2);">BAT-10008123 &middot; 0.8384 &middot; 94.87%</p>
+          <p style="font-family:var(--font-sans); font-size:var(--fs-sm); color:var(--c-text-muted); margin:0;">Tabular figures: every digit is the same width, so serials and probability columns align.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== TYPE SCALE ============================== -->
+    <section class="hd-section" aria-labelledby="type-scale-heading">
+      <h2 id="type-scale-heading" class="hd-section-heading">Type scale</h2>
+      <p class="hd-section-sub">A 1.25 ratio truncated to whole pixels. Body is 15px, not 16px: this is a dense
+        operational tool and 15/22 fits more table rows per screen while staying above the 12px legibility floor.</p>
+      <div class="hd-card">
+
+        <div class="hd-type-row">
+          <div class="hd-type-sample" style="font-family:var(--font-sans); font-size:var(--fs-display); line-height:var(--lh-display); font-weight:var(--fw-bold);">Run classification</div>
+          <div class="hd-type-meta"><b>--fs-display / --lh-display</b><span>30px / 36px line-height</span><span>font-weight 700 (--fw-bold)</span><span>Page title &mdash; one per screen</span></div>
+        </div>
+
+        <div class="hd-type-row">
+          <div class="hd-type-sample" style="font-family:var(--font-sans); font-size:var(--fs-h2); line-height:var(--lh-h2); font-weight:var(--fw-semibold);">Deployed model status</div>
+          <div class="hd-type-meta"><b>--fs-h2 / --lh-h2</b><span>20px / 28px line-height</span><span>font-weight 600 (--fw-semibold)</span><span>Section heading</span></div>
+        </div>
+
+        <div class="hd-type-row">
+          <div class="hd-type-sample" style="font-family:var(--font-sans); font-size:var(--fs-h3); line-height:var(--lh-h3); font-weight:var(--fw-semibold);">Classification result</div>
+          <div class="hd-type-meta"><b>--fs-h3 / --lh-h3</b><span>16px / 24px line-height</span><span>font-weight 600 (--fw-semibold)</span><span>Card title</span></div>
+        </div>
+
+        <div class="hd-type-row">
+          <div class="hd-type-sample" style="font-family:var(--font-sans); font-size:var(--fs-body); line-height:var(--lh-body); font-weight:var(--fw-regular); color:var(--c-text-secondary);">The model predicts this battery is heading toward a Failure.</div>
+          <div class="hd-type-meta"><b>--fs-body / --lh-body</b><span>15px / 22px line-height</span><span>font-weight 400 (--fw-regular)</span><span>Default body copy</span></div>
+        </div>
+
+        <div class="hd-type-row">
+          <div class="hd-type-sample" style="font-family:var(--font-sans); font-size:var(--fs-sm); line-height:var(--lh-sm); font-weight:var(--fw-regular); color:var(--c-text-secondary);">State of health (%) &middot; group: battery_state</div>
+          <div class="hd-type-meta"><b>--fs-sm / --lh-sm</b><span>13px / 20px line-height</span><span>font-weight 400&ndash;500</span><span>Secondary text, table cells</span></div>
+        </div>
+
+        <div class="hd-type-row">
+          <div class="hd-type-sample" style="font-family:var(--font-sans); font-size:var(--fs-xs); line-height:var(--lh-xs); font-weight:var(--fw-medium); letter-spacing:var(--tracking-label); text-transform:uppercase; color:var(--c-text-muted);">Failure-class metrics</div>
+          <div class="hd-type-meta"><b>--fs-xs / --lh-xs</b><span>12px / 16px line-height</span><span>tracking 0.06em when uppercase</span><span>Captions, units, micro-labels</span></div>
+        </div>
+
+        <div class="hd-type-row">
+          <div class="hd-type-sample mono" style="font-size:var(--fs-metric); line-height:var(--lh-metric); font-weight:var(--fw-bold); color:var(--c-text);">96.95<span style="font-size:var(--fs-h3); color:var(--c-text-muted); font-family:var(--font-sans);">%</span></div>
+          <div class="hd-type-meta"><b>--fs-metric / --lh-metric</b><span>34px / 40px line-height</span><span>font-weight 700, font-mono</span><span>The one big number on a KPI card</span></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================== SPACING ============================== -->
+    <section class="hd-section" aria-labelledby="spacing-heading">
+      <h2 id="spacing-heading" class="hd-section-heading">Spacing scale</h2>
+      <p class="hd-section-sub">One 4px-based scale. Every margin, padding and gap in the product is one of
+        these ten values &mdash; bars below are drawn at true pixel width against an 8px grid.</p>
+      <div class="hd-card">
+        <div style="--sw-1: var(--space-1);" class="hd-space-row"><span class="hd-space-token">--space-1</span><div class="hd-space-bar-track"><div class="hd-space-bar" style="width:var(--space-1); background-image:repeating-linear-gradient(90deg, var(--c-grid) 0, var(--c-grid) 1px, transparent 1px, transparent 8px); background-color:transparent; outline:1px solid var(--c-primary);"></div></div><span class="hd-space-px">4px</span></div>
+        <div class="hd-space-row"><span class="hd-space-token">--space-2</span><div class="hd-space-bar-track"><div class="hd-space-bar" style="width:var(--space-2);"></div></div><span class="hd-space-px">8px</span></div>
+        <div class="hd-space-row"><span class="hd-space-token">--space-3</span><div class="hd-space-bar-track"><div class="hd-space-bar" style="width:var(--space-3);"></div></div><span class="hd-space-px">12px</span></div>
+        <div class="hd-space-row"><span class="hd-space-token">--space-4</span><div class="hd-space-bar-track"><div class="hd-space-bar" style="width:var(--space-4);"></div></div><span class="hd-space-px">16px</span></div>
+        <div class="hd-space-row"><span class="hd-space-token">--space-5</span><div class="hd-space-bar-track"><div class="hd-space-bar" style="width:var(--space-5);"></div></div><span class="hd-space-px">20px</span></div>
+        <div class="hd-space-row"><span class="hd-space-token">--space-6</span><div class="hd-space-bar-track"><div class="hd-space-bar" style="width:var(--space-6);"></div></div><span class="hd-space-px">24px</span></div>
+        <div class="hd-space-row"><span class="hd-space-token">--space-8</span><div class="hd-space-bar-track"><div class="hd-space-bar" style="width:var(--space-8);"></div></div><span class="hd-space-px">32px</span></div>
+        <div class="hd-space-row"><span class="hd-space-token">--space-10</span><div class="hd-space-bar-track"><div class="hd-space-bar" style="width:var(--space-10);"></div></div><span class="hd-space-px">40px</span></div>
+        <div class="hd-space-row"><span class="hd-space-token">--space-12</span><div class="hd-space-bar-track"><div class="hd-space-bar" style="width:var(--space-12);"></div></div><span class="hd-space-px">48px</span></div>
+        <div class="hd-space-row"><span class="hd-space-token">--space-16</span><div class="hd-space-bar-track"><div class="hd-space-bar" style="width:var(--space-16);"></div></div><span class="hd-space-px">64px</span></div>
+        <p class="hd-hint" style="margin:var(--space-4) 0 0; font-size:var(--fs-xs); color:var(--c-text-muted);">If a gap in a mockup CSS rule is not one of these ten numbers, it is a bug &mdash; flatten it to the nearest token.</p>
+      </div>
+    </section>
+
+    <!-- ============================== NEUTRALS & TEXT ============================== -->
+    <section class="hd-section" aria-labelledby="neutrals-heading">
+      <h2 id="neutrals-heading" class="hd-section-heading">Neutrals &amp; text</h2>
+      <p class="hd-section-sub">Slightly blue-shifted greys so a pure-grey UI doesn't read as dirty next to the
+        blue accent. Contrast is measured for every text colour against every surface it actually sits on.</p>
+      <div class="hd-swatch-grid">
+
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-bg);"></div><div class="hd-swatch-body">
+          <span class="hd-swatch-var">--c-bg</span><span class="hd-swatch-hex">#F7F8FA</span><span class="hd-swatch-use">Page canvas</span></div></div>
+
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-surface); border-bottom:1px solid var(--c-border);"></div><div class="hd-swatch-body">
+          <span class="hd-swatch-var">--c-surface</span><span class="hd-swatch-hex">#FFFFFF</span><span class="hd-swatch-use">Cards, panels, table rows</span></div></div>
+
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-surface-sunken);"></div><div class="hd-swatch-body">
+          <span class="hd-swatch-var">--c-surface-sunken</span><span class="hd-swatch-hex">#F1F3F7</span><span class="hd-swatch-use">Table headers, inset wells, code blocks</span></div></div>
+
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-border);"></div><div class="hd-swatch-body">
+          <span class="hd-swatch-var">--c-border</span><span class="hd-swatch-hex">#E3E7EE</span><span class="hd-swatch-use">Default hairline (decorative, not a required UI boundary)</span></div></div>
+
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-border-strong);"></div><div class="hd-swatch-body">
+          <span class="hd-swatch-var">--c-border-strong</span><span class="hd-swatch-hex">#C9D1DD</span><span class="hd-swatch-use">Input outlines, emphasised dividers</span>
+          <div class="hd-swatch-contrast"><span class="hd-badge hd-badge-fail">1.54:1 vs white &middot; fails 3:1 non-text AA</span></div></div></div>
+
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-surface); display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--c-border);"><span style="font-family:var(--font-sans); font-weight:700; font-size:20px; color:var(--c-text);">Aa</span></div><div class="hd-swatch-body">
+          <span class="hd-swatch-var">--c-text</span><span class="hd-swatch-hex">#111827</span><span class="hd-swatch-use">Primary ink</span>
+          <div class="hd-swatch-contrast"><span class="hd-badge hd-badge-pass">17.74:1 on surface</span><span class="hd-badge hd-badge-pass">16.69:1 on bg</span></div>
+          <span class="hd-swatch-use" style="margin-top:var(--space-2); color:var(--c-warn);">tokens.css comment says 16.1:1 &mdash; measured value is higher (passes by more margin, comment just imprecise)</span></div></div>
+
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-surface); display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--c-border);"><span style="font-family:var(--font-sans); font-weight:600; font-size:20px; color:var(--c-text-secondary);">Aa</span></div><div class="hd-swatch-body">
+          <span class="hd-swatch-var">--c-text-secondary</span><span class="hd-swatch-hex">#4B5563</span><span class="hd-swatch-use">Supporting copy</span>
+          <div class="hd-swatch-contrast"><span class="hd-badge hd-badge-pass">7.56:1 on surface</span><span class="hd-badge hd-badge-pass">7.11:1 on bg</span></div>
+          <span class="hd-swatch-use" style="margin-top:var(--space-2); color:var(--c-warn);">tokens.css comment says 8.6:1 &mdash; measured is 7.56:1 (still comfortably AA, comment overstates it)</span></div></div>
+
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-surface); display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--c-border);"><span style="font-family:var(--font-sans); font-weight:600; font-size:20px; color:var(--c-text-muted);">Aa</span></div><div class="hd-swatch-body">
+          <span class="hd-swatch-var">--c-text-muted</span><span class="hd-swatch-hex">#6B7280</span><span class="hd-swatch-use">Captions and units</span>
+          <div class="hd-swatch-contrast"><span class="hd-badge hd-badge-pass">4.83:1 on surface</span><span class="hd-badge hd-badge-pass">4.55:1 on bg</span><span class="hd-badge hd-badge-fail">4.35:1 on surface-sunken</span></div>
+          <span class="hd-swatch-use" style="margin-top:var(--space-2); color:var(--c-failure);">On c-surface-sunken (table headers / code blocks) this drops BELOW the 4.5:1 AA floor for normal text. See finding below.</span></div></div>
+
+      </div>
+      <div class="hd-alert hd-alert-warn" style="margin-top:var(--space-6);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.6 3.5 2.9 18a2 2 0 0 0 1.8 3h14.6a2 2 0 0 0 1.8-3L13.4 3.5a2 2 0 0 0-3.6 0Z"/><line x1="12" y1="9.5" x2="12" y2="13.5"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>
+        <div>
+          <h3>Finding: --c-text-muted on --c-surface-sunken fails AA (4.35:1)</h3>
+          <p>tokens.css's own comment names <code class="hd-inline-code">--c-surface-sunken</code> as the
+            background for "table headers, inset wells, code blocks" and separately claims
+            <code class="hd-inline-code">--c-text-muted</code> is "still AA" &mdash; true only against
+            <code class="hd-inline-code">--c-surface</code>/<code class="hd-inline-code">--c-bg</code>, not against
+            <code class="hd-inline-code">--c-surface-sunken</code> itself. Wherever muted text sits directly on a
+            sunken surface (a unit label inside a code block, a caption inside an inset well), use
+            <code class="hd-inline-code">--c-text-secondary</code> instead &mdash; it clears 6.6:1 on that
+            background. This handoff follows that rule throughout; the app screens should too.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== BRAND ============================== -->
+    <section class="hd-section" aria-labelledby="brand-heading">
+      <h2 id="brand-heading" class="hd-section-heading">Brand / accent</h2>
+      <div class="hd-swatch-grid">
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-primary);"></div><div class="hd-swatch-body">
+          <span class="hd-swatch-var">--c-primary</span><span class="hd-swatch-hex">#1D4ED8</span><span class="hd-swatch-use">Primary actions, active nav, focus ring, links</span>
+          <div class="hd-swatch-contrast"><span class="hd-badge hd-badge-pass">6.70:1 on white</span><span class="hd-badge hd-badge-pass">6.70:1 --c-on-primary on it</span></div></div></div>
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-primary-hover);"></div><div class="hd-swatch-body">
+          <span class="hd-swatch-var">--c-primary-hover</span><span class="hd-swatch-hex">#1E40AF</span><span class="hd-swatch-use">Hover/active state of primary</span>
+          <div class="hd-swatch-contrast"><span class="hd-badge hd-badge-pass">8.72:1 --c-on-primary on it</span></div></div></div>
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-primary-weak);"></div><div class="hd-swatch-body">
+          <span class="hd-swatch-var">--c-primary-weak</span><span class="hd-swatch-hex">#EFF4FF</span><span class="hd-swatch-use">Selected row, active nav background</span>
+          <div class="hd-swatch-contrast"><span class="hd-badge hd-badge-pass">6.08:1 c-primary text on it</span></div></div></div>
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-primary); display:flex; align-items:center; justify-content:center;"><span style="color:var(--c-on-primary); font-weight:700;">Aa</span></div><div class="hd-swatch-body">
+          <span class="hd-swatch-var">--c-on-primary</span><span class="hd-swatch-hex">#FFFFFF</span><span class="hd-swatch-use">Text/icon on any primary-filled surface</span></div></div>
+      </div>
+    </section>
+
+    <!-- ============================== BINARY RESULT ============================== -->
+    <section class="hd-section" aria-labelledby="result-heading">
+      <h2 id="result-heading" class="hd-section-heading">Binary classification result <span class="hd-req-tag">most important pair in the product</span></h2>
+      <p class="hd-section-sub">Verified to stay distinguishable under deuteranopia and protanopia, where a naive
+        green/red pair collapses. Colour is <strong>never</strong> the only signal &mdash; every use ships an icon
+        AND the literal word "FAILURE" / "NO FAILURE"; see <a href="components.html#result-panel">Components &rarr;
+        Classification result panel</a> for the full component spec.</p>
+      <div class="hd-grid hd-grid-2">
+        <div class="hd-card">
+          <span class="hd-result-chip is-failure">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7.5 2 16.5 2 22 7.5 22 16.5 16.5 22 7.5 22 2 16.5 2 7.5 7.5 2"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>
+            FAILURE
+          </span>
+          <div class="hd-table-wrap" style="margin-top:var(--space-5);">
+          <table class="hd-table">
+            <tbody>
+              <tr><td>--c-failure</td><td class="mono">#B91C1C</td><td><span class="hd-badge hd-badge-pass">6.47:1 on white</span></td></tr>
+              <tr><td>--c-failure-bg</td><td class="mono">#FEF2F2</td><td><span class="hd-badge hd-badge-pass">5.91:1 (text on bg)</span></td></tr>
+              <tr><td>--c-failure-border</td><td class="mono">#FCA5A5</td><td><span class="hd-badge hd-badge-fail">1.74:1 on bg &middot; decorative only</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+        <div class="hd-card">
+          <span class="hd-result-chip is-ok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3Z"/><polyline points="8.5 12 11 14.5 15.5 9.5"/></svg>
+            NO FAILURE
+          </span>
+          <div class="hd-table-wrap" style="margin-top:var(--space-5);">
+          <table class="hd-table">
+            <tbody>
+              <tr><td>--c-ok</td><td class="mono">#047857</td><td><span class="hd-badge hd-badge-pass">5.48:1 on white</span></td></tr>
+              <tr><td>--c-ok-bg</td><td class="mono">#ECFDF5</td><td><span class="hd-badge hd-badge-pass">5.21:1 (text on bg)</span></td></tr>
+              <tr><td>--c-ok-border</td><td class="mono">#6EE7B7</td><td><span class="hd-badge hd-badge-fail">1.45:1 on bg &middot; decorative only</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+      <p class="hd-section-sub" style="margin-top:var(--space-4);">The two <code class="hd-inline-code">-border</code>
+        tokens are a 1px accent on the result panel's edge, never the sole way to tell the states apart (the chip
+        above always carries both an icon and the word) &mdash; so their low measured contrast against their own
+        background is a legitimate decorative use, not an accessibility defect, as long as the icon+text pairing
+        in <a href="components.html#result-panel">Components</a> is kept intact in production.</p>
+    </section>
+
+    <!-- ============================== SUPPORTING STATUS ============================== -->
+    <section class="hd-section" aria-labelledby="status-heading">
+      <h2 id="status-heading" class="hd-section-heading">Supporting status</h2>
+      <div class="hd-swatch-grid">
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-warn-bg); display:flex; align-items:center; padding-left:var(--space-3);"><span style="color:var(--c-warn); font-weight:700;">Aa</span></div><div class="hd-swatch-body">
+          <span class="hd-swatch-var">--c-warn</span><span class="hd-swatch-hex">#B45309</span><span class="hd-swatch-use">Validation warnings, "no model deployed"</span>
+          <div class="hd-swatch-contrast"><span class="hd-badge hd-badge-pass">4.84:1 on warn-bg</span><span class="hd-badge hd-badge-pass">5.02:1 on white</span></div></div></div>
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-info-bg); display:flex; align-items:center; padding-left:var(--space-3);"><span style="color:var(--c-info); font-weight:700;">Aa</span></div><div class="hd-swatch-body">
+          <span class="hd-swatch-var">--c-info</span><span class="hd-swatch-hex">#0E7490</span><span class="hd-swatch-use">Informational banners, deployed-model badge</span>
+          <div class="hd-swatch-contrast"><span class="hd-badge hd-badge-pass">5.15:1 on info-bg</span><span class="hd-badge hd-badge-pass">5.36:1 on white</span></div></div></div>
+      </div>
+    </section>
+
+    <!-- ============================== DATA VIZ ============================== -->
+    <section class="hd-section" aria-labelledby="dataviz-heading">
+      <h2 id="dataviz-heading" class="hd-section-heading">Data visualisation</h2>
+      <p class="hd-section-sub">Fixed order, assigned by series identity and never recycled by rank, so an
+        algorithm keeps its colour on every chart on every page (see <a href="ml-workflow.html#model-comparison">ML
+        Pipeline &rarr; model comparison</a>).</p>
+      <div class="hd-swatch-grid">
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-series-1);"></div><div class="hd-swatch-body"><span class="hd-swatch-var">--c-series-1</span><span class="hd-swatch-hex">#1D4ED8</span><span class="hd-swatch-use">Logistic Regression</span><div class="hd-swatch-contrast"><span class="hd-badge hd-badge-pass">6.70:1 on white</span></div></div></div>
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-series-2);"></div><div class="hd-swatch-body"><span class="hd-swatch-var">--c-series-2</span><span class="hd-swatch-hex">#0E7490</span><span class="hd-swatch-use">SVM</span><div class="hd-swatch-contrast"><span class="hd-badge hd-badge-pass">5.36:1 on white</span></div></div></div>
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-series-3);"></div><div class="hd-swatch-body"><span class="hd-swatch-var">--c-series-3</span><span class="hd-swatch-hex">#BE185D</span><span class="hd-swatch-use">Random Forest</span><div class="hd-swatch-contrast"><span class="hd-badge hd-badge-pass">6.04:1 on white</span></div></div></div>
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-series-muted);"></div><div class="hd-swatch-body"><span class="hd-swatch-var">--c-series-muted</span><span class="hd-swatch-hex">#94A3B8</span><span class="hd-swatch-use">De-emphasised reference line (e.g. decision threshold)</span><div class="hd-swatch-contrast"><span class="hd-badge hd-badge-fail">2.56:1 on white &middot; decorative line only, never a label</span></div></div></div>
+        <div class="hd-swatch"><div class="hd-swatch-chip" style="background:var(--c-grid);"></div><div class="hd-swatch-body"><span class="hd-swatch-var">--c-grid</span><span class="hd-swatch-hex">#E9EDF3</span><span class="hd-swatch-use">Chart gridlines</span></div></div>
+      </div>
+    </section>
+
+    <!-- ============================== RADIUS ============================== -->
+    <section class="hd-section" aria-labelledby="radius-heading">
+      <h2 id="radius-heading" class="hd-section-heading">Radius</h2>
+      <p class="hd-section-sub">Capped at 10px. Larger radii read as consumer software and undercut the
+        instrument-like tone this product needs.</p>
+      <div class="hd-grid hd-grid-4">
+        <div class="hd-card" style="text-align:center;">
+          <div style="width:72px; height:72px; background:var(--c-primary-weak); border:1px solid var(--c-primary); border-radius:var(--radius-sm); margin:0 auto var(--space-3);"></div>
+          <span class="mono" style="font-size:var(--fs-sm);">--radius-sm</span><br><span class="hd-hint" style="font-size:var(--fs-xs); color:var(--c-text-muted);">4px &middot; chips, error borders</span>
+        </div>
+        <div class="hd-card" style="text-align:center;">
+          <div style="width:72px; height:72px; background:var(--c-primary-weak); border:1px solid var(--c-primary); border-radius:var(--radius-md); margin:0 auto var(--space-3);"></div>
+          <span class="mono" style="font-size:var(--fs-sm);">--radius-md</span><br><span class="hd-hint" style="font-size:var(--fs-xs); color:var(--c-text-muted);">6px &middot; buttons, inputs</span>
+        </div>
+        <div class="hd-card" style="text-align:center;">
+          <div style="width:72px; height:72px; background:var(--c-primary-weak); border:1px solid var(--c-primary); border-radius:var(--radius-lg); margin:0 auto var(--space-3);"></div>
+          <span class="mono" style="font-size:var(--fs-sm);">--radius-lg</span><br><span class="hd-hint" style="font-size:var(--fs-xs); color:var(--c-text-muted);">10px &middot; cards, panels, modals</span>
+        </div>
+        <div class="hd-card" style="text-align:center;">
+          <div style="width:72px; height:32px; background:var(--c-primary-weak); border:1px solid var(--c-primary); border-radius:var(--radius-pill); margin:20px auto var(--space-3);"></div>
+          <span class="mono" style="font-size:var(--fs-sm);">--radius-pill</span><br><span class="hd-hint" style="font-size:var(--fs-xs); color:var(--c-text-muted);">999px &middot; badges, status chips</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== ELEVATION ============================== -->
+    <section class="hd-section" aria-labelledby="elevation-heading">
+      <h2 id="elevation-heading" class="hd-section-heading">Elevation</h2>
+      <p class="hd-section-sub">Two levels only. Flat surfaces stay separated by hairlines; shadow is reserved for
+        things that genuinely float above the page.</p>
+      <div class="hd-grid hd-grid-2">
+        <div class="hd-specimen-stage">
+          <div style="width:220px; height:100px; background:var(--c-surface); border-radius:var(--radius-lg); box-shadow:var(--shadow-card); display:flex; align-items:center; justify-content:center; font-size:var(--fs-sm); color:var(--c-text-secondary);">--shadow-card</div>
+        </div>
+        <div class="hd-specimen-stage">
+          <div style="width:220px; height:100px; background:var(--c-surface); border-radius:var(--radius-lg); box-shadow:var(--shadow-float); display:flex; align-items:center; justify-content:center; font-size:var(--fs-sm); color:var(--c-text-secondary);">--shadow-float</div>
+        </div>
+      </div>
+      <div class="hd-grid hd-grid-2" style="margin-top:var(--space-5);">
+        <p class="hd-section-sub" style="margin:0;"><code class="hd-inline-code">--shadow-card</code> &mdash; resting
+          state of every card, KPI tile and table wrapper.</p>
+        <p class="hd-section-sub" style="margin:0;"><code class="hd-inline-code">--shadow-float</code> &mdash;
+          modal dialogs and any popover that must read as floating above the page.</p>
+      </div>
+    </section>
+
+    <!-- ============================== FOCUS RING ============================== -->
+    <section class="hd-section" aria-labelledby="focus-heading">
+      <h2 id="focus-heading" class="hd-section-heading">Focus ring</h2>
+      <div class="hd-grid hd-grid-2">
+        <div class="hd-specimen-stage">
+          <button class="hd-btn hd-btn-secondary" style="box-shadow:var(--focus-ring); outline:none;">--focus-ring alone</button>
+        </div>
+        <div class="hd-specimen-stage">
+          <button class="hd-btn hd-btn-secondary" style="outline:2px solid var(--c-primary); outline-offset:2px; box-shadow:var(--focus-ring);">+ 2px solid --c-primary</button>
+        </div>
+      </div>
+      <div class="hd-alert hd-alert-warn" style="margin-top:var(--space-5);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.6 3.5 2.9 18a2 2 0 0 0 1.8 3h14.6a2 2 0 0 0 1.8-3L13.4 3.5a2 2 0 0 0-3.6 0Z"/><line x1="12" y1="9.5" x2="12" y2="13.5"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>
+        <div>
+          <h3>Finding: --focus-ring alone measures ~1.79:1, below the 3:1 AA floor for focus indicators</h3>
+          <p><code class="hd-inline-code">--focus-ring: 0 0 0 3px rgba(29, 78, 216, 0.35)</code> blended over white
+            resolves to roughly <code class="hd-inline-code">#B0C1F1</code>, which measures 1.79:1 against both
+            <code class="hd-inline-code">--c-surface</code> and <code class="hd-inline-code">--c-bg</code> &mdash;
+            under the WCAG 2.4.11 / 1.4.11 non-text 3:1 minimum for a focus indicator used alone. Every interactive
+            element across this entire handoff section pairs it with a solid
+            <code class="hd-inline-code">2px solid var(--c-primary)</code> outline (6.70:1, comfortably AA), which
+            keeps the token's soft glow as a secondary cue while the hard outline carries the compliance. The
+            production app should adopt the same pairing rather than the raw token alone.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== LAYOUT CONSTANTS ============================== -->
+    <section class="hd-section" aria-labelledby="layout-heading">
+      <h2 id="layout-heading" class="hd-section-heading">Layout &amp; motion constants</h2>
+      <div class="hd-table-wrap">
+        <table class="hd-table">
+          <thead><tr><th>Token</th><th>Value</th><th class="wrap">Use</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">--sidebar-w</td><td class="num">268px</td><td class="wrap">Fixed sidebar width at the 1024px+ breakpoint</td></tr>
+            <tr><td class="mono">--content-max</td><td class="num">1180px</td><td class="wrap">Max width of the main content column</td></tr>
+            <tr><td class="mono">--control-h</td><td class="num">40px</td><td class="wrap">Height of every input, select and standard button</td></tr>
+            <tr><td class="mono">--touch-min</td><td class="num">44px</td><td class="wrap">Minimum interactive target (nav links, icon buttons)</td></tr>
+            <tr><td class="mono">--ease</td><td class="num">cubic-bezier(.2,0,.1,1)</td><td class="wrap">Standard easing curve for all transitions</td></tr>
+            <tr><td class="mono">--dur-fast</td><td class="num">120ms</td><td class="wrap">Micro-interactions (hover colour swap)</td></tr>
+            <tr><td class="mono">--dur</td><td class="num">180ms</td><td class="wrap">Default transition duration (expanders, tabs)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="hd-footer">
+    <p>Engineering handoff &middot; EV Battery Failure Classification &middot; Intelligent Systems, Group 5 &middot; VNU-HCM University of Technology</p>
+  </footer>
+
+</div>

@@ -1,0 +1,187 @@
+<title>Handoff Overview - EV Battery Failure Classification</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Engineering handoff documentation for the EV Battery Failure Classification mockup: design tokens, component anatomy, layout patterns, state catalogue, ML pipeline and requirements traceability.">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="handoff.css">
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="hd-shell">
+
+  <header class="hd-topbar">
+    <a class="hd-brand" href="index.html">
+      <span class="hd-brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="10" rx="1"/><rect x="14" y="17" width="7" height="4" rx="1"/></svg>
+      </span>
+      <span class="hd-brand-text">
+        <span class="hd-brand-title">Engineering Handoff</span>
+        <span class="hd-brand-sub">EV Battery Failure Classification &middot; Group 5</span>
+      </span>
+    </a>
+    <a class="hd-app-link" href="../index.html">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5l7 7-7 7"/><path d="M3 12h18"/></svg>
+      View the app screens
+    </a>
+  </header>
+
+  <nav class="hd-nav" aria-label="Handoff section">
+    <ul>
+      <li><a href="index.html" aria-current="page">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <span>Overview</span></a></li>
+      <li><a href="design-tokens.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.6-.8 1.6-1.7 0-.5-.2-.9-.2-1.4a1.9 1.9 0 0 1 1.9-1.9h2.1A3.6 3.6 0 0 0 21 12.4 9 9 0 0 0 12 3Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.2" r="1"/><circle cx="15" cy="8" r="1"/></svg>
+        <span>Design Tokens</span></a></li>
+      <li><a href="components.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 3 21 8 12 13 3 8 12 3"/><polyline points="3 13 12 18 21 13"/><polyline points="3 17.5 12 22.5 21 17.5"/></svg>
+        <span>Components</span></a></li>
+      <li><a href="patterns.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1"/><rect x="13" y="4" width="8" height="7" rx="1"/><rect x="13" y="14" width="8" height="6" rx="1"/></svg>
+        <span>Patterns</span></a></li>
+      <li><a href="states.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <span>States</span></a></li>
+      <li><a href="ml-workflow.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8"/><rect x="11" y="7" width="3" height="13"/><rect x="16" y="3" width="3" height="17"/></svg>
+        <span>ML Pipeline</span></a></li>
+      <li><a href="traceability.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3h6v3H9z"/><polyline points="8.5 12.5 11 15 15.5 9.5"/></svg>
+        <span>Traceability</span></a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content" class="hd-main">
+
+    <div class="hd-page-header">
+      <span class="hd-eyebrow">Engineering handoff</span>
+      <h1 class="hd-page-title">Build this from the mockup</h1>
+      <p class="hd-page-lede">This section is the implementation-ready half of the deliverable. The app screens
+        (linked above) show what the product looks like; these seven pages document precisely enough that a
+        Software Developer can build the real Streamlit application without guessing a single pixel, color,
+        spacing value or validation message.</p>
+    </div>
+
+    <section class="hd-section" aria-labelledby="what-heading">
+      <h2 id="what-heading" class="hd-section-heading">What this section covers</h2>
+      <div class="hd-card">
+        <p>Three sources feed every page here, and nothing else does:</p>
+        <ul style="margin:0 0 var(--space-4); padding-left: var(--space-6); display:flex; flex-direction:column; gap:var(--space-2);">
+          <li><code class="hd-inline-code">mockup/css/tokens.css</code> &mdash; the locked design-token file. Every
+            colour, type size, spacing value, radius, shadow and layout constant used on these pages is read
+            directly from it. Nothing here is a raw hex code or an off-scale pixel value.</li>
+          <li><code class="hd-inline-code">prod_content.md</code> &mdash; real output captured from the running
+            production system: the deployed model's measured metrics, the 12 key features with real training-set
+            medians/min/max, real per-group field counts, real battery serials and classifications, and all six
+            trained model candidates.</li>
+          <li><strong>2 &ndash; Group5_ProjectSpec_v2.pdf</strong> &mdash; the project specification: FR-01 through
+            FR-16, UC-01 through UC-09, the three-stage workflow, the system architecture, and the ML approach
+            (section 6).</li>
+        </ul>
+        <p style="margin:0;">Where a number in this handoff differs from a number shown on the app screens, this
+          handoff is the one backed by <code class="hd-inline-code">prod_content.md</code> &mdash; see
+          <a href="traceability.html">Traceability</a> and this section's README for the specific deltas found
+          during this pass.</p>
+      </div>
+    </section>
+
+    <section class="hd-section" aria-labelledby="how-heading">
+      <h2 id="how-heading" class="hd-section-heading">How to use it</h2>
+      <div class="hd-grid hd-grid-3">
+        <div class="hd-card">
+          <div class="hd-card-title">01 &middot; Tokens first</div>
+          <p style="margin:0;">Open <a href="design-tokens.html">Design Tokens</a> next to
+            <code class="hd-inline-code">tokens.css</code>. Every swatch names its CSS variable, its hex, where to
+            use it, and (for text/background pairs) its measured WCAG contrast ratio.</p>
+        </div>
+        <div class="hd-card">
+          <div class="hd-card-title">02 &middot; Components, state by state</div>
+          <p style="margin:0;"><a href="components.html">Components</a> gives every interactive element's default,
+            hover, focus, disabled and error states with exact padding/height/radius/colour tokens &mdash;
+            read these as the literal CSS to write.</p>
+        </div>
+        <div class="hd-card">
+          <div class="hd-card-title">03 &middot; Then layout, states, ML, coverage</div>
+          <p style="margin:0;"><a href="patterns.html">Patterns</a> for the shell and responsive rules,
+            <a href="states.html">States</a> for everything that isn't the happy path,
+            <a href="ml-workflow.html">ML Pipeline</a> for the model story, and
+            <a href="traceability.html">Traceability</a> to check nothing in the spec was missed.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="hd-section" aria-labelledby="toc-heading">
+      <h2 id="toc-heading" class="hd-section-heading">Contents</h2>
+      <div class="hd-grid hd-grid-2">
+
+        <a class="hd-card" href="design-tokens.html" style="text-decoration:none; display:block;">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--c-primary); margin-bottom:var(--space-4);"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.6-.8 1.6-1.7 0-.5-.2-.9-.2-1.4a1.9 1.9 0 0 1 1.9-1.9h2.1A3.6 3.6 0 0 0 21 12.4 9 9 0 0 0 12 3Z"/></svg>
+          <h3 style="font-size:var(--fs-h3); line-height:var(--lh-h3); margin-bottom:var(--space-2);">Design Tokens</h3>
+          <p style="margin:0; color:var(--c-text-secondary);">Live colour chips (hex + variable + usage + contrast
+            ratio), the full type scale at actual size, the 4px spacing scale drawn as measured bars, radii and
+            elevation samples.</p>
+        </a>
+
+        <a class="hd-card" href="components.html" style="text-decoration:none; display:block;">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--c-primary); margin-bottom:var(--space-4);"><polygon points="12 3 21 8 12 13 3 8 12 3"/><polyline points="3 13 12 18 21 13"/><polyline points="3 17.5 12 22.5 21 17.5"/></svg>
+          <h3 style="font-size:var(--fs-h3); line-height:var(--lh-h3); margin-bottom:var(--space-2);">Components</h3>
+          <p style="margin:0; color:var(--c-text-secondary);">Button, input, select, card, table, status chip,
+            expander, modal, tabs, search field, pagination &mdash; and the Failure / No Failure result panel in
+            full detail, every interaction state, redlined dimensions.</p>
+        </a>
+
+        <a class="hd-card" href="patterns.html" style="text-decoration:none; display:block;">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--c-primary); margin-bottom:var(--space-4);"><rect x="3" y="4" width="7" height="16" rx="1"/><rect x="13" y="4" width="8" height="7" rx="1"/><rect x="13" y="14" width="8" height="6" rx="1"/></svg>
+          <h3 style="font-size:var(--fs-h3); line-height:var(--lh-h3); margin-bottom:var(--space-2);">Patterns</h3>
+          <p style="margin:0; color:var(--c-text-secondary);">The app shell and its 268px/1180px constants,
+            responsive behaviour at 375/768/1024/1440, the two-step Run Classification flow, the 12-key +
+            9-group parameter pattern, table overflow, and the <code class="hd-inline-code">min-width: 0</code> rule.</p>
+        </a>
+
+        <a class="hd-card" href="states.html" style="text-decoration:none; display:block;">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--c-primary); margin-bottom:var(--space-4);"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <h3 style="font-size:var(--fs-h3); line-height:var(--lh-h3); margin-bottom:var(--space-2);">States</h3>
+          <p style="margin:0; color:var(--c-text-secondary);">Loading/skeleton, empty, no-model-deployed,
+            validation error (real messages), not-found, and a destructive-action confirmation &mdash; with which
+            screens show each one.</p>
+        </a>
+
+        <a class="hd-card" href="ml-workflow.html" style="text-decoration:none; display:block;">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--c-primary); margin-bottom:var(--space-4);"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8"/><rect x="11" y="7" width="3" height="13"/><rect x="16" y="3" width="3" height="17"/></svg>
+          <h3 style="font-size:var(--fs-h3); line-height:var(--lh-h3); margin-bottom:var(--space-2);">ML Pipeline</h3>
+          <p style="margin:0; color:var(--c-text-secondary);">The 3-stage workflow, dataset facts (20,000 rows,
+            93.08%/6.92% split), the preprocessing pipeline, and all six candidates &mdash; with the accuracy-paradox
+            insight shown visually, not just in prose.</p>
+        </a>
+
+        <a class="hd-card" href="traceability.html" style="text-decoration:none; display:block;">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--c-primary); margin-bottom:var(--space-4);"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3h6v3H9z"/><polyline points="8.5 12.5 11 15 15.5 9.5"/></svg>
+          <h3 style="font-size:var(--fs-h3); line-height:var(--lh-h3); margin-bottom:var(--space-2);">Traceability</h3>
+          <p style="margin:0; color:var(--c-text-secondary);">Every FR-01&ndash;16 and UC-01&ndash;09 mapped to the
+            screen or component that satisfies it, with links into the exact page &mdash; what a grader checks
+            against the spec.</p>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="hd-section" aria-labelledby="offline-heading">
+      <h2 id="offline-heading" class="hd-section-heading">Offline, by design</h2>
+      <div class="hd-alert hd-alert-info">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><line x1="12" y1="7.5" x2="12" y2="7.6"/></svg>
+        <div>
+          <h3>No network, no build step</h3>
+          <p>This whole submission is opened by double-clicking a file. Fonts are self-hosted
+            (<code class="hd-inline-code">../fonts/</code>), there is no CDN link, no bundler, and no
+            <code class="hd-inline-code">fetch()</code> of local files (blocked on <code class="hd-inline-code">file://</code>).
+            Every diagram and chart on these pages is hand-authored inline SVG.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="hd-footer">
+    <p>Engineering handoff &middot; EV Battery Failure Classification &middot; Intelligent Systems, Group 5 &middot; VNU-HCM University of Technology</p>
+  </footer>
+
+</div>

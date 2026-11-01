@@ -1,0 +1,364 @@
+<title>Patterns - EV Battery Failure Classification</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Layout and interaction patterns: the app shell, responsive behaviour, the two-step Run Classification flow, the 12-key + 9-group parameter pattern, table overflow, and the min-width:0 rule.">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="handoff.css">
+<style>
+  .hd-sandbox { overflow-x: auto; border: 1px dashed var(--c-border-strong); border-radius: var(--radius-md); padding: var(--space-4); background: var(--c-bg); }
+  .bp-frame { border: 1px solid var(--c-border); border-radius: var(--radius-md); background: var(--c-surface); overflow: hidden; margin: 0 auto; }
+  .bp-frame .bp-top { height: 10px; background: var(--c-surface-sunken); border-bottom: 1px solid var(--c-border); }
+  .bp-frame .bp-body { display: flex; }
+  .bp-frame .bp-nav { background: var(--c-primary-weak); flex: none; }
+  .bp-frame .bp-main { background: var(--c-bg); flex: 1 1 auto; min-width: 0; padding: 6px; }
+  .bp-frame .bp-main .bp-card { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: 3px; height: 14px; margin-bottom: 4px; }
+  .bp-frame .bp-nav-stack { display: flex; height: 10px; }
+  .bp-frame .bp-nav-pill { width: 10px; height: 6px; background: var(--c-primary); border-radius: 2px; margin: 2px; }
+</style>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="hd-shell">
+
+  <header class="hd-topbar">
+    <a class="hd-brand" href="index.html">
+      <span class="hd-brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="10" rx="1"/><rect x="14" y="17" width="7" height="4" rx="1"/></svg></span>
+      <span class="hd-brand-text"><span class="hd-brand-title">Engineering Handoff</span><span class="hd-brand-sub">EV Battery Failure Classification &middot; Group 5</span></span>
+    </a>
+    <a class="hd-app-link" href="../index.html">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5l7 7-7 7"/><path d="M3 12h18"/></svg>
+      View the app screens
+    </a>
+  </header>
+
+  <nav class="hd-nav" aria-label="Handoff section">
+    <ul>
+      <li><a href="index.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Overview</span></a></li>
+      <li><a href="design-tokens.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.6-.8 1.6-1.7 0-.5-.2-.9-.2-1.4a1.9 1.9 0 0 1 1.9-1.9h2.1A3.6 3.6 0 0 0 21 12.4 9 9 0 0 0 12 3Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.2" r="1"/><circle cx="15" cy="8" r="1"/></svg><span>Design Tokens</span></a></li>
+      <li><a href="components.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 3 21 8 12 13 3 8 12 3"/><polyline points="3 13 12 18 21 13"/><polyline points="3 17.5 12 22.5 21 17.5"/></svg><span>Components</span></a></li>
+      <li><a href="patterns.html" aria-current="page"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1"/><rect x="13" y="4" width="8" height="7" rx="1"/><rect x="13" y="14" width="8" height="6" rx="1"/></svg><span>Patterns</span></a></li>
+      <li><a href="states.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg><span>States</span></a></li>
+      <li><a href="ml-workflow.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8"/><rect x="11" y="7" width="3" height="13"/><rect x="16" y="3" width="3" height="17"/></svg><span>ML Pipeline</span></a></li>
+      <li><a href="traceability.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3h6v3H9z"/><polyline points="8.5 12.5 11 15 15.5 9.5"/></svg><span>Traceability</span></a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content" class="hd-main">
+
+    <div class="hd-page-header">
+      <span class="hd-eyebrow">Layout &amp; interaction</span>
+      <h1 class="hd-page-title">Patterns</h1>
+      <p class="hd-page-lede">How the screens are structured, how they adapt from a 375px phone to a 1440px
+        monitor, and the two layout patterns that make a 67-input form and a 25-row table usable.</p>
+    </div>
+
+    <!-- ============================== APP SHELL ============================== -->
+    <section class="hd-section" id="shell" aria-labelledby="shell-heading">
+      <h2 id="shell-heading" class="hd-section-heading">App shell</h2>
+      <p class="hd-section-sub">Four regions: a sticky topbar, a nav region that is a sidebar from 1024px up, a
+        content column capped at <code class="hd-inline-code">--content-max</code>, and a footer.</p>
+      <div class="hd-diagram">
+        <svg viewBox="0 0 760 360" role="img" aria-labelledby="shell-svg-title">
+          <title id="shell-svg-title">App shell diagram: topbar spans the full width; below it a 268px sidebar sits beside a content column capped at 1180px, centred with flexible outer margins; a footer spans the full width at the bottom.</title>
+          <rect x="4" y="4" width="752" height="352" rx="10" fill="var(--c-bg)" stroke="var(--c-border)"/>
+          <rect x="4" y="4" width="752" height="40" rx="10" fill="var(--c-surface)" stroke="var(--c-border)"/>
+          <text x="380" y="28" text-anchor="middle" class="axis-label" font-family="var(--font-sans)" font-size="12" fill="var(--c-text-secondary)">topbar &middot; sticky, grid-area: topbar</text>
+
+          <rect x="4" y="44" width="150" height="272" fill="var(--c-primary-weak)" stroke="var(--c-border)"/>
+          <text x="79" y="150" text-anchor="middle" font-family="var(--font-sans)" font-size="12" fill="var(--c-primary)" font-weight="600">nav</text>
+          <text x="79" y="168" text-anchor="middle" font-family="var(--font-mono)" font-size="11" fill="var(--c-primary)">--sidebar-w</text>
+          <text x="79" y="182" text-anchor="middle" font-family="var(--font-mono)" font-size="11" fill="var(--c-primary)">268px</text>
+          <text x="79" y="200" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--c-text-muted)">sticky, 1024px+</text>
+
+          <rect x="154" y="44" width="598" height="272" fill="var(--c-bg)"/>
+          <rect x="204" y="64" width="498" height="232" fill="var(--c-surface)" stroke="var(--c-border)" stroke-dasharray="4 3"/>
+          <text x="453" y="180" text-anchor="middle" font-family="var(--font-sans)" font-size="12" fill="var(--c-text-secondary)" font-weight="600">main (.hd-main / .page)</text>
+          <text x="453" y="198" text-anchor="middle" font-family="var(--font-mono)" font-size="11" fill="var(--c-text-secondary)">--content-max: 1180px, centred</text>
+          <line x1="204" y1="56" x2="702" y2="56" stroke="var(--c-primary)" stroke-dasharray="2 2"/>
+          <text x="453" y="50" text-anchor="middle" font-family="var(--font-mono)" font-size="10" fill="var(--c-primary)">max-width: var(--content-max)</text>
+
+          <rect x="4" y="316" width="752" height="40" rx="10" fill="var(--c-surface)" stroke="var(--c-border)"/>
+          <text x="380" y="340" text-anchor="middle" font-family="var(--font-sans)" font-size="12" fill="var(--c-text-secondary)">footer &middot; grid-area: footer</text>
+        </svg>
+        <p class="hd-diagram-caption">Grid: <code class="hd-inline-code">grid-template-columns: var(--sidebar-w) 1fr</code> at 1024px+; below that the nav sits above main and wraps as a pill bar (see Responsive, next).</p>
+      </div>
+    </section>
+
+    <!-- ============================== RESPONSIVE ============================== -->
+    <section class="hd-section" id="responsive" aria-labelledby="responsive-heading">
+      <h2 id="responsive-heading" class="hd-section-heading">Responsive behaviour</h2>
+      <p class="hd-section-sub">Verified with zero horizontal page scroll at all four required widths (see this
+        page's README verification note). Nothing below 1024px shows a sidebar; everything at 1024px+ does.</p>
+
+      <div class="hd-grid hd-grid-4">
+        <div>
+          <div class="bp-frame" style="width:70px; height:120px;">
+            <div class="bp-top"></div>
+            <div class="bp-nav-stack" style="background:var(--c-surface); border-bottom:1px solid var(--c-border);"><div class="bp-nav-pill"></div><div class="bp-nav-pill"></div><div class="bp-nav-pill"></div></div>
+            <div class="bp-main"><div class="bp-card"></div><div class="bp-card"></div></div>
+          </div>
+          <p class="hd-hint" style="text-align:center; margin-top:var(--space-2);"><b class="mono" style="color:var(--c-text);">375px</b><br>phone</p>
+        </div>
+        <div>
+          <div class="bp-frame" style="width:120px; height:120px;">
+            <div class="bp-top"></div>
+            <div class="bp-nav-stack" style="background:var(--c-surface); border-bottom:1px solid var(--c-border);"><div class="bp-nav-pill"></div><div class="bp-nav-pill"></div><div class="bp-nav-pill"></div><div class="bp-nav-pill"></div></div>
+            <div class="bp-main" style="display:flex; gap:4px;"><div class="bp-card" style="flex:1;"></div><div class="bp-card" style="flex:1;"></div></div>
+          </div>
+          <p class="hd-hint" style="text-align:center; margin-top:var(--space-2);"><b class="mono" style="color:var(--c-text);">768px</b><br>tablet</p>
+        </div>
+        <div>
+          <div class="bp-frame" style="width:150px; height:120px;">
+            <div class="bp-top"></div>
+            <div class="bp-body" style="height:108px;">
+              <div class="bp-nav" style="width:28px;"></div>
+              <div class="bp-main" style="display:flex; gap:4px; flex-wrap:wrap;"><div class="bp-card" style="flex:1 1 40%;"></div><div class="bp-card" style="flex:1 1 40%;"></div></div>
+            </div>
+          </div>
+          <p class="hd-hint" style="text-align:center; margin-top:var(--space-2);"><b class="mono" style="color:var(--c-text);">1024px</b><br>sidebar appears</p>
+        </div>
+        <div>
+          <div class="bp-frame" style="width:170px; height:120px;">
+            <div class="bp-top"></div>
+            <div class="bp-body" style="height:108px;">
+              <div class="bp-nav" style="width:30px;"></div>
+              <div class="bp-main" style="display:flex; gap:4px; flex-wrap:wrap; padding:6px 14px;"><div class="bp-card" style="flex:1 1 40%;"></div><div class="bp-card" style="flex:1 1 40%;"></div></div>
+            </div>
+          </div>
+          <p class="hd-hint" style="text-align:center; margin-top:var(--space-2);"><b class="mono" style="color:var(--c-text);">1440px</b><br>content capped, margins grow</p>
+        </div>
+      </div>
+
+      <div class="hd-table-wrap" style="margin-top:var(--space-6);">
+        <table class="hd-table">
+          <thead><tr><th>Width</th><th class="wrap">Nav</th><th class="wrap">Grids</th><th class="wrap">Tables</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">375px</td><td class="wrap">Top bar, nav links wrap into a flex-wrapped pill row below the topbar</td><td class="wrap">All <code class="hd-inline-code">.hd-grid-2/3/4</code> collapse to 1 column (&le;639px rule)</td><td class="wrap">Table keeps its intrinsic min-width; <code class="hd-inline-code">.hd-table-wrap</code> scrolls horizontally on its own, page does not</td></tr>
+            <tr><td class="mono">768px</td><td class="wrap">Same wrapped pill row, now fits more links per line</td><td class="wrap"><code class="hd-inline-code">.hd-grid-4</code> and <code class="hd-inline-code">.hd-grid-3</code> become 2 columns (&le;1023px rule)</td><td class="wrap">Same local scroll behaviour as 375px</td></tr>
+            <tr><td class="mono">1024px</td><td class="wrap">Becomes a sticky left sidebar, <code class="hd-inline-code">var(--sidebar-w)</code> = 268px, vertical link list</td><td class="wrap">Grids reach their full column count (2/3/4)</td><td class="wrap">Most tables now fit without scrolling; wrapper still present as a safety net</td></tr>
+            <tr><td class="mono">1440px</td><td class="wrap">Same sidebar as 1024px</td><td class="wrap">Content column stops growing past <code class="hd-inline-code">var(--content-max)</code> = 1180px; extra width becomes side margin, not stretched cards</td><td class="wrap">Same as 1024px</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============================== RUN CLASSIFICATION FLOW ============================== -->
+    <section class="hd-section" id="run-flow" aria-labelledby="run-flow-heading">
+      <h2 id="run-flow-heading" class="hd-section-heading">Run Classification flow <span class="hd-req-tag">UC-07</span></h2>
+      <p class="hd-section-sub">Two explicit steps, not one long form: picking the record is a different task from
+        confirming its parameters, and collapsing them into one step is what made the 67-field form feel
+        unmanageable in early drafts.</p>
+      <div class="hd-diagram">
+        <svg viewBox="0 0 780 180" role="img" aria-labelledby="run-flow-title">
+          <title id="run-flow-title">Flow diagram: Step 1 Select a battery record, with a search box, leads via an arrow to Step 2 Confirm parameters, showing 12 key fields plus 9 collapsed groups and a Classify button, which leads via an arrow to the Result panel, either Failure or No Failure.</title>
+          <rect x="10" y="20" width="220" height="140" rx="10" fill="var(--c-surface)" stroke="var(--c-border-strong)"/>
+          <text x="120" y="44" text-anchor="middle" font-family="var(--font-mono)" font-size="11" fill="var(--c-primary)" font-weight="700">STEP 1</text>
+          <text x="120" y="64" text-anchor="middle" font-family="var(--font-sans)" font-size="13" fill="var(--c-text)" font-weight="600">Select a battery record</text>
+          <rect x="30" y="80" width="180" height="18" rx="4" fill="var(--c-surface-sunken)" stroke="var(--c-border)"/>
+          <text x="40" y="93" font-family="var(--font-sans)" font-size="9" fill="var(--c-text-muted)">BAT-10000001 or EV100000</text>
+          <rect x="30" y="106" width="180" height="10" rx="2" fill="var(--c-bg)" stroke="var(--c-border)"/>
+          <rect x="30" y="120" width="180" height="10" rx="2" fill="var(--c-bg)" stroke="var(--c-border)"/>
+          <rect x="30" y="134" width="180" height="10" rx="2" fill="var(--c-bg)" stroke="var(--c-border)"/>
+          <text x="120" y="155" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--c-text-muted)">search + results list, "Select"</text>
+
+          <path d="M235 90 L275 90" stroke="var(--c-border-strong)" stroke-width="2" marker-end="url(#arrow)"/>
+
+          <rect x="280" y="10" width="240" height="160" rx="10" fill="var(--c-surface)" stroke="var(--c-border-strong)"/>
+          <text x="400" y="34" text-anchor="middle" font-family="var(--font-mono)" font-size="11" fill="var(--c-primary)" font-weight="700">STEP 2</text>
+          <text x="400" y="54" text-anchor="middle" font-family="var(--font-sans)" font-size="13" fill="var(--c-text)" font-weight="600">Confirm parameters</text>
+          <text x="400" y="72" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--c-text-secondary)">12 key fields, always visible</text>
+          <rect x="300" y="80" width="200" height="40" rx="4" fill="var(--c-primary-weak)" stroke="var(--c-border)"/>
+          <text x="400" y="104" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--c-primary)">12 key parameter fields</text>
+          <text x="400" y="134" text-anchor="middle" font-family="var(--font-sans)" font-size="10" fill="var(--c-text-secondary)">9 collapsed groups (55 fields)</text>
+          <rect x="300" y="142" width="200" height="14" rx="3" fill="var(--c-surface)" stroke="var(--c-border)"/>
+          <polyline points="490 146 494 150 490 154" fill="none" stroke="var(--c-text-muted)" stroke-width="1.5"/>
+
+          <path d="M525 90 L565 90" stroke="var(--c-border-strong)" stroke-width="2" marker-end="url(#arrow)"/>
+
+          <rect x="570" y="20" width="200" height="60" rx="8" fill="var(--c-failure-bg)" stroke="var(--c-failure-border)"/>
+          <text x="670" y="46" text-anchor="middle" font-family="var(--font-sans)" font-size="12" fill="var(--c-failure)" font-weight="700">FAILURE</text>
+          <text x="670" y="64" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--c-text-secondary)">&rarr; record assessment (UC-08)</text>
+
+          <rect x="570" y="100" width="200" height="60" rx="8" fill="var(--c-ok-bg)" stroke="var(--c-ok-border)"/>
+          <text x="670" y="126" text-anchor="middle" font-family="var(--font-sans)" font-size="12" fill="var(--c-ok)" font-weight="700">NO FAILURE</text>
+          <text x="670" y="144" text-anchor="middle" font-family="var(--font-sans)" font-size="9" fill="var(--c-text-secondary)">&rarr; optionally still assess</text>
+
+          <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="var(--c-border-strong)"/></marker></defs>
+        </svg>
+        <p class="hd-diagram-caption">FR-13 (submit parameters) then FR-14 (display Failure / No Failure) &mdash; the
+          Classify action is the single transition from Step 2 to the result; both outcomes route to the same
+          "record a maintenance assessment" affordance (UC-08) because the spec requires an assessment regardless
+          of result, not just on Failure.</p>
+      </div>
+    </section>
+
+    <!-- ============================== 12-KEY + 9-GROUP ============================== -->
+    <section class="hd-section" id="parameter-groups" aria-labelledby="pg-heading">
+      <h2 id="pg-heading" class="hd-section-heading">The 12-key + 9-group pattern</h2>
+      <p class="hd-section-sub">The deployed model takes <strong>67 features</strong>. Asking a specialist to type
+        67 values for every classification is the wrong design &mdash; most of them barely move the prediction and
+        are better defaulted from the training set's median (numeric) or mode (categorical), then surfaced only if
+        there is a reason to correct one.</p>
+      <div class="hd-grid hd-grid-2">
+        <div class="hd-card">
+          <div class="hd-card-title">Why not all 67 in one form?</div>
+          <ul style="padding-left:var(--space-5); margin:0; display:flex; flex-direction:column; gap:var(--space-2); color:var(--c-text-secondary);">
+            <li>67 visible inputs is a wall of text a specialist cannot visually scan for the handful of values
+              that actually matter for a given battery.</li>
+            <li>Most of the 67 rarely change between classifications of the same fleet (ambient temperature,
+              vehicle age, driving habits); re-typing them is wasted motion.</li>
+            <li>The 12 key fields are exactly the features most worth double-checking &mdash; the ones with the
+              widest real-world range and the most direct relationship to failure risk (thermal, voltage, fault
+              history).</li>
+          </ul>
+        </div>
+        <div class="hd-card">
+          <div class="hd-card-title">12 key features (always visible)</div>
+          <table class="hd-table" style="min-width:0;">
+            <thead><tr><th>Field</th><th class="wrap">Group</th></tr></thead>
+            <tbody>
+              <tr><td class="wrap">State of Health (%)</td><td>battery_state</td></tr>
+              <tr><td class="wrap">Capacity Loss (%)</td><td>battery_state</td></tr>
+              <tr><td class="wrap">Thermal Runaway Risk Score</td><td>risk</td></tr>
+              <tr><td class="wrap">BMS Warning Count</td><td>risk</td></tr>
+              <tr><td class="wrap">Abnormal Voltage Events</td><td>risk</td></tr>
+              <tr><td class="wrap">Battery Stress Index</td><td>risk</td></tr>
+              <tr><td class="wrap">Thermal Health Score</td><td>risk</td></tr>
+              <tr><td class="wrap">Previous Fault Count</td><td>maintenance</td></tr>
+              <tr><td class="wrap">Vehicle Brand / Model</td><td>identity</td></tr>
+              <tr><td class="wrap">Drive Type</td><td>identity</td></tr>
+              <tr><td class="wrap">Fleet or Private</td><td>identity</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="hd-table-wrap" style="margin-top:var(--space-6);">
+        <table class="hd-table">
+          <thead><tr><th>Group (collapsed expander)</th><th class="num">Fields</th></tr></thead>
+          <tbody>
+            <tr><td>Identity</td><td class="num">4</td></tr>
+            <tr><td>Battery Specification</td><td class="num">3</td></tr>
+            <tr><td>Battery State</td><td class="num">6</td></tr>
+            <tr><td>Electrical</td><td class="num">8</td></tr>
+            <tr><td>Charging</td><td class="num">12</td></tr>
+            <tr><td>Driving</td><td class="num">9</td></tr>
+            <tr><td>Environment</td><td class="num">7</td></tr>
+            <tr><td>Maintenance</td><td class="num">4</td></tr>
+            <tr><td>Risk Indicators</td><td class="num">2</td></tr>
+            <tr style="font-weight:600;"><td>Subtotal, grouped</td><td class="num">55</td></tr>
+            <tr style="font-weight:600;"><td>12 key fields (always visible, not grouped)</td><td class="num">12</td></tr>
+            <tr style="font-weight:700; background:var(--c-surface-sunken);"><td>Total model features</td><td class="num">67</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="hd-hint" style="margin-top:var(--space-3);">Real per-group counts from <code class="hd-inline-code">prod_content.md</code> ("Feature counts per group"), confirmed against the production <code class="hd-inline-code">prod-desktop-run-classification.png</code> screenshot &mdash; both list the same nine groups with the same counts.</p>
+    </section>
+
+    <!-- ============================== TABLE OVERFLOW ============================== -->
+    <section class="hd-section" id="table-overflow" aria-labelledby="overflow-heading">
+      <h2 id="overflow-heading" class="hd-section-heading">Table overflow behaviour</h2>
+      <p class="hd-section-sub">Every table sits inside a <code class="hd-inline-code">.hd-table-wrap</code> with
+        <code class="hd-inline-code">overflow-x: auto</code> and a <code class="hd-inline-code">min-width</code> on
+        the <code class="hd-inline-code">&lt;table&gt;</code> itself. Narrow the browser below the table's natural
+        width and the wrapper scrolls horizontally &mdash; the page around it never does.</p>
+      <div class="hd-sandbox" style="max-width:380px;">
+        <div class="hd-table-wrap">
+          <table class="hd-table" style="min-width:680px;">
+            <thead><tr><th>Battery serial</th><th>Vehicle ID</th><th class="num">Updated (UTC)</th><th>Result</th><th class="num">P(Failure)</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">BAT-10008123</td><td class="mono">EV108123</td><td class="num">2026-11-01 05:33</td><td>No Failure</td><td class="num">0.0003</td></tr>
+              <tr><td class="mono">BAT-10000942</td><td class="mono">EV100942</td><td class="num">2026-11-01 05:12</td><td>Failure</td><td class="num">0.8030</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="hd-hint" style="margin-top:var(--space-3);">This frame is pinned to 380px to force the effect on
+        any viewport. The <code class="hd-inline-code">min-width:680px</code> on the table is intentional, not a
+        bug &mdash; it is the width below which columns would start truncating illegibly; the scrollbar is the
+        correct outcome, not something to "fix" by shrinking the table further.</p>
+    </section>
+
+    <!-- ============================== MIN-WIDTH 0 ============================== -->
+    <section class="hd-section" id="min-width-0" aria-labelledby="mw0-heading">
+      <h2 id="mw0-heading" class="hd-section-heading">The min-width: 0 rule</h2>
+      <p class="hd-section-sub">A flex or grid item defaults to <code class="hd-inline-code">min-width: auto</code>,
+        which means it refuses to shrink below its content's intrinsic width. Put a wide table or a long SVG
+        inside a flex/grid row without overriding that, and the ITEM forces the ROW wider than the viewport &mdash;
+        before the table's own <code class="hd-inline-code">overflow-x: auto</code> ever gets a chance to act,
+        because the row grew to accommodate it instead of clipping it. This has broken this exact layout twice on
+        this project.</p>
+
+      <div class="hd-grid hd-grid-2">
+        <div>
+          <div class="hd-card-title" style="color:var(--c-failure);">Without min-width: 0 (broken)</div>
+          <div class="hd-sandbox">
+            <div style="display:flex; gap:var(--space-4);">
+              <div style="flex:1; background:var(--c-surface); border:1px solid var(--c-border); border-radius:var(--radius-md); padding:var(--space-3);">
+                <div class="hd-table-wrap"><table class="hd-table" style="min-width:520px;"><thead><tr><th>Serial</th><th>Vehicle</th><th>Updated</th><th>Result</th></tr></thead><tbody><tr><td class="mono">BAT-10008123</td><td class="mono">EV108123</td><td class="num">2026-11-01</td><td>No Failure</td></tr></tbody></table></div>
+              </div>
+              <div style="flex:1; background:var(--c-surface); border:1px solid var(--c-border); border-radius:var(--radius-md); padding:var(--space-3); display:flex; align-items:center; justify-content:center; font-size:var(--fs-xs); color:var(--c-text-muted);">sibling card</div>
+            </div>
+          </div>
+          <p class="hd-hint" style="margin-top:var(--space-2);">The sandbox itself now has to scroll &mdash; the
+            flex row grew to 520px+ for the table instead of letting the table's own wrapper handle it. On the real
+            page (no sandbox to catch it) this is the page scrolling horizontally.</p>
+        </div>
+        <div>
+          <div class="hd-card-title" style="color:var(--c-ok);">With min-width: 0 (fixed)</div>
+          <div class="hd-sandbox">
+            <div style="display:flex; gap:var(--space-4);">
+              <div style="flex:1; min-width:0; background:var(--c-surface); border:1px solid var(--c-border); border-radius:var(--radius-md); padding:var(--space-3);">
+                <div class="hd-table-wrap"><table class="hd-table" style="min-width:520px;"><thead><tr><th>Serial</th><th>Vehicle</th><th>Updated</th><th>Result</th></tr></thead><tbody><tr><td class="mono">BAT-10008123</td><td class="mono">EV108123</td><td class="num">2026-11-01</td><td>No Failure</td></tr></tbody></table></div>
+              </div>
+              <div style="flex:1; min-width:0; background:var(--c-surface); border:1px solid var(--c-border); border-radius:var(--radius-md); padding:var(--space-3); display:flex; align-items:center; justify-content:center; font-size:var(--fs-xs); color:var(--c-text-muted);">sibling card</div>
+            </div>
+          </div>
+          <p class="hd-hint" style="margin-top:var(--space-2);">Same markup, one declaration added
+            (<code class="hd-inline-code">min-width: 0</code> on the flex child). The row now respects the
+            sandbox's width; the table's own <code class="hd-inline-code">.hd-table-wrap</code> absorbs the
+            overflow locally, exactly as in Table overflow behaviour above.</p>
+        </div>
+      </div>
+
+      <pre class="hd-code" style="margin-top:var(--space-6);">/* Applied once, at the shell level, in handoff.css */
+.hd-shell > * { min-width: 0; }
+.hd-grid > *, .hd-kpi-row > *, .hd-swatch-grid > * { min-width: 0; }
+
+/* Any further flex/grid row you add that can contain a table, a wide SVG
+   diagram, or a code block needs the same rule on its direct children. */</pre>
+    </section>
+
+    <!-- ============================== FORM VALIDATION ============================== -->
+    <section class="hd-section" id="validation" aria-labelledby="validation-heading">
+      <h2 id="validation-heading" class="hd-section-heading">Form validation presentation</h2>
+      <p class="hd-section-sub">FR-07: "validate battery input parameters against the required feature definitions
+        before performing classification." Three rules this mockup follows for every field, with the full
+        catalogue of real messages on <a href="states.html#validation">States &rarr; Validation error</a>:</p>
+      <div class="hd-grid hd-grid-3">
+        <div class="hd-card">
+          <div class="hd-card-title">1. Inline, not only a banner</div>
+          <p style="margin:0; color:var(--c-text-secondary);">The error sits directly under its field
+            (<code class="hd-inline-code">.hd-field-error</code>), so a specialist scanning the form finds the
+            problem without cross-referencing a banner at the top.</p>
+        </div>
+        <div class="hd-card">
+          <div class="hd-card-title">2. A summary banner still appears</div>
+          <p style="margin:0; color:var(--c-text-secondary);">A count-based banner ("2 fields need attention") sits
+            above the form so the specialist knows there IS a problem before scrolling to find it.</p>
+        </div>
+        <div class="hd-card">
+          <div class="hd-card-title">3. Never colour alone</div>
+          <p style="margin:0; color:var(--c-text-secondary);">Every error state pairs the red border with an
+            alert-triangle icon and literal message text, and sets <code class="hd-inline-code">aria-invalid</code>
+            + <code class="hd-inline-code">aria-describedby</code> so assistive tech announces it too.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="hd-footer">
+    <p>Engineering handoff &middot; EV Battery Failure Classification &middot; Intelligent Systems, Group 5 &middot; VNU-HCM University of Technology</p>
+  </footer>
+
+</div>
