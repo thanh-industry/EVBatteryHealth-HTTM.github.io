@@ -1,0 +1,514 @@
+{
+  "selected": {
+    "algorithm": "logistic_regression",
+    "class_weight": null,
+    "params": {
+      "C": 1.0,
+      "class_weight": null,
+      "dual": false,
+      "fit_intercept": true,
+      "intercept_scaling": 1,
+      "l1_ratio": 0.0,
+      "max_iter": 1000,
+      "n_jobs": null,
+      "penalty": "deprecated",
+      "random_state": 42,
+      "solver": "lbfgs",
+      "tol": 0.0001,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "trained_at": "2026-11-01T05:10:03.626884+00:00",
+    "sklearn_version": "1.8.0",
+    "train_rows": 16000,
+    "test_rows": 4000,
+    "test_size": 0.2,
+    "random_state": 42,
+    "class_labels": {
+      "0": "No Failure",
+      "1": "Failure"
+    },
+    "decision_threshold": 0.5,
+    "supports_probability": true,
+    "metrics": {
+      "accuracy": 0.9695,
+      "no_failure": {
+        "precision": 0.977459559798462,
+        "recall": 0.9900617781359119,
+        "f1": 0.9837203095809981,
+        "support": 3723
+      },
+      "failure": {
+        "precision": 0.8384279475982532,
+        "recall": 0.6931407942238267,
+        "f1": 0.758893280632411,
+        "support": 277
+      },
+      "macro_f1": 0.8713067951067046,
+      "pr_auc": 0.7880383358633755,
+      "confusion_matrix": [
+        [
+          3686,
+          37
+        ],
+        [
+          85,
+          192
+        ]
+      ]
+    },
+    "all_model_results": [
+      {
+        "accuracy": 0.9695,
+        "no_failure": {
+          "precision": 0.977459559798462,
+          "recall": 0.9900617781359119,
+          "f1": 0.9837203095809981,
+          "support": 3723
+        },
+        "failure": {
+          "precision": 0.8384279475982532,
+          "recall": 0.6931407942238267,
+          "f1": 0.758893280632411,
+          "support": 277
+        },
+        "macro_f1": 0.8713067951067046,
+        "pr_auc": 0.7880383358633755,
+        "confusion_matrix": [
+          [
+            3686,
+            37
+          ],
+          [
+            85,
+            192
+          ]
+        ],
+        "algorithm": "logistic_regression",
+        "class_weight": null,
+        "display_name": "Logistic Regression",
+        "cv_f1_failure_mean": 0.7602531844942583,
+        "cv_f1_failure_std": 0.013498010826960663,
+        "fit_seconds": 0.16239670012146235,
+        "train_rows": 16000,
+        "svm_row_cap_applied": false
+      },
+      {
+        "accuracy": 0.93975,
+        "no_failure": {
+          "precision": 0.9948834565093804,
+          "recall": 0.9401020682245501,
+          "f1": 0.9667173042397459,
+          "support": 3723
+        },
+        "failure": {
+          "precision": 0.5373443983402489,
+          "recall": 0.9350180505415162,
+          "f1": 0.6824769433465085,
+          "support": 277
+        },
+        "macro_f1": 0.8245971237931272,
+        "pr_auc": 0.7898317211750445,
+        "confusion_matrix": [
+          [
+            3500,
+            223
+          ],
+          [
+            18,
+            259
+          ]
+        ],
+        "algorithm": "logistic_regression",
+        "class_weight": "balanced",
+        "display_name": "Logistic Regression (balanced)",
+        "cv_f1_failure_mean": 0.7147769149189187,
+        "cv_f1_failure_std": 0.009247527279124534,
+        "fit_seconds": 0.18390990002080798,
+        "train_rows": 16000,
+        "svm_row_cap_applied": false
+      },
+      {
+        "accuracy": 0.96175,
+        "no_failure": {
+          "precision": 0.9694897422409259,
+          "recall": 0.9900617781359119,
+          "f1": 0.9796677740863787,
+          "support": 3723
+        },
+        "failure": {
+          "precision": 0.8131313131313131,
+          "recall": 0.5812274368231047,
+          "f1": 0.6778947368421052,
+          "support": 277
+        },
+        "macro_f1": 0.828781255464242,
+        "pr_auc": 0.7609886351247748,
+        "confusion_matrix": [
+          [
+            3686,
+            37
+          ],
+          [
+            116,
+            161
+          ]
+        ],
+        "algorithm": "svm",
+        "class_weight": null,
+        "display_name": "SVM",
+        "cv_f1_failure_mean": 0.6770610428957052,
+        "cv_f1_failure_std": 0.04203801184555665,
+        "fit_seconds": 0.38125209999270737,
+        "train_rows": 6000,
+        "svm_row_cap_applied": true
+      },
+      {
+        "accuracy": 0.9615,
+        "no_failure": {
+          "precision": 0.985578231292517,
+          "recall": 0.9728713403169487,
+          "f1": 0.979183563125169,
+          "support": 3723
+        },
+        "failure": {
+          "precision": 0.6892307692307692,
+          "recall": 0.8086642599277978,
+          "f1": 0.7441860465116279,
+          "support": 277
+        },
+        "macro_f1": 0.8616848048183985,
+        "pr_auc": 0.767322453148706,
+        "confusion_matrix": [
+          [
+            3622,
+            101
+          ],
+          [
+            53,
+            224
+          ]
+        ],
+        "algorithm": "svm",
+        "class_weight": "balanced",
+        "display_name": "SVM (balanced)",
+        "cv_f1_failure_mean": 0.7944738232159629,
+        "cv_f1_failure_std": 0.02193807932020195,
+        "fit_seconds": 0.4818820001091808,
+        "train_rows": 6000,
+        "svm_row_cap_applied": true
+      },
+      {
+        "accuracy": 0.94875,
+        "no_failure": {
+          "precision": 0.9549922400413865,
+          "recall": 0.9916733816814397,
+          "f1": 0.9729872183423376,
+          "support": 3723
+        },
+        "failure": {
+          "precision": 0.7686567164179104,
+          "recall": 0.37184115523465705,
+          "f1": 0.5012165450121655,
+          "support": 277
+        },
+        "macro_f1": 0.7371018816772515,
+        "pr_auc": 0.6541413577583949,
+        "confusion_matrix": [
+          [
+            3692,
+            31
+          ],
+          [
+            174,
+            103
+          ]
+        ],
+        "algorithm": "random_forest",
+        "class_weight": null,
+        "display_name": "Random Forest",
+        "cv_f1_failure_mean": 0.4672255701592275,
+        "cv_f1_failure_std": 0.015734021782038594,
+        "fit_seconds": 0.5607813999522477,
+        "train_rows": 16000,
+        "svm_row_cap_applied": false
+      },
+      {
+        "accuracy": 0.9415,
+        "no_failure": {
+          "precision": 0.9455938697318008,
+          "recall": 0.9943593875906527,
+          "f1": 0.969363707776905,
+          "support": 3723
+        },
+        "failure": {
+          "precision": 0.7529411764705882,
+          "recall": 0.23104693140794225,
+          "f1": 0.35359116022099446,
+          "support": 277
+        },
+        "macro_f1": 0.6614774339989498,
+        "pr_auc": 0.6056559792636667,
+        "confusion_matrix": [
+          [
+            3702,
+            21
+          ],
+          [
+            213,
+            64
+          ]
+        ],
+        "algorithm": "random_forest",
+        "class_weight": "balanced",
+        "display_name": "Random Forest (balanced)",
+        "cv_f1_failure_mean": 0.3489733188281282,
+        "cv_f1_failure_std": 0.02527840988089592,
+        "fit_seconds": 0.531100100139156,
+        "train_rows": 16000,
+        "svm_row_cap_applied": false
+      }
+    ],
+    "selection_rationale": "Logistic Regression achieves the highest F1-score on the Failure class (0.7589, precision=0.8384, recall=0.6931) among all six trained configurations. It is selected over: Logistic Regression (balanced) (F1=0.6825, -0.0764); SVM (F1=0.6779, -0.0810); SVM (balanced) (F1=0.7442, -0.0147); Random Forest (F1=0.5012, -0.2577); Random Forest (balanced) (F1=0.3536, -0.4053). Accuracy was not used for selection because the classes are imbalanced (93.08% No Failure / 6.92% Failure): a trivial all-No-Failure classifier already scores 0.9307 accuracy with 0 Failure recall.",
+    "key_feature_method": "abs(coefficient) of the fitted Logistic Regression model on the standardized/encoded features; a categorical feature's one-hot levels are aggregated by taking the MAX absolute coefficient across its levels (not the sum, which would mechanically favor high-cardinality columns such as vehicle_model), then the top 12 original features by that value are marked key."
+  },
+  "all_model_results": [
+    {
+      "accuracy": 0.9695,
+      "no_failure": {
+        "precision": 0.977459559798462,
+        "recall": 0.9900617781359119,
+        "f1": 0.9837203095809981,
+        "support": 3723
+      },
+      "failure": {
+        "precision": 0.8384279475982532,
+        "recall": 0.6931407942238267,
+        "f1": 0.758893280632411,
+        "support": 277
+      },
+      "macro_f1": 0.8713067951067046,
+      "pr_auc": 0.7880383358633755,
+      "confusion_matrix": [
+        [
+          3686,
+          37
+        ],
+        [
+          85,
+          192
+        ]
+      ],
+      "algorithm": "logistic_regression",
+      "class_weight": null,
+      "display_name": "Logistic Regression",
+      "cv_f1_failure_mean": 0.7602531844942583,
+      "cv_f1_failure_std": 0.013498010826960663,
+      "fit_seconds": 0.16239670012146235,
+      "train_rows": 16000,
+      "svm_row_cap_applied": false
+    },
+    {
+      "accuracy": 0.93975,
+      "no_failure": {
+        "precision": 0.9948834565093804,
+        "recall": 0.9401020682245501,
+        "f1": 0.9667173042397459,
+        "support": 3723
+      },
+      "failure": {
+        "precision": 0.5373443983402489,
+        "recall": 0.9350180505415162,
+        "f1": 0.6824769433465085,
+        "support": 277
+      },
+      "macro_f1": 0.8245971237931272,
+      "pr_auc": 0.7898317211750445,
+      "confusion_matrix": [
+        [
+          3500,
+          223
+        ],
+        [
+          18,
+          259
+        ]
+      ],
+      "algorithm": "logistic_regression",
+      "class_weight": "balanced",
+      "display_name": "Logistic Regression (balanced)",
+      "cv_f1_failure_mean": 0.7147769149189187,
+      "cv_f1_failure_std": 0.009247527279124534,
+      "fit_seconds": 0.18390990002080798,
+      "train_rows": 16000,
+      "svm_row_cap_applied": false
+    },
+    {
+      "accuracy": 0.96175,
+      "no_failure": {
+        "precision": 0.9694897422409259,
+        "recall": 0.9900617781359119,
+        "f1": 0.9796677740863787,
+        "support": 3723
+      },
+      "failure": {
+        "precision": 0.8131313131313131,
+        "recall": 0.5812274368231047,
+        "f1": 0.6778947368421052,
+        "support": 277
+      },
+      "macro_f1": 0.828781255464242,
+      "pr_auc": 0.7609886351247748,
+      "confusion_matrix": [
+        [
+          3686,
+          37
+        ],
+        [
+          116,
+          161
+        ]
+      ],
+      "algorithm": "svm",
+      "class_weight": null,
+      "display_name": "SVM",
+      "cv_f1_failure_mean": 0.6770610428957052,
+      "cv_f1_failure_std": 0.04203801184555665,
+      "fit_seconds": 0.38125209999270737,
+      "train_rows": 6000,
+      "svm_row_cap_applied": true
+    },
+    {
+      "accuracy": 0.9615,
+      "no_failure": {
+        "precision": 0.985578231292517,
+        "recall": 0.9728713403169487,
+        "f1": 0.979183563125169,
+        "support": 3723
+      },
+      "failure": {
+        "precision": 0.6892307692307692,
+        "recall": 0.8086642599277978,
+        "f1": 0.7441860465116279,
+        "support": 277
+      },
+      "macro_f1": 0.8616848048183985,
+      "pr_auc": 0.767322453148706,
+      "confusion_matrix": [
+        [
+          3622,
+          101
+        ],
+        [
+          53,
+          224
+        ]
+      ],
+      "algorithm": "svm",
+      "class_weight": "balanced",
+      "display_name": "SVM (balanced)",
+      "cv_f1_failure_mean": 0.7944738232159629,
+      "cv_f1_failure_std": 0.02193807932020195,
+      "fit_seconds": 0.4818820001091808,
+      "train_rows": 6000,
+      "svm_row_cap_applied": true
+    },
+    {
+      "accuracy": 0.94875,
+      "no_failure": {
+        "precision": 0.9549922400413865,
+        "recall": 0.9916733816814397,
+        "f1": 0.9729872183423376,
+        "support": 3723
+      },
+      "failure": {
+        "precision": 0.7686567164179104,
+        "recall": 0.37184115523465705,
+        "f1": 0.5012165450121655,
+        "support": 277
+      },
+      "macro_f1": 0.7371018816772515,
+      "pr_auc": 0.6541413577583949,
+      "confusion_matrix": [
+        [
+          3692,
+          31
+        ],
+        [
+          174,
+          103
+        ]
+      ],
+      "algorithm": "random_forest",
+      "class_weight": null,
+      "display_name": "Random Forest",
+      "cv_f1_failure_mean": 0.4672255701592275,
+      "cv_f1_failure_std": 0.015734021782038594,
+      "fit_seconds": 0.5607813999522477,
+      "train_rows": 16000,
+      "svm_row_cap_applied": false
+    },
+    {
+      "accuracy": 0.9415,
+      "no_failure": {
+        "precision": 0.9455938697318008,
+        "recall": 0.9943593875906527,
+        "f1": 0.969363707776905,
+        "support": 3723
+      },
+      "failure": {
+        "precision": 0.7529411764705882,
+        "recall": 0.23104693140794225,
+        "f1": 0.35359116022099446,
+        "support": 277
+      },
+      "macro_f1": 0.6614774339989498,
+      "pr_auc": 0.6056559792636667,
+      "confusion_matrix": [
+        [
+          3702,
+          21
+        ],
+        [
+          213,
+          64
+        ]
+      ],
+      "algorithm": "random_forest",
+      "class_weight": "balanced",
+      "display_name": "Random Forest (balanced)",
+      "cv_f1_failure_mean": 0.3489733188281282,
+      "cv_f1_failure_std": 0.02527840988089592,
+      "fit_seconds": 0.531100100139156,
+      "train_rows": 16000,
+      "svm_row_cap_applied": false
+    }
+  ],
+  "trivial_baseline": {
+    "accuracy": 0.93075,
+    "no_failure": {
+      "precision": 0.93075,
+      "recall": 1.0,
+      "f1": 0.964133108895507,
+      "support": 3723
+    },
+    "failure": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 277
+    },
+    "macro_f1": 0.4820665544477535,
+    "pr_auc": null,
+    "confusion_matrix": [
+      [
+        3723,
+        0
+      ],
+      [
+        277,
+        0
+      ]
+    ]
+  }
+}

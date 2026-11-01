@@ -1,0 +1,327 @@
+<title>Classification History - EV Battery Failure Classification</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="UC-09: filterable, newest-first history of classifications and their assessments.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/app.css">
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="app-shell">
+
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><line x1="22" y1="10" x2="22" y2="14"/><path d="M11 9 9 13h3l-2 4"/></svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-title">EV Battery Failure Classification</span>
+        <span class="brand-sub">UI/UX mockup - Group 5</span>
+      </span>
+    </a>
+    <span class="persona-tag">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 18l3 3 6.6-6.3a4 4 0 0 0 5.1-5.4l-2.8 2.8-2-2 2.8-2.8Z"/></svg>
+      <span>EV Maintenance Specialist view</span>
+    </span>
+  </header>
+
+  <nav class="primary-nav" aria-label="Main">
+    <ul>
+      <li><a href="index.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+        <span>Overview</span></a></li>
+      <li><a href="battery-records.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="18" height="10" rx="2"/><line x1="22" y1="10" x2="22" y2="14"/><path d="M11 9 9 13h3l-2 4"/></svg>
+        <span>Battery Records</span></a></li>
+      <li><a href="run-classification.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
+        <span>Run Classification</span></a></li>
+      <li><a href="maintenance-assessment.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="2"/><rect x="9" y="2" width="6" height="4" rx="1"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+        <span>Maintenance Assessment</span></a></li>
+      <li><a href="classification-history.html" aria-current="page">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
+        <span>Classification History</span></a></li>
+      <li><a href="ml-workflow.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8"/><rect x="11" y="7" width="3" height="13"/><rect x="16" y="3" width="3" height="17"/></svg>
+        <span>ML Workflow</span></a></li>
+      <li><a href="states.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <span>UX States</span></a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content" class="page">
+
+    <div class="page-header">
+      <div>
+        <span class="eyebrow">UC-09 &middot; FR-09, FR-16</span>
+        <h1 class="page-title">Classification history</h1>
+        <p class="page-lede">Every classification this fleet has run, with its linked maintenance assessment.
+          Newest first.</p>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <div class="field">
+        <label for="history-filter-status">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline;vertical-align:-2px;margin-right:4px;"><polygon points="3 4 21 4 14 12.5 14 19 10 21 10 12.5 3 4"/></svg>
+          Result
+        </label>
+        <select class="select" id="history-filter-status">
+          <option value="all" selected>All results</option>
+          <option value="failure">Failure</option>
+          <option value="no-failure">No Failure</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="history-filter-search">Battery serial or vehicle ID</label>
+        <input class="input" type="search" id="history-filter-search" placeholder="e.g. BAT-10000042" autocomplete="off">
+      </div>
+    </div>
+
+    <div class="tabs">
+      <input type="radio" name="history-view" id="tab-1" checked>
+      <input type="radio" name="history-view" id="tab-2">
+      <div class="tab-list" role="tablist">
+        <label for="tab-1">Table</label>
+        <label for="tab-2">Timeline</label>
+      </div>
+      <div class="tab-panels">
+
+        <div id="panel-1" class="tab-panel">
+          <div class="table-wrapper">
+            <table>
+              <caption class="visually-hidden">Classification history, table view</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Classified at</th>
+                  <th scope="col">Battery / vehicle</th>
+                  <th scope="col">Vehicle</th>
+                  <th scope="col">Result</th>
+                  <th scope="col">Probability</th>
+                  <th scope="col">Model</th>
+                  <th scope="col">Assessment</th>
+                  <th scope="col"><span class="visually-hidden">Actions</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-history-row data-status="failure" data-search="bat-10000103 ev100103 byd atto 3">
+                  <td class="num">2026-10-30 09:51</td>
+                  <td class="mono">BAT-10000103 / EV100103</td>
+                  <td>BYD Atto 3</td>
+                  <td><span class="badge" style="background:var(--color-failure-bg); color:var(--color-failure); border:1px solid var(--color-failure);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7.5 2 16.5 2 22 7.5 22 16.5 16.5 22 7.5 22 2 16.5 2 7.5 7.5 2"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>Failure</span></td>
+                  <td class="num">77.0%</td>
+                  <td>Logistic Regression</td>
+                  <td><span class="badge badge-info">Recorded</span></td>
+                  <td><a class="btn btn-sm btn-secondary" href="maintenance-assessment.html">View</a></td>
+                </tr>
+                <tr data-history-row data-status="failure" data-search="bat-10000042 ev100042 hyundai kona electric">
+                  <td class="num">2026-10-30 08:14</td>
+                  <td class="mono">BAT-10000042 / EV100042</td>
+                  <td>Hyundai Kona Electric</td>
+                  <td><span class="badge" style="background:var(--color-failure-bg); color:var(--color-failure); border:1px solid var(--color-failure);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7.5 2 16.5 2 22 7.5 22 16.5 16.5 22 7.5 22 2 16.5 2 7.5 7.5 2"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>Failure</span></td>
+                  <td class="num">81.2%</td>
+                  <td>Logistic Regression</td>
+                  <td><span class="badge badge-info">Recorded</span></td>
+                  <td><a class="btn btn-sm btn-secondary" href="maintenance-assessment.html">View</a></td>
+                </tr>
+                <tr data-history-row data-status="no-failure" data-search="bat-10000091 ev100091 nissan leaf">
+                  <td class="num">2026-10-29 16:40</td>
+                  <td class="mono">BAT-10000091 / EV100091</td>
+                  <td>Nissan Leaf</td>
+                  <td><span class="badge" style="background:var(--color-no-failure-bg); color:var(--color-no-failure); border:1px solid var(--color-no-failure);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg>No Failure</span></td>
+                  <td class="num">12.0%</td>
+                  <td>Logistic Regression</td>
+                  <td><span class="badge badge-neutral">Pending</span></td>
+                  <td><a class="btn btn-sm btn-secondary" href="maintenance-assessment.html">View</a></td>
+                </tr>
+                <tr data-history-row data-status="failure" data-search="bat-10000056 ev100056 kia ev6">
+                  <td class="num">2026-10-27 07:22</td>
+                  <td class="mono">BAT-10000056 / EV100056</td>
+                  <td>Kia EV6</td>
+                  <td><span class="badge" style="background:var(--color-failure-bg); color:var(--color-failure); border:1px solid var(--color-failure);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7.5 2 16.5 2 22 7.5 22 16.5 16.5 22 7.5 22 2 16.5 2 7.5 7.5 2"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>Failure</span></td>
+                  <td class="num">69.0%</td>
+                  <td>Logistic Regression</td>
+                  <td><span class="badge badge-neutral">Pending</span></td>
+                  <td><a class="btn btn-sm btn-secondary" href="maintenance-assessment.html">View</a></td>
+                </tr>
+                <tr data-history-row data-status="no-failure" data-search="bat-10000017 ev100017 tesla model 3">
+                  <td class="num">2026-10-25 14:02</td>
+                  <td class="mono">BAT-10000017 / EV100017</td>
+                  <td>Tesla Model 3</td>
+                  <td><span class="badge" style="background:var(--color-no-failure-bg); color:var(--color-no-failure); border:1px solid var(--color-no-failure);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg>No Failure</span></td>
+                  <td class="num">8.0%</td>
+                  <td>Logistic Regression</td>
+                  <td><span class="badge badge-info">Recorded</span></td>
+                  <td><a class="btn btn-sm btn-secondary" href="maintenance-assessment.html">View</a></td>
+                </tr>
+                <tr data-history-row data-status="no-failure" data-search="bat-10000064 ev100064 volkswagen id.4">
+                  <td class="num">2026-10-22 10:05</td>
+                  <td class="mono">BAT-10000064 / EV100064</td>
+                  <td>Volkswagen ID.4</td>
+                  <td><span class="badge" style="background:var(--color-no-failure-bg); color:var(--color-no-failure); border:1px solid var(--color-no-failure);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg>No Failure</span></td>
+                  <td class="num">15.0%</td>
+                  <td>Logistic Regression</td>
+                  <td><span class="badge badge-neutral">Pending</span></td>
+                  <td><a class="btn btn-sm btn-secondary" href="maintenance-assessment.html">View</a></td>
+                </tr>
+                <tr data-history-row data-status="no-failure" data-search="bat-10000005 ev100005 ford mustang mach-e">
+                  <td class="num">2026-10-20 10:47</td>
+                  <td class="mono">BAT-10000005 / EV100005</td>
+                  <td>Ford Mustang Mach-E</td>
+                  <td><span class="badge" style="background:var(--color-no-failure-bg); color:var(--color-no-failure); border:1px solid var(--color-no-failure);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg>No Failure</span></td>
+                  <td class="num">19.0%</td>
+                  <td>Logistic Regression</td>
+                  <td><span class="badge badge-info">Recorded</span></td>
+                  <td><a class="btn btn-sm btn-secondary" href="maintenance-assessment.html">View</a></td>
+                </tr>
+                <tr data-history-row data-status="failure" data-search="bat-10000037 ev100037 mg zs ev">
+                  <td class="num">2026-10-18 13:30</td>
+                  <td class="mono">BAT-10000037 / EV100037</td>
+                  <td>MG ZS EV</td>
+                  <td><span class="badge" style="background:var(--color-failure-bg); color:var(--color-failure); border:1px solid var(--color-failure);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7.5 2 16.5 2 22 7.5 22 16.5 16.5 22 7.5 22 2 16.5 2 7.5 7.5 2"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>Failure</span></td>
+                  <td class="num">58.0%</td>
+                  <td>Logistic Regression</td>
+                  <td><span class="badge badge-info">Recorded</span></td>
+                  <td><a class="btn btn-sm btn-secondary" href="maintenance-assessment.html">View</a></td>
+                </tr>
+                <tr data-history-row data-status="no-failure" data-search="bat-10000029 ev100029 volkswagen id.3">
+                  <td class="num">2026-10-12 11:05</td>
+                  <td class="mono">BAT-10000029 / EV100029</td>
+                  <td>Volkswagen ID.3</td>
+                  <td><span class="badge" style="background:var(--color-no-failure-bg); color:var(--color-no-failure); border:1px solid var(--color-no-failure);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg>No Failure</span></td>
+                  <td class="num">11.0%</td>
+                  <td>Logistic Regression</td>
+                  <td><span class="badge badge-neutral">Pending</span></td>
+                  <td><a class="btn btn-sm btn-secondary" href="maintenance-assessment.html">View</a></td>
+                </tr>
+                <tr data-history-row data-status="no-failure" data-search="bat-10000071 ev100071 tata tiago ev">
+                  <td class="num">2026-09-14 16:30</td>
+                  <td class="mono">BAT-10000071 / EV100071</td>
+                  <td>Tata Tiago EV</td>
+                  <td><span class="badge" style="background:var(--color-no-failure-bg); color:var(--color-no-failure); border:1px solid var(--color-no-failure);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg>No Failure</span></td>
+                  <td class="num">22.0%</td>
+                  <td>Logistic Regression</td>
+                  <td><span class="badge badge-info">Recorded</span></td>
+                  <td><a class="btn btn-sm btn-secondary" href="maintenance-assessment.html">View</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="panel-2" class="tab-panel">
+          <div class="timeline">
+
+            <div class="timeline-item" data-history-row data-status="failure" data-search="bat-10000103 ev100103 byd atto 3">
+              <span class="timeline-dot is-failure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7.5 2 16.5 2 22 7.5 22 16.5 16.5 22 7.5 22 2 16.5 2 7.5 7.5 2"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg></span>
+              <div class="timeline-card">
+                <div class="timeline-meta"><span class="timeline-time">2026-10-30 09:51</span><span class="badge" style="background:var(--color-failure-bg); color:var(--color-failure); border:1px solid var(--color-failure);">Failure &middot; 77.0%</span></div>
+                <strong class="mono">BAT-10000103 / EV100103</strong> &middot; BYD Atto 3
+                <p class="hint" style="margin:var(--space-sm) 0 0;">Assessment recorded.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-history-row data-status="failure" data-search="bat-10000042 ev100042 hyundai kona electric">
+              <span class="timeline-dot is-failure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7.5 2 16.5 2 22 7.5 22 16.5 16.5 22 7.5 22 2 16.5 2 7.5 7.5 2"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg></span>
+              <div class="timeline-card">
+                <div class="timeline-meta"><span class="timeline-time">2026-10-30 08:14</span><span class="badge" style="background:var(--color-failure-bg); color:var(--color-failure); border:1px solid var(--color-failure);">Failure &middot; 81.2%</span></div>
+                <strong class="mono">BAT-10000042 / EV100042</strong> &middot; Hyundai Kona Electric
+                <p class="hint" style="margin:var(--space-sm) 0 0;">Assessment recorded: inspect thermal loop and cell-balancing circuit within 7 days.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-history-row data-status="no-failure" data-search="bat-10000091 ev100091 nissan leaf">
+              <span class="timeline-dot is-no-failure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg></span>
+              <div class="timeline-card">
+                <div class="timeline-meta"><span class="timeline-time">2026-10-29 16:40</span><span class="badge" style="background:var(--color-no-failure-bg); color:var(--color-no-failure); border:1px solid var(--color-no-failure);">No Failure &middot; 12.0%</span></div>
+                <strong class="mono">BAT-10000091 / EV100091</strong> &middot; Nissan Leaf
+                <p class="hint" style="margin:var(--space-sm) 0 0;">Assessment pending.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-history-row data-status="failure" data-search="bat-10000056 ev100056 kia ev6">
+              <span class="timeline-dot is-failure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7.5 2 16.5 2 22 7.5 22 16.5 16.5 22 7.5 22 2 16.5 2 7.5 7.5 2"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg></span>
+              <div class="timeline-card">
+                <div class="timeline-meta"><span class="timeline-time">2026-10-27 07:22</span><span class="badge" style="background:var(--color-failure-bg); color:var(--color-failure); border:1px solid var(--color-failure);">Failure &middot; 69.0%</span></div>
+                <strong class="mono">BAT-10000056 / EV100056</strong> &middot; Kia EV6
+                <p class="hint" style="margin:var(--space-sm) 0 0;">Assessment pending.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-history-row data-status="no-failure" data-search="bat-10000017 ev100017 tesla model 3">
+              <span class="timeline-dot is-no-failure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg></span>
+              <div class="timeline-card">
+                <div class="timeline-meta"><span class="timeline-time">2026-10-25 14:02</span><span class="badge" style="background:var(--color-no-failure-bg); color:var(--color-no-failure); border:1px solid var(--color-no-failure);">No Failure &middot; 8.0%</span></div>
+                <strong class="mono">BAT-10000017 / EV100017</strong> &middot; Tesla Model 3
+                <p class="hint" style="margin:var(--space-sm) 0 0;">Assessment recorded.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-history-row data-status="no-failure" data-search="bat-10000064 ev100064 volkswagen id.4">
+              <span class="timeline-dot is-no-failure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg></span>
+              <div class="timeline-card">
+                <div class="timeline-meta"><span class="timeline-time">2026-10-22 10:05</span><span class="badge" style="background:var(--color-no-failure-bg); color:var(--color-no-failure); border:1px solid var(--color-no-failure);">No Failure &middot; 15.0%</span></div>
+                <strong class="mono">BAT-10000064 / EV100064</strong> &middot; Volkswagen ID.4
+                <p class="hint" style="margin:var(--space-sm) 0 0;">Assessment pending.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-history-row data-status="no-failure" data-search="bat-10000005 ev100005 ford mustang mach-e">
+              <span class="timeline-dot is-no-failure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg></span>
+              <div class="timeline-card">
+                <div class="timeline-meta"><span class="timeline-time">2026-10-20 10:47</span><span class="badge" style="background:var(--color-no-failure-bg); color:var(--color-no-failure); border:1px solid var(--color-no-failure);">No Failure &middot; 19.0%</span></div>
+                <strong class="mono">BAT-10000005 / EV100005</strong> &middot; Ford Mustang Mach-E
+                <p class="hint" style="margin:var(--space-sm) 0 0;">Assessment recorded.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-history-row data-status="failure" data-search="bat-10000037 ev100037 mg zs ev">
+              <span class="timeline-dot is-failure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7.5 2 16.5 2 22 7.5 22 16.5 16.5 22 7.5 22 2 16.5 2 7.5 7.5 2"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg></span>
+              <div class="timeline-card">
+                <div class="timeline-meta"><span class="timeline-time">2026-10-18 13:30</span><span class="badge" style="background:var(--color-failure-bg); color:var(--color-failure); border:1px solid var(--color-failure);">Failure &middot; 58.0%</span></div>
+                <strong class="mono">BAT-10000037 / EV100037</strong> &middot; MG ZS EV
+                <p class="hint" style="margin:var(--space-sm) 0 0;">Assessment recorded.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-history-row data-status="no-failure" data-search="bat-10000029 ev100029 volkswagen id.3">
+              <span class="timeline-dot is-no-failure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg></span>
+              <div class="timeline-card">
+                <div class="timeline-meta"><span class="timeline-time">2026-10-12 11:05</span><span class="badge" style="background:var(--color-no-failure-bg); color:var(--color-no-failure); border:1px solid var(--color-no-failure);">No Failure &middot; 11.0%</span></div>
+                <strong class="mono">BAT-10000029 / EV100029</strong> &middot; Volkswagen ID.3
+                <p class="hint" style="margin:var(--space-sm) 0 0;">Assessment pending.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-history-row data-status="no-failure" data-search="bat-10000071 ev100071 tata tiago ev">
+              <span class="timeline-dot is-no-failure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg></span>
+              <div class="timeline-card">
+                <div class="timeline-meta"><span class="timeline-time">2026-09-14 16:30</span><span class="badge" style="background:var(--color-no-failure-bg); color:var(--color-no-failure); border:1px solid var(--color-no-failure);">No Failure &middot; 22.0%</span></div>
+                <strong class="mono">BAT-10000071 / EV100071</strong> &middot; Tata Tiago EV
+                <p class="hint" style="margin:var(--space-sm) 0 0;">Assessment recorded.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="state-panel" id="history-empty" hidden style="margin-top:var(--space-lg);">
+      <svg class="state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
+      <h3>No classifications match these filters</h3>
+      <p>Clear the search or choose "All results" to see the full history.</p>
+    </div>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>Static UI/UX mockup &middot; Intelligent Systems, Group 5 &middot; VNU-HCM University of Technology &middot; no backend, sample data only</p>
+  </footer>
+
+</div>
+<script src="js/app.js"></script>

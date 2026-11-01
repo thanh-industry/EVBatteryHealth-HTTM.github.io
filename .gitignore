@@ -12,6 +12,10 @@ backend/data/app.db
 backend/data/models/
 backend/data/datasets/
 
+# Shared runtime artifacts for the Streamlit app (SPEC_CONTRACT.md section 2)
+models/
+data/
+
 # Node
 node_modules/
 frontend/dist/
@@ -36,3 +40,7 @@ design-system/
 
 # Generated static demo export (only needed for a serverless Pages build)
 frontend/public/demo-api/
+
+# Internal build contract and the assignment PDF (not shipped code)
+SPEC_CONTRACT.md
+*.pdf

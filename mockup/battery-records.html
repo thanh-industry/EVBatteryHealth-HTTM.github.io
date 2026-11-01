@@ -1,0 +1,348 @@
+<title>Battery Records - EV Battery Failure Classification</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="UC-06: search, view, edit and create battery records.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/app.css">
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="app-shell">
+
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><line x1="22" y1="10" x2="22" y2="14"/><path d="M11 9 9 13h3l-2 4"/></svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-title">EV Battery Failure Classification</span>
+        <span class="brand-sub">UI/UX mockup - Group 5</span>
+      </span>
+    </a>
+    <span class="persona-tag">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 18l3 3 6.6-6.3a4 4 0 0 0 5.1-5.4l-2.8 2.8-2-2 2.8-2.8Z"/></svg>
+      <span>EV Maintenance Specialist view</span>
+    </span>
+  </header>
+
+  <nav class="primary-nav" aria-label="Main">
+    <ul>
+      <li><a href="index.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+        <span>Overview</span></a></li>
+      <li><a href="battery-records.html" aria-current="page">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="18" height="10" rx="2"/><line x1="22" y1="10" x2="22" y2="14"/><path d="M11 9 9 13h3l-2 4"/></svg>
+        <span>Battery Records</span></a></li>
+      <li><a href="run-classification.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
+        <span>Run Classification</span></a></li>
+      <li><a href="maintenance-assessment.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="2"/><rect x="9" y="2" width="6" height="4" rx="1"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+        <span>Maintenance Assessment</span></a></li>
+      <li><a href="classification-history.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
+        <span>Classification History</span></a></li>
+      <li><a href="ml-workflow.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8"/><rect x="11" y="7" width="3" height="13"/><rect x="16" y="3" width="3" height="17"/></svg>
+        <span>ML Workflow</span></a></li>
+      <li><a href="states.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <span>UX States</span></a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content" class="page">
+
+    <div class="page-header">
+      <div>
+        <span class="eyebrow">UC-06 &middot; FR-09, FR-12</span>
+        <h1 class="page-title">Battery records</h1>
+        <p class="page-lede">Search for a battery by serial number or vehicle ID, review or edit its record, or
+          register a new battery.</p>
+      </div>
+      <div class="page-header-actions">
+        <button type="button" class="btn btn-primary" data-open-modal="create-record-modal">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          New battery record
+        </button>
+      </div>
+    </div>
+
+    <section aria-labelledby="search-heading">
+      <h2 id="search-heading" class="section-heading">Search</h2>
+      <div class="card">
+        <div class="field" style="margin-bottom:0;">
+          <label for="record-search">Battery serial or vehicle ID</label>
+          <input class="input" type="search" id="record-search" placeholder="e.g. BAT-10000042 or EV100042" autocomplete="off">
+          <span class="hint">Filters the table below as you type. Matches either field.</span>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="results-heading">
+      <h2 id="results-heading" class="section-heading">
+        Results
+        <span class="req-tag">FR-12</span>
+      </h2>
+      <div class="table-wrapper">
+        <table id="records-table">
+          <caption class="visually-hidden">Battery records</caption>
+          <thead>
+            <tr>
+              <th scope="col">Battery serial</th>
+              <th scope="col">Vehicle ID</th>
+              <th scope="col">Vehicle</th>
+              <th scope="col">Chemistry</th>
+              <th scope="col">Last classification</th>
+              <th scope="col">Result</th>
+              <th scope="col"><span class="visually-hidden">Actions</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-search="bat-10000042 ev100042 hyundai kona electric">
+              <td class="mono">BAT-10000042</td>
+              <td class="mono">EV100042</td>
+              <td>Hyundai Kona Electric <span class="hint">Sedan</span></td>
+              <td>NMC</td>
+              <td class="num">2026-10-30 08:14</td>
+              <td><span class="badge" style="background:var(--color-failure-bg); color:var(--color-failure); border:1px solid var(--color-failure);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7.5 2 16.5 2 22 7.5 22 16.5 16.5 22 7.5 22 2 16.5 2 7.5 7.5 2"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>
+                Failure</span></td>
+              <td><a class="btn btn-sm btn-secondary" href="#record-detail">View</a></td>
+            </tr>
+            <tr data-search="bat-10000017 ev100017 tesla model 3">
+              <td class="mono">BAT-10000017</td>
+              <td class="mono">EV100017</td>
+              <td>Tesla Model 3 <span class="hint">Sedan</span></td>
+              <td>NMC</td>
+              <td class="num">2026-10-25 14:02</td>
+              <td><span class="badge" style="background:var(--color-no-failure-bg); color:var(--color-no-failure); border:1px solid var(--color-no-failure);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg>
+                No Failure</span></td>
+              <td><a class="btn btn-sm btn-secondary" href="#record-detail">View</a></td>
+            </tr>
+            <tr data-search="bat-10000005 ev100005 ford mustang mach-e">
+              <td class="mono">BAT-10000005</td>
+              <td class="mono">EV100005</td>
+              <td>Ford Mustang Mach-E <span class="hint">SUV</span></td>
+              <td>NMC</td>
+              <td class="num">2026-10-20 10:47</td>
+              <td><span class="badge" style="background:var(--color-no-failure-bg); color:var(--color-no-failure); border:1px solid var(--color-no-failure);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg>
+                No Failure</span></td>
+              <td><a class="btn btn-sm btn-secondary" href="#record-detail">View</a></td>
+            </tr>
+            <tr data-search="bat-10000103 ev100103 byd atto 3">
+              <td class="mono">BAT-10000103</td>
+              <td class="mono">EV100103</td>
+              <td>BYD Atto 3 <span class="hint">SUV</span></td>
+              <td>LFP</td>
+              <td class="num">2026-10-30 09:51</td>
+              <td><span class="badge" style="background:var(--color-failure-bg); color:var(--color-failure); border:1px solid var(--color-failure);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7.5 2 16.5 2 22 7.5 22 16.5 16.5 22 7.5 22 2 16.5 2 7.5 7.5 2"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>
+                Failure</span></td>
+              <td><a class="btn btn-sm btn-secondary" href="#record-detail">View</a></td>
+            </tr>
+            <tr data-search="bat-10000071 ev100071 tata tiago ev">
+              <td class="mono">BAT-10000071</td>
+              <td class="mono">EV100071</td>
+              <td>Tata Tiago EV <span class="hint">Hatchback</span></td>
+              <td>NCA</td>
+              <td class="num">2026-09-14 16:30</td>
+              <td><span class="badge" style="background:var(--color-no-failure-bg); color:var(--color-no-failure); border:1px solid var(--color-no-failure);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg>
+                No Failure</span></td>
+              <td><a class="btn btn-sm btn-secondary" href="#record-detail">View</a></td>
+            </tr>
+            <tr data-search="bat-10000029 ev100029 volkswagen id.3">
+              <td class="mono">BAT-10000029</td>
+              <td class="mono">EV100029</td>
+              <td>Volkswagen ID.3 <span class="hint">Crossover</span></td>
+              <td>LFP</td>
+              <td class="num">2026-10-12 11:05</td>
+              <td><span class="badge" style="background:var(--color-no-failure-bg); color:var(--color-no-failure); border:1px solid var(--color-no-failure);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg>
+                No Failure</span></td>
+              <td><a class="btn btn-sm btn-secondary" href="#record-detail">View</a></td>
+            </tr>
+            <tr data-search="bat-10000088 ev100088 mg zs ev">
+              <td class="mono">BAT-10000088</td>
+              <td class="mono">EV100088</td>
+              <td>MG ZS EV <span class="hint">SUV</span></td>
+              <td>LTO</td>
+              <td class="num">&mdash;</td>
+              <td><span class="badge badge-neutral">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><line x1="12" y1="7.5" x2="12" y2="7.6"/></svg>
+                Not yet classified</span></td>
+              <td><a class="btn btn-sm btn-secondary" href="#record-detail">View</a></td>
+            </tr>
+            <tr data-search="bat-10000056 ev100056 kia ev6">
+              <td class="mono">BAT-10000056</td>
+              <td class="mono">EV100056</td>
+              <td>Kia EV6 <span class="hint">Crossover</span></td>
+              <td>NMC</td>
+              <td class="num">2026-10-27 07:22</td>
+              <td><span class="badge" style="background:var(--color-failure-bg); color:var(--color-failure); border:1px solid var(--color-failure);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7.5 2 16.5 2 22 7.5 22 16.5 16.5 22 7.5 22 2 16.5 2 7.5 7.5 2"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.6"/></svg>
+                Failure</span></td>
+              <td><a class="btn btn-sm btn-secondary" href="#record-detail">View</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="state-panel" id="records-empty" hidden style="margin-top:var(--space-lg);">
+        <svg class="state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
+        <h3>No matching battery records</h3>
+        <p>Try a different serial number or vehicle ID, or create a new record.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="detail-heading" id="record-detail">
+      <h2 id="detail-heading" class="section-heading">
+        Record detail
+        <span class="req-tag">FR-09</span>
+      </h2>
+      <div class="card">
+        <p class="hint" style="margin-bottom:var(--space-xl);">Showing <strong class="mono">BAT-10000042</strong> /
+          <strong class="mono">EV100042</strong>. In the full application, selecting "View" on any row above loads
+          that record here; this static mockup illustrates the layout with one representative record.</p>
+        <form onsubmit="return false;">
+          <div class="form-grid">
+            <div class="field">
+              <label for="f-serial">Battery serial</label>
+              <input class="input" type="text" id="f-serial" value="BAT-10000042" readonly>
+              <span class="hint">Identifier, not editable after creation</span>
+            </div>
+            <div class="field">
+              <label for="f-vehicle-id">Vehicle ID</label>
+              <input class="input" type="text" id="f-vehicle-id" value="EV100042" readonly>
+            </div>
+            <div class="field">
+              <label for="f-brand">Vehicle brand</label>
+              <input class="input" type="text" id="f-brand" value="Hyundai">
+            </div>
+            <div class="field">
+              <label for="f-model">Vehicle model</label>
+              <input class="input" type="text" id="f-model" value="Kona Electric">
+            </div>
+            <div class="field">
+              <label for="f-type">Vehicle type</label>
+              <select class="select" id="f-type">
+                <option selected>Sedan</option>
+                <option>SUV</option>
+                <option>Crossover</option>
+                <option>Hatchback</option>
+                <option>Truck</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-year">Manufacturing year</label>
+              <input class="input" type="number" id="f-year" value="2019" min="2010" max="2026">
+            </div>
+            <div class="field">
+              <label for="f-mfr">Battery manufacturer</label>
+              <input class="input" type="text" id="f-mfr" value="SK On">
+            </div>
+            <div class="field">
+              <label for="f-chem">Battery chemistry</label>
+              <select class="select" id="f-chem">
+                <option selected>NMC</option>
+                <option>LFP</option>
+                <option>NCA</option>
+                <option>LTO</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-capacity">Battery capacity</label>
+              <input class="input" type="number" id="f-capacity" value="132.35" step="0.01">
+              <span class="hint unit">kWh</span>
+            </div>
+            <div class="field">
+              <label for="f-drive">Drive type</label>
+              <select class="select" id="f-drive">
+                <option selected>FWD</option>
+                <option>RWD</option>
+                <option>AWD</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-fleet">Fleet or private</label>
+              <select class="select" id="f-fleet">
+                <option selected>Fleet</option>
+                <option>Private</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-odo">Odometer</label>
+              <input class="input" type="number" id="f-odo" value="134830.2" step="0.1">
+              <span class="hint unit">km</span>
+            </div>
+          </div>
+          <div style="display:flex; gap:var(--space-md); flex-wrap:wrap; margin-top:var(--space-md);">
+            <button type="submit" class="btn btn-primary">Save record</button>
+            <a class="btn btn-secondary" href="run-classification.html">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
+              Run classification for this battery
+            </a>
+            <a class="btn btn-ghost" href="classification-history.html">View classification history</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>Static UI/UX mockup &middot; Intelligent Systems, Group 5 &middot; VNU-HCM University of Technology &middot; no backend, sample data only</p>
+  </footer>
+
+</div>
+
+<dialog class="modal" id="create-record-modal">
+  <form method="dialog">
+    <div class="modal-header">
+      <h2>New battery record</h2>
+      <button type="button" class="icon-btn" data-close-modal aria-label="Close dialog">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <label for="nf-serial">Battery serial <span aria-hidden="true">*</span></label>
+        <input class="input" type="text" id="nf-serial" placeholder="BAT-10000129" required pattern="BAT-\d{8}">
+        <span class="hint">Format: BAT- followed by 8 digits</span>
+      </div>
+      <div class="field">
+        <label for="nf-vehicle">Vehicle ID <span aria-hidden="true">*</span></label>
+        <input class="input" type="text" id="nf-vehicle" placeholder="EV100129" required pattern="EV\d{6}">
+      </div>
+      <div class="field">
+        <label for="nf-brand">Vehicle brand <span aria-hidden="true">*</span></label>
+        <input class="input" type="text" id="nf-brand" placeholder="e.g. Nissan" required>
+      </div>
+      <div class="field">
+        <label for="nf-model">Vehicle model <span aria-hidden="true">*</span></label>
+        <input class="input" type="text" id="nf-model" placeholder="e.g. Leaf" required>
+      </div>
+      <div class="field">
+        <label for="nf-chem">Battery chemistry <span aria-hidden="true">*</span></label>
+        <select class="select" id="nf-chem" required>
+          <option value="" selected disabled>Select chemistry</option>
+          <option>NMC</option>
+          <option>LFP</option>
+          <option>NCA</option>
+          <option>LTO</option>
+        </select>
+      </div>
+      <p class="hint">The remaining battery-spec fields and all 67 model parameters are entered on the Run
+        Classification page once the record exists.</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-ghost" data-close-modal>Cancel</button>
+      <button type="button" class="btn btn-primary" data-close-modal>Create record</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="js/app.js"></script>

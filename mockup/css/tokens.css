@@ -1,0 +1,111 @@
+/* ==========================================================================
+   DESIGN TOKENS
+   Reused from /DESIGN_SYSTEM.md (authoritative source, validated for CVD
+   safety and contrast). No raw hex outside this file.
+
+   This product's classification result is BINARY (Failure / No Failure).
+   Mapping decision (Agent C): the design system's 3-level health palette
+   (good / monitor / critical) is reused as follows -
+     - "No Failure"  -> --color-good     (positive token)
+     - "Failure"     -> --color-critical (critical token)
+     - --color-monitor (amber) is kept available ONLY for generic caution /
+       validation-warning UI (e.g. "value imputed", "near threshold"), never
+       for the binary result itself, so the two concepts stay visually
+       unambiguous. See mockup/README.md "Design decisions".
+   ========================================================================== */
+
+:root {
+  /* ---- Base surfaces & text (light mode, primary) -------------------- */
+  --color-bg: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-surface-elevated: #FFFFFF;
+  --color-muted: #E9EEF6;
+  --color-border: #DBEAFE;
+  --color-border-strong: #CBD5E1;
+  --color-text-primary: #1E3A8A;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748B;
+
+  /* ---- Action / brand --------------------------------------------------*/
+  --color-primary: #1E40AF;
+  --color-primary-hover: #1D4ED8;
+  --color-on-primary: #FFFFFF;
+  --color-secondary: #3B82F6;
+  --color-ring: #1E40AF;
+  --color-info: #0891B2;
+  --color-info-bg: #ECFEFF;
+
+  /* ---- Status - VALIDATED, LOCKED (see DESIGN_SYSTEM.md section 1) ---- */
+  --color-good: #047857;
+  --color-good-bg: #ECFDF5;
+  --color-monitor: #D97706;
+  --color-monitor-bg: #FFFBEB;
+  --color-critical: #B91C1C;
+  --color-critical-bg: #FEF2F2;
+
+  /* Binary result aliases (semantic names used throughout the mockup) */
+  --color-no-failure: var(--color-good);
+  --color-no-failure-bg: var(--color-good-bg);
+  --color-failure: var(--color-critical);
+  --color-failure-bg: var(--color-critical-bg);
+
+  /* ---- Chart palettes - VALIDATED, LOCKED ------------------------------*/
+  --chart-cat-1: #2563EB; /* Logistic Regression */
+  --chart-cat-2: #0891B2; /* SVM */
+  --chart-cat-3: #BE185D; /* Random Forest */
+
+  --chart-seq-1: #60A5FA;
+  --chart-seq-2: #3B82F6;
+  --chart-seq-3: #1D4ED8;
+  --chart-seq-4: #1E3A8A;
+
+  /* ---- Typography -------------------------------------------------------*/
+  --font-sans: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, 'Cascadia Code', Consolas, 'Courier New', monospace;
+
+  --text-display: 600 32px/1.25 var(--font-sans);
+  --text-page-title: 600 24px/1.3 var(--font-sans);
+  --text-section: 600 18px/1.35 var(--font-sans);
+  --text-card-title: 600 14px/1.3 var(--font-sans);
+  --text-body: 400 16px/1.5 var(--font-sans);
+  --text-secondary: 400 14px/1.5 var(--font-sans);
+  --text-caption: 400 12px/1.4 var(--font-sans);
+  --text-kpi: 600 32px/1.1 var(--font-mono);
+  --text-table: 400 14px/1.4 var(--font-sans);
+
+  /* ---- Spacing (one scale only) ------------------------------------------*/
+  --space-xs: 2px;
+  --space-sm: 4px;
+  --space-md: 8px;
+  --space-lg: 12px;
+  --space-xl: 16px;
+  --space-2xl: 24px;
+  --space-3xl: 32px;
+
+  /* ---- Radius (max 8px; pills only for badges) --------------------------*/
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-pill: 9999px;
+
+  /* ---- Shadow -------------------------------------------------------------*/
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 6px rgba(15, 23, 42, 0.10);
+  --shadow-lg: 0 10px 15px rgba(15, 23, 42, 0.12);
+
+  /* ---- Motion (dial 3/10 = subtle) ---------------------------------------*/
+  --motion-hover: 200ms ease;
+  --motion-enter: 320ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ---- Layout -------------------------------------------------------------*/
+  --sidebar-width: 248px;
+  --content-max-width: 1200px;
+  --touch-target: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-hover: 1ms linear;
+    --motion-enter: 1ms linear;
+  }
+}
