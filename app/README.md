@@ -1,6 +1,6 @@
 # EV Battery Failure Classification - Streamlit Application
 
-Software Developer deliverable (Agent B) for Group 5's EV Battery Failure
+Software Developer deliverable for Group 5's EV Battery Failure
 Classification project. Binary classification - **Failure** / **No
 Failure** - built with Python + Streamlit + SQLite, single process, no
 separate backend service, per `SPEC_CONTRACT.md` section 5 / spec section 5.
@@ -179,7 +179,7 @@ each through classification and attaches a maintenance assessment to a
 representative subset. Idempotent: records are matched by their real,
 unique `battery_serial`, so re-running does not create duplicates.
 
-## 6. Notes on the Agent A / Agent B contract
+## 6. Notes on the model bundle contract
 
 `app/` and `deployment/` are built strictly against `SPEC_CONTRACT.md`
 section 3 (the model bundle format) and section 4 (the SQLite schema), not
@@ -191,7 +191,7 @@ and the full pytest suite could be built and tested end to end ahead of the
 real artifact, and used to demonstrate `deploy_model.py` / `verify_model.py`
 against a realistic 67-feature model. These fixtures are clearly labeled as
 synthetic test fixtures (see their `metadata.selection_rationale`) and are
-not the graded machine-learning deliverable. Once Agent A's real bundle is
+not the graded machine-learning deliverable. Once the real trained bundle is
 available, redeploy with:
 
 ```

@@ -2,7 +2,7 @@
 Battery parameter input form (used by Battery Records and Run Classification).
 
 Usability decision from SPEC_CONTRACT.md section 3.1: 67 inputs is too many
-to type, so the ~12 features Agent A marks "key": true are shown in an
+to type, so the ~12 features marked "key": true in the bundle are shown in an
 always-visible section; the rest sit inside collapsed per-group expanders,
 pre-filled with median/mode defaults. The model always receives all 67
 values - this module's job is only to collect them with a UI that does not

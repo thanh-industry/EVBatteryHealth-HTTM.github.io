@@ -1,12 +1,12 @@
 """
 Synthetic model_bundle.joblib builders used ONLY for tests and for local
 integration smoke-testing of deployment/deploy_model.py and
-deployment/verify_model.py while Agent A's real ml_pipeline bundle is not
+deployment/verify_model.py while the real ml_pipeline bundle is not
 yet available.
 
 These bundles are structurally valid per SPEC_CONTRACT.md section 3 but are
 NOT the graded machine-learning deliverable (that is ml_pipeline/, owned by
-Agent A). They exist so app/, deployment/ can be built and tested strictly
+the offline pipeline). They exist so app/, deployment/ can be built and tested strictly
 against the contract rather than waiting on the real artifact.
 
 Two builders:
@@ -235,7 +235,7 @@ def _fit_and_package(
         "metrics": metrics,
         "all_model_results": [dict(metrics, algorithm=algorithm)],
         "selection_rationale": (
-            "SYNTHETIC TEST FIXTURE (not Agent A's graded model): logistic "
+            "SYNTHETIC TEST FIXTURE (not the real trained model): logistic "
             "regression chosen as a fast, interpretable baseline for "
             "integration-testing app/ and deployment/ against "
             "SPEC_CONTRACT.md section 3 ahead of the real ml_pipeline "

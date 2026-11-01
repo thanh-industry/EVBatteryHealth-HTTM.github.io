@@ -4,7 +4,7 @@
    safety and contrast). No raw hex outside this file.
 
    This product's classification result is BINARY (Failure / No Failure).
-   Mapping decision (Agent C): the design system's 3-level health palette
+   Mapping decision: the design system's 3-level health palette
    (good / monitor / critical) is reused as follows -
      - "No Failure"  -> --color-good     (positive token)
      - "Failure"     -> --color-critical (critical token)

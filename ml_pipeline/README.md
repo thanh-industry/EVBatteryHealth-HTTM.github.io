@@ -1,4 +1,4 @@
-# ml_pipeline - Offline ML Pipeline (Agent A)
+# ml_pipeline - Offline ML Pipeline
 
 Offline machine learning pipeline for the EV Battery Failure Classification
 project. Implements FR-01..FR-05 and UC-01..UC-03 of the project

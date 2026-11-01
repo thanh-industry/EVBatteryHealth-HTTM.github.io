@@ -1,8 +1,13 @@
-# Streamlit application dependencies (Agent B / Software Developer).
+# Streamlit application dependencies.
 # Must run on Python 3.11 (local) and 3.12 (server).
 streamlit>=1.56.0
 pandas>=2.2
 numpy>=1.26
-scikit-learn>=1.5
+# Pinned, not >=: the exported model_bundle.joblib is a pickle produced by this
+# exact version. Loading it under a different scikit-learn emits
+# InconsistentVersionWarning and is explicitly documented as unsafe
+# ("might lead to breaking code or invalid results"). Training and serving must
+# agree. If you retrain, update this pin to match the version you trained with.
+scikit-learn==1.8.0
 joblib>=1.4
 pytest>=7.2

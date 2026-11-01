@@ -3,7 +3,7 @@
 deploy_model.py - Model deployment utility for the Software Developer role.
 
 FR-10 / UC-04: validate an exported model bundle produced by the offline ML
-pipeline (Agent A / Data Scientist) and, only if it is structurally sound,
+pipeline produced by the Data Scientist and, only if it is structurally sound,
 copy it into the application's local model directory where the Streamlit
 app (app/model_service.py) will load it from.
 

@@ -10,8 +10,17 @@ what (if anything) is currently deployed on the developer's machine.
 """
 from __future__ import annotations
 
+from pathlib import Path
+
 import joblib
 import pytest
+
+# Resolve main.py absolutely. Streamlit changed how AppTest.from_file treats a
+# relative path: older versions resolve it against the current working
+# directory, newer ones against the file that calls from_file. A relative
+# "app/main.py" therefore passes locally and fails on a machine with a newer
+# Streamlit. An absolute path is correct on every version.
+APP_MAIN = str(Path(__file__).resolve().parents[1] / "main.py")
 
 from app import config, db
 
@@ -30,7 +39,7 @@ def _isolated_paths(tmp_path, monkeypatch):
 
 
 def test_full_app_no_model_deployed_all_pages_render_without_exception():
-    at = streamlit_testing.AppTest.from_file("app/main.py", default_timeout=30)
+    at = streamlit_testing.AppTest.from_file(APP_MAIN, default_timeout=30)
     at.run()
     assert not at.exception
 
@@ -67,7 +76,7 @@ def test_classification_result_icon_is_not_duplicated(tmp_path, monkeypatch, sma
         "BAT-ICON-TEST", "EV-ICON-TEST", {k: defaults[k] for k in feature_names}
     )
 
-    at = streamlit_testing.AppTest.from_file("app/main.py", default_timeout=30)
+    at = streamlit_testing.AppTest.from_file(APP_MAIN, default_timeout=30)
     at.run()
     at.sidebar.radio[0].set_value("Run Classification").run()
     assert not at.exception
