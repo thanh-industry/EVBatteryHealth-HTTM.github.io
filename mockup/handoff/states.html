@@ -84,6 +84,29 @@
         History (no classifications), Classification History filtered to zero matches.</p>
     </section>
 
+
+    <!-- ============================== AWAITING REPEAT INSPECTIONS ============================== -->
+    <section class="hd-section" id="no-trend" aria-labelledby="notrend-heading">
+      <h2 id="notrend-heading" class="hd-section-heading">Awaiting repeat inspections</h2>
+      <p class="hd-section-sub">The measurement-trend panel needs at least two stored classifications for the
+        same battery before a line means anything. With one reading there is a point, not a trend, and drawing a
+        flat segment through a single value would imply a stability the data does not support. This is the state
+        the panel shows until a second inspection exists &mdash; it is the normal state for a newly added battery,
+        not an error.</p>
+      <div class="hd-state-panel">
+        <svg class="hd-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18"/><path d="M4 16l5-5 4 3 6-7"/><circle cx="9" cy="11" r="1.6"/></svg>
+        <h3 style="font-size:var(--fs-h3); line-height:var(--lh-h3);">Not enough readings yet</h3>
+        <p>This battery has one recorded classification. Run a classification again after the next inspection and
+          the trend for State of Health, Capacity Loss and temperature will appear here.</p>
+        <button type="button" class="hd-btn hd-btn-primary">Run classification for this battery</button>
+      </div>
+      <dl class="hd-spec-list" style="margin-top:var(--space-5);">
+        <dt>Trigger</dt><dd><code class="hd-inline-code">COUNT(classifications) &lt; 2</code> for the battery; one point is not a series</dd>
+        <dt>Not an error</dt><dd>uses the neutral empty-state panel (dashed border, muted icon), never the warning or failure palette</dd>
+        <dt>Exit</dt><dd>resolves on its own as soon as a second classification is stored; the call to action is the thing that creates one</dd>
+      </dl>
+    </section>
+
     <!-- ============================== NO MODEL DEPLOYED ============================== -->
     <section class="hd-section" id="no-model" aria-labelledby="nomodel-heading">
       <h2 id="nomodel-heading" class="hd-section-heading">No model deployed <span class="hd-req-tag">spec section 5, stage 2</span></h2>

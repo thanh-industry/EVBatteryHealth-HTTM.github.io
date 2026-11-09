@@ -549,3 +549,90 @@ dialog.modal::backdrop { background: rgba(15, 23, 42, 0.45); }
    ========================================================================== */
 
 .page-footnote { margin-top: var(--space-10); padding-top: var(--space-5); border-top: 1px solid var(--c-border); font: var(--text-xs); color: var(--c-text-muted); }
+
+/* ==========================================================================
+   FEATURE ATTRIBUTION (explainability on the classification result)
+   A diverging bar chart: the data's job is POLARITY - which way each input
+   pushed this one prediction - so it gets two hues around a neutral zero axis,
+   never a single ranked ramp. Colour is backed by the signed number and a
+   legend, so identity never rests on hue alone.
+   ========================================================================== */
+
+.attrib-legend {
+  display: flex; flex-wrap: wrap; gap: var(--space-5);
+  font: var(--text-xs); color: var(--c-text-secondary); margin-bottom: var(--space-4);
+}
+.attrib-legend span { display: inline-flex; align-items: center; gap: var(--space-2); }
+.attrib-legend i { width: 10px; height: 10px; border-radius: 2px; flex: 0 0 auto; }
+.attrib-legend i.pos { background: var(--c-failure); }
+.attrib-legend i.neg { background: var(--c-ok); }
+
+.attrib-row {
+  display: grid;
+  grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) 4.5rem;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-1) 0;
+}
+.attrib-name { font: var(--text-sm); color: var(--c-text); min-width: 0; }
+.attrib-name .v {
+  display: block; font-family: var(--font-mono); font-size: var(--fs-xs);
+  color: var(--c-text-muted);
+}
+/* The plot area. The zero axis sits at the centre; a bar grows left or right
+   from it, so direction is readable before any number is. */
+.attrib-track { position: relative; height: 22px; min-width: 0; }
+.attrib-track::before {
+  content: ""; position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 1px; background: var(--c-border-strong);
+}
+.attrib-bar { position: absolute; top: 6px; height: 10px; }
+.attrib-bar.pos { left: 50%; background: var(--c-failure); border-radius: 0 4px 4px 0; }
+.attrib-bar.neg { right: 50%; background: var(--c-ok); border-radius: 4px 0 0 4px; }
+.attrib-num {
+  font-family: var(--font-mono); font-size: var(--fs-xs);
+  font-variant-numeric: tabular-nums; text-align: right; color: var(--c-text-secondary);
+}
+.attrib-sum {
+  margin-top: var(--space-4); padding-top: var(--space-4);
+  border-top: 1px solid var(--c-border);
+  font: var(--text-xs); color: var(--c-text-secondary);
+}
+.attrib-sum code, .inline-code {
+  font-family: var(--font-mono); font-size: 0.92em; color: var(--c-text);
+  background: var(--c-surface-sunken); padding: 2px 6px; border-radius: var(--radius-sm);
+  /* Identifiers like classifications.input_snapshot_json have no break
+     opportunity, so without this one token is wider than a phone screen and
+     pushes the whole page sideways. */
+  overflow-wrap: anywhere;
+}
+@media (max-width: 640px) {
+  /* Stack the label above its bar rather than squeezing three columns into a
+     phone width, which would crush the plot area to a few pixels. */
+  .attrib-row { grid-template-columns: minmax(0, 1fr) 4.5rem; }
+  .attrib-track { grid-column: 1 / -1; }
+}
+
+/* ==========================================================================
+   MEASUREMENT TREND (small multiples)
+   Capacity Loss, State of Health and temperature are three different scales
+   and units. They are therefore THREE charts, never one chart with two y-axes.
+   Each panel carries a single series, so it needs no legend - its title names it.
+   ========================================================================== */
+
+.trend-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
+}
+.trend-card {
+  border: 1px solid var(--c-border); border-radius: var(--radius-lg);
+  background: var(--c-surface); padding: var(--space-4); min-width: 0;
+}
+.trend-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); }
+.trend-title { font: var(--text-xs-label); text-transform: uppercase;
+  letter-spacing: var(--tracking-label); color: var(--c-text-muted); }
+.trend-now { font-family: var(--font-mono); font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold); color: var(--c-text); font-variant-numeric: tabular-nums; }
+.trend-svg { display: block; width: 100%; max-width: 100%; height: auto; margin-top: var(--space-3); }
+.trend-foot { display: flex; justify-content: space-between;
+  font: var(--text-xs); color: var(--c-text-muted); font-family: var(--font-mono); }

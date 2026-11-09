@@ -40,6 +40,44 @@
      Select button carries the real stored outcome for that battery (label,
      probability and timestamp as produced by the deployed model), so the
      mockup never shows a result belonging to a different serial. */
+
+  /* ---- Feature attribution: render the diverging contribution chart ----
+     Data comes from js/attribution-data.js, computed from the deployed model
+     against the stored input snapshot. Bars are scaled to the largest absolute
+     contribution in the set, so the widest bar always fills its half and the
+     rest stay comparable within one prediction. */
+  function renderAttribution(serial) {
+    var rowsEl = document.getElementById("attrib-rows");
+    var sumEl = document.getElementById("attrib-sum");
+    if (!rowsEl || !window.ATTRIBUTION) return;
+    var data = window.ATTRIBUTION.records[serial];
+    if (!data) { rowsEl.innerHTML = ""; if (sumEl) sumEl.textContent = ""; return; }
+    var maxAbs = data.top.reduce(function (m, t) { return Math.max(m, Math.abs(t.c)); }, 0) || 1;
+    rowsEl.innerHTML = data.top.map(function (t) {
+      var pct = (Math.abs(t.c) / maxAbs) * 50;
+      var pos = t.c >= 0;
+      return '<div class="attrib-row">' +
+        '<span class="attrib-name">' + esc(t.f) + '<span class="v">' + esc(t.v) + '</span></span>' +
+        '<span class="attrib-track"><span class="attrib-bar ' + (pos ? "pos" : "neg") +
+          '" style="width:' + pct.toFixed(2) + '%"></span></span>' +
+        '<span class="attrib-num">' + (pos ? "+" : "") + t.c.toFixed(2) + '</span>' +
+        '</div>';
+    }).join("");
+    if (sumEl) {
+      var intercept = window.ATTRIBUTION.intercept;
+      sumEl.innerHTML = "Base log-odds <code>" + intercept.toFixed(2) + "</code> + these eight <code>" +
+        signed(data.top.reduce(function (a, t) { return a + t.c; }, 0)) + "</code> + the remaining 59 <code>" +
+        signed(data.other) + "</code> = <code>" + signed(data.logit) + "</code>, which is a " +
+        (data.prob * 100).toFixed(1) + "% probability of failure.";
+    }
+  }
+  function signed(n) { return (n >= 0 ? "+" : "") + n.toFixed(2); }
+  function esc(v) {
+    return String(v).replace(/[&<>"']/g, function (ch) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch];
+    });
+  }
+
   var FAILURE_ICON = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" ' +
     'stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
     '<polygon points="6.3 2 13.7 2 18 6.3 18 13.7 13.7 18 6.3 18 2 13.7 2 6.3"/>' +
@@ -77,7 +115,7 @@
     if (rec) rec.textContent = r.serial + " / " + r.vehicle;
     if (at) at.textContent = r.at;
     if (prob) {
-      prob.textContent = r.prob.toFixed(2) + "%";
+      prob.textContent = r.prob.toFixed(1) + "%";
       prob.classList.toggle("is-failure", isFailure);
       prob.classList.toggle("is-ok", !isFailure);
     }
@@ -86,9 +124,10 @@
       bar.style.fill = isFailure ? "var(--c-failure)" : "var(--c-ok)";
     }
     if (meter) {
-      meter.setAttribute("aria-label", "Failure probability " + r.prob.toFixed(2) +
+      meter.setAttribute("aria-label", "Failure probability " + r.prob.toFixed(1) +
         " percent, " + (isFailure ? "above" : "below") + " the 50 percent decision threshold");
     }
+    renderAttribution(r.serial);
   }
 
   var runBtn = document.getElementById("run-classification-btn");

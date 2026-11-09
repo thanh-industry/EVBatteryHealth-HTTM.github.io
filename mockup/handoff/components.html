@@ -289,7 +289,7 @@
           <div style="margin-top:var(--space-6);">
             <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:var(--space-2);">
               <span class="hd-card-title" style="margin-bottom:0;">Probability of failure</span>
-              <span class="mono" style="font-size:24px; font-weight:700; color:var(--c-failure);">80.30%</span>
+              <span class="mono" style="font-size:24px; font-weight:700; color:var(--c-failure);">80.3%</span>
             </div>
             <div role="img" aria-label="Probability of failure: 80.3 percent, above the 50 percent decision threshold" style="position:relative; height:14px; background:var(--c-surface-sunken); border-radius:var(--radius-pill); overflow:hidden;">
               <div style="position:absolute; inset:0; width:80.3%; background:var(--c-failure); border-radius:var(--radius-pill);"></div>
@@ -335,6 +335,94 @@
         <dt>Probability bar</dt><dd>track var(--c-surface-sunken) 14px tall, fill var(--c-failure) or var(--c-ok), radius var(--radius-pill); a 2px tick at 50% marks the decision threshold in var(--c-text-secondary)</dd>
         <dt>Metadata</dt><dd>2-column dl, label var(--fs-xs) var(--c-text-muted), value var(--fs-sm) var(--fw-semibold) var(--c-text), identifiers in var(--font-mono)</dd>
         <dt>Required pairing</dt><dd>icon shape differs by state (hexagon-exclamation vs shield-check) so the signal survives greyscale/colour-blind rendering; the literal word "FAILURE"/"NO FAILURE" is always rendered, never color-only or icon-only</dd>
+      </dl>
+    </section>
+
+
+    <!-- ============================== FEATURE ATTRIBUTION ============================== -->
+    <section class="hd-section" id="attribution" aria-labelledby="attribution-heading">
+      <h2 id="attribution-heading" class="hd-section-heading">Feature attribution <span class="hd-req-tag">explainability</span></h2>
+      <p class="hd-section-sub">Answers "why this result" for a single prediction. The data's job here is
+        <strong>polarity</strong> &mdash; which way each input pushed this one classification &mdash; so the form is a
+        diverging bar chart around a neutral zero axis, never a single ranked ramp. The specimen below is the real
+        decomposition for <code class="hd-inline-code">BAT-10000942</code>.</p>
+
+      <div class="hd-card">
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-5);font-size:var(--fs-xs);color:var(--c-text-secondary);margin-bottom:var(--space-4);">
+          <span style="display:inline-flex;align-items:center;gap:var(--space-2);"><i style="width:10px;height:10px;border-radius:2px;background:var(--c-failure);"></i> Pushes toward Failure</span>
+          <span style="display:inline-flex;align-items:center;gap:var(--space-2);"><i style="width:10px;height:10px;border-radius:2px;background:var(--c-ok);"></i> Pushes toward No Failure</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr) 4.5rem;align-items:center;gap:var(--space-3);padding:var(--space-1) 0;">
+          <span style="font-size:var(--fs-sm);color:var(--c-text);min-width:0;">BMS Warning Count<span style="display:block;font-family:var(--font-mono);font-size:var(--fs-xs);color:var(--c-text-muted);">6</span></span>
+          <span style="position:relative;height:22px;min-width:0;"><span style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--c-border-strong);"></span><span style="position:absolute;left:50%;top:6px;height:10px;width:50.00%;background:var(--c-failure);border-radius:0 4px 4px 0;"></span></span>
+          <span style="font-family:var(--font-mono);font-size:var(--fs-xs);font-variant-numeric:tabular-nums;text-align:right;color:var(--c-text-secondary);">+6.48</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr) 4.5rem;align-items:center;gap:var(--space-3);padding:var(--space-1) 0;">
+          <span style="font-size:var(--fs-sm);color:var(--c-text);min-width:0;">Abnormal Voltage Events (count)<span style="display:block;font-family:var(--font-mono);font-size:var(--fs-xs);color:var(--c-text-muted);">2</span></span>
+          <span style="position:relative;height:22px;min-width:0;"><span style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--c-border-strong);"></span><span style="position:absolute;left:50%;top:6px;height:10px;width:14.11%;background:var(--c-failure);border-radius:0 4px 4px 0;"></span></span>
+          <span style="font-family:var(--font-mono);font-size:var(--fs-xs);font-variant-numeric:tabular-nums;text-align:right;color:var(--c-text-secondary);">+1.83</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr) 4.5rem;align-items:center;gap:var(--space-3);padding:var(--space-1) 0;">
+          <span style="font-size:var(--fs-sm);color:var(--c-text);min-width:0;">Previous Fault Count<span style="display:block;font-family:var(--font-mono);font-size:var(--fs-xs);color:var(--c-text-muted);">0</span></span>
+          <span style="position:relative;height:22px;min-width:0;"><span style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--c-border-strong);"></span><span style="position:absolute;right:50%;top:6px;height:10px;width:12.44%;background:var(--c-ok);border-radius:4px 0 0 4px;"></span></span>
+          <span style="font-family:var(--font-mono);font-size:var(--fs-xs);font-variant-numeric:tabular-nums;text-align:right;color:var(--c-text-secondary);">-1.61</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr) 4.5rem;align-items:center;gap:var(--space-3);padding:var(--space-1) 0;">
+          <span style="font-size:var(--fs-sm);color:var(--c-text);min-width:0;">Capacity Loss (%)<span style="display:block;font-family:var(--font-mono);font-size:var(--fs-xs);color:var(--c-text-muted);">30.13</span></span>
+          <span style="position:relative;height:22px;min-width:0;"><span style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--c-border-strong);"></span><span style="position:absolute;left:50%;top:6px;height:10px;width:9.83%;background:var(--c-failure);border-radius:0 4px 4px 0;"></span></span>
+          <span style="font-family:var(--font-mono);font-size:var(--fs-xs);font-variant-numeric:tabular-nums;text-align:right;color:var(--c-text-secondary);">+1.27</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr) 4.5rem;align-items:center;gap:var(--space-3);padding:var(--space-1) 0;">
+          <span style="font-size:var(--fs-sm);color:var(--c-text);min-width:0;">Battery Stress Index<span style="display:block;font-family:var(--font-mono);font-size:var(--fs-xs);color:var(--c-text-muted);">37.07</span></span>
+          <span style="position:relative;height:22px;min-width:0;"><span style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--c-border-strong);"></span><span style="position:absolute;right:50%;top:6px;height:10px;width:5.38%;background:var(--c-ok);border-radius:4px 0 0 4px;"></span></span>
+          <span style="font-family:var(--font-mono);font-size:var(--fs-xs);font-variant-numeric:tabular-nums;text-align:right;color:var(--c-text-secondary);">-0.70</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr) 4.5rem;align-items:center;gap:var(--space-3);padding:var(--space-1) 0;">
+          <span style="font-size:var(--fs-sm);color:var(--c-text);min-width:0;">State of Health (%)<span style="display:block;font-family:var(--font-mono);font-size:var(--fs-xs);color:var(--c-text-muted);">69.14</span></span>
+          <span style="position:relative;height:22px;min-width:0;"><span style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--c-border-strong);"></span><span style="position:absolute;left:50%;top:6px;height:10px;width:5.24%;background:var(--c-failure);border-radius:0 4px 4px 0;"></span></span>
+          <span style="font-family:var(--font-mono);font-size:var(--fs-xs);font-variant-numeric:tabular-nums;text-align:right;color:var(--c-text-secondary);">+0.68</span>
+        </div>
+      </div>
+
+      <h3 class="hd-card-title" style="margin-top:var(--space-6);">How to compute it</h3>
+      <p class="hd-section-sub">No SHAP or LIME dependency is required or wanted. The deployed estimator is
+        <code class="hd-inline-code">LogisticRegression</code>, so the decomposition is exact:</p>
+      <pre class="hd-code"><code>z   = pipeline.named_steps["preprocessor"].transform(X_one_row)
+w   = pipeline.named_steps["estimator"].coef_[0]
+b   = pipeline.named_steps["estimator"].intercept_[0]
+
+contribution_j = w[j] * z[0][j]          # per EXPANDED column
+log_odds       = b + contribution.sum()  # reconstructs predict_proba exactly
+probability    = 1 / (1 + exp(-log_odds))</code></pre>
+      <dl class="hd-spec-list">
+        <dt>Aggregation</dt><dd>one-hot columns are summed back onto the originating categorical feature, so a row in the chart is one model input &mdash; the thing the specialist actually typed &mdash; not a dummy variable</dd>
+        <dt>Rows shown</dt><dd>top 8 by absolute contribution; the summed remainder is reported in the footer so intercept + shown + remainder == log-odds visibly closes</dd>
+        <dt>Bar scale</dt><dd>each bar is scaled against the largest absolute contribution in that prediction, so the widest bar fills exactly half the track; scales are per-prediction, never global</dd>
+        <dt>Geometry</dt><dd>track height 22px; zero axis 1px var(--c-border-strong) at 50%; bar height 10px, top offset 6px, radius 4px on the outer end only</dd>
+        <dt>Grid</dt><dd>minmax(0, 11rem) / minmax(0, 1fr) / 4.5rem, gap var(--space-3); the two minmax(0, ...) are load-bearing &mdash; without them the label column's intrinsic width pushes the page sideways</dd>
+        <dt>Colour</dt><dd>var(--c-failure) for positive, var(--c-ok) for negative; never colour-alone &mdash; the signed value is printed and a legend is always present</dd>
+        <dt>Text</dt><dd>labels and values wear text tokens, never a series colour</dd>
+        <dt>Below 640px</dt><dd>collapses to 2 columns with the track spanning the full row, rather than crushing the plot area to a few pixels</dd>
+        <dt>Verification</dt><dd>reconstructed probability must equal the stored probability to within 1e-6; this is a usable unit test</dd>
+      </dl>
+    </section>
+
+    <!-- ============================== TREND SMALL MULTIPLES ============================== -->
+    <section class="hd-section" id="trend" aria-labelledby="trend-heading">
+      <h2 id="trend-heading" class="hd-section-heading">Measurement trend (small multiples)</h2>
+      <p class="hd-section-sub">Condition over successive inspections. Capacity Loss, State of Health and
+        temperature carry <strong>different units and scales</strong>, so they are three charts with one series each
+        &mdash; never one chart with two y-axes, which would make unrelated lines look comparable. A single-series
+        panel needs no legend: its title names the series.</p>
+      <dl class="hd-spec-list">
+        <dt>Data source</dt><dd><code class="hd-inline-code">classifications.input_snapshot_json</code> for the battery, ordered by <code class="hd-inline-code">created_at</code>; one point per stored classification</dd>
+        <dt>Layout</dt><dd>grid repeat(auto-fit, minmax(240px, 1fr)), gap var(--space-4); reflows to one column on a phone without a media query</dd>
+        <dt>Panel</dt><dd>1px var(--c-border), radius var(--radius-lg), padding var(--space-4), min-width 0</dd>
+        <dt>Plot</dt><dd>SVG viewBox 0 0 260 86, width 100% / height auto so it scales without overflowing; 2px line, round caps and joins</dd>
+        <dt>Markers</dt><dd>r=2.5 hollow for prior readings, r=4 filled for the most recent; every point carries an SVG &lt;title&gt; giving date and value on hover</dd>
+        <dt>Y domain</dt><dd>fixed sensible range per metric, not auto-fit to the data &mdash; an auto domain exaggerates trivial movement into a dramatic slope</dd>
+        <dt>Colour</dt><dd>var(--c-series-1) for the line. Deliberately NOT a status colour: the chart reports a measurement, and colouring it red/green would pass judgement the model has not made</dd>
+        <dt>Empty state</dt><dd>with fewer than 2 stored classifications there is no trend to draw; the panel shows its "awaiting repeat inspections" state instead of a one-point chart</dd>
       </dl>
     </section>
 

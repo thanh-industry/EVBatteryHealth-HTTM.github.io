@@ -90,6 +90,42 @@
       </div>
     </section>
 
+    <section class="hd-section" id="beyond" aria-labelledby="beyond-heading">
+      <h2 id="beyond-heading" class="hd-section-heading">Beyond the specification <span class="hd-req-tag">2 additions</span></h2>
+      <p class="hd-section-sub">Two components in this design are not required by any FR or UC. They were added
+        in response to design review and are recorded here so the distinction between "required" and "added"
+        stays explicit.</p>
+      <div class="hd-table-wrap">
+        <table class="hd-table">
+          <thead><tr><th>Addition</th><th class="wrap" style="min-width:300px;">Why</th><th>Where</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="wrap">Feature attribution</td>
+              <td class="wrap">FR-14 requires the result to be displayed, not explained. A specialist deciding
+                whether to act on a Failure prediction needs to see which inputs drove it; a bare probability is
+                not reviewable. Because the deployed estimator is linear, the explanation is exact rather than
+                approximate, so it adds no modelling risk.</td>
+              <td><a href="components.html#attribution">Components &rarr; Feature attribution</a></td>
+              <td><span class="hd-badge hd-badge-pass">designed &amp; specified</span></td>
+            </tr>
+            <tr>
+              <td class="wrap">Measurement trend</td>
+              <td class="wrap">FR-16 requires previous results to be viewable, which the history table satisfies.
+                A table shows what each inspection said; it does not show the direction a battery is moving.
+                The schema already stores an input snapshot per classification, so the data needed is captured
+                today and no schema change is required.</td>
+              <td><a href="components.html#trend">Components &rarr; Measurement trend</a></td>
+              <td><span class="hd-badge hd-badge-warn">designed; needs repeat data</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="hd-hint" style="margin-top:var(--space-3);">The trend panel is marked amber deliberately: the
+        source dataset is cross-sectional, one row per battery, so no repeat measurements exist yet. The component
+        and its data path are specified; a real curve appears once the same battery is classified more than once.
+        Until then it shows its <a href="states.html#no-trend">awaiting repeat inspections</a> state.</p>
+    </section>
+
     <section class="hd-section" aria-labelledby="scope-heading">
       <h2 id="scope-heading" class="hd-section-heading">Deliberately out of scope</h2>
       <div class="hd-card">

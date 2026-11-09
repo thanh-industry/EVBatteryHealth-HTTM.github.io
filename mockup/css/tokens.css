@@ -116,10 +116,17 @@
      Fixed order, assigned by series identity and never recycled by rank, so
      an algorithm keeps its colour across every chart on every page.         */
   --c-series-1: #1D4ED8;   /* Logistic Regression */
-  --c-series-2: #0E7490;   /* SVM                 */
+  --c-series-2: #0891B2;   /* SVM - mark only, 3.68:1; see note below  */
   --c-series-3: #BE185D;   /* Random Forest       */
   --c-series-muted: #94A3B8;
   --c-grid: #E9EDF3;
+  /* Series colours are for MARKS ONLY, never for text: a label or value wears a
+     text token and the mark beside it carries the identity. --c-series-2 is
+     deliberately 3.68:1 on white (above the 3:1 non-text floor, below the 4.5:1
+     text floor): the previous #0E7490 measured chroma 0.094, under the 0.10
+     floor at which a hue starts reading as grey, and separated poorly from
+     --c-series-3 under tritanopia (dE 4.3 vs 12.0 now). Verified with the
+     palette validator, not by eye. */
 
   /* ---------- Radius -----------------------------------------------------
      Capped at 10px. Larger radii read as consumer software and undercut the

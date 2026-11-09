@@ -239,6 +239,75 @@
         </div>
       </section>
 
+      <section aria-labelledby="trend-heading" id="record-trend" style="margin-top:var(--space-8);">
+        <h2 id="trend-heading" class="section-heading">
+          Measurement trend
+          <span class="req-tag">UC-06</span>
+        </h2>
+        <div class="card">
+          <p class="hint" style="margin-bottom:var(--space-4); max-width:78ch;">
+            How this battery's condition has moved across recorded inspections. Each metric is
+            its own chart because they carry different units and scales &mdash; overlaying them on
+            shared axes would make the lines look comparable when they are not.
+          </p>
+          <div class="alert alert-info" style="margin-bottom:var(--space-5);">
+            <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8"/><line x1="10" y1="9" x2="10" y2="14"/><line x1="10" y1="6.2" x2="10" y2="6.3"/></svg>
+            <div>
+              <strong>The earlier points here are illustrative.</strong>
+              The rightmost point of every chart &mdash; the filled one &mdash; is this battery's real stored reading. The source
+              dataset is cross-sectional &mdash; one row per battery &mdash; so no repeat measurements
+              exist yet. In production each chart is built from
+              <code class="inline-code">classifications.input_snapshot_json</code> ordered by
+              <code class="inline-code">created_at</code>, which means a real curve appears as soon as a
+              specialist classifies the same battery more than once. Until then the panel shows its
+              &ldquo;awaiting repeat inspections&rdquo; state.
+            </div>
+          </div>
+          <div class="trend-grid">
+          <div class="trend-card">
+            <div class="trend-head">
+              <span class="trend-title">State of Health</span>
+              <span class="trend-now">82.12<span style="font-size:var(--fs-xs); color:var(--c-text-muted);">%</span></span>
+            </div>
+            <svg class="trend-svg" viewBox="0 0 260 86" role="img"
+                 aria-label="State of Health across six inspections, from 88.4 to 82.12 %">
+              <line x1="6" y1="76" x2="254" y2="76" stroke="var(--c-grid)" stroke-width="1"/>
+              <path d="M 6.0 20.6 L 55.6 29.1 L 105.2 37.1 L 154.8 45.6 L 204.4 54.2 L 254.0 62.0" fill="none" stroke="var(--c-series-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="6.0" cy="20.6" r="2.5" fill="var(--c-surface)" stroke="var(--c-series-1)" stroke-width="2"><title>12 Mar: 88.4% (illustrative)</title></circle><circle cx="55.6" cy="29.1" r="2.5" fill="var(--c-surface)" stroke="var(--c-series-1)" stroke-width="2"><title>04 May: 87.1% (illustrative)</title></circle><circle cx="105.2" cy="37.1" r="2.5" fill="var(--c-surface)" stroke="var(--c-series-1)" stroke-width="2"><title>19 Jul: 85.9% (illustrative)</title></circle><circle cx="154.8" cy="45.6" r="2.5" fill="var(--c-surface)" stroke="var(--c-series-1)" stroke-width="2"><title>28 Aug: 84.6% (illustrative)</title></circle><circle cx="204.4" cy="54.2" r="2.5" fill="var(--c-surface)" stroke="var(--c-series-1)" stroke-width="2"><title>15 Oct: 83.3% (illustrative)</title></circle><circle cx="254.0" cy="62.0" r="4" fill="var(--c-series-1)" stroke="var(--c-surface)" stroke-width="2"><title>01 Nov: 82.12% (recorded reading)</title></circle>
+            </svg>
+            <div class="trend-foot"><span>12 Mar</span><span>01 Nov (now)</span></div>
+          </div>
+          <div class="trend-card">
+            <div class="trend-head">
+              <span class="trend-title">Capacity Loss</span>
+              <span class="trend-now">16.83<span style="font-size:var(--fs-xs); color:var(--c-text-muted);">%</span></span>
+            </div>
+            <svg class="trend-svg" viewBox="0 0 260 86" role="img"
+                 aria-label="Capacity Loss across six inspections, from 11.2 to 16.83 %">
+              <line x1="6" y1="76" x2="254" y2="76" stroke="var(--c-grid)" stroke-width="1"/>
+              <path d="M 6.0 66.1 L 55.6 55.4 L 105.2 45.5 L 154.8 35.6 L 204.4 27.3 L 254.0 19.7" fill="none" stroke="var(--c-series-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="6.0" cy="66.1" r="2.5" fill="var(--c-surface)" stroke="var(--c-series-1)" stroke-width="2"><title>12 Mar: 11.2% (illustrative)</title></circle><circle cx="55.6" cy="55.4" r="2.5" fill="var(--c-surface)" stroke="var(--c-series-1)" stroke-width="2"><title>04 May: 12.5% (illustrative)</title></circle><circle cx="105.2" cy="45.5" r="2.5" fill="var(--c-surface)" stroke="var(--c-series-1)" stroke-width="2"><title>19 Jul: 13.7% (illustrative)</title></circle><circle cx="154.8" cy="35.6" r="2.5" fill="var(--c-surface)" stroke="var(--c-series-1)" stroke-width="2"><title>28 Aug: 14.9% (illustrative)</title></circle><circle cx="204.4" cy="27.3" r="2.5" fill="var(--c-surface)" stroke="var(--c-series-1)" stroke-width="2"><title>15 Oct: 15.9% (illustrative)</title></circle><circle cx="254.0" cy="19.7" r="4" fill="var(--c-series-1)" stroke="var(--c-surface)" stroke-width="2"><title>01 Nov: 16.83% (recorded reading)</title></circle>
+            </svg>
+            <div class="trend-foot"><span>12 Mar</span><span>01 Nov (now)</span></div>
+          </div>
+          <div class="trend-card">
+            <div class="trend-head">
+              <span class="trend-title">Cell Temp (avg)</span>
+              <span class="trend-now">35.75<span style="font-size:var(--fs-xs); color:var(--c-text-muted);">°C</span></span>
+            </div>
+            <svg class="trend-svg" viewBox="0 0 260 86" role="img"
+                 aria-label="Cell Temp (avg) across six inspections, from 33.1 to 35.75 °C">
+              <line x1="6" y1="76" x2="254" y2="76" stroke="var(--c-grid)" stroke-width="1"/>
+              <path d="M 6.0 61.5 L 55.6 52.2 L 105.2 47.0 L 154.8 36.4 L 204.4 31.1 L 254.0 26.5" fill="none" stroke="var(--c-series-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="6.0" cy="61.5" r="2.5" fill="var(--c-surface)" stroke="var(--c-series-1)" stroke-width="2"><title>12 Mar: 33.1°C (illustrative)</title></circle><circle cx="55.6" cy="52.2" r="2.5" fill="var(--c-surface)" stroke="var(--c-series-1)" stroke-width="2"><title>04 May: 33.8°C (illustrative)</title></circle><circle cx="105.2" cy="47.0" r="2.5" fill="var(--c-surface)" stroke="var(--c-series-1)" stroke-width="2"><title>19 Jul: 34.2°C (illustrative)</title></circle><circle cx="154.8" cy="36.4" r="2.5" fill="var(--c-surface)" stroke="var(--c-series-1)" stroke-width="2"><title>28 Aug: 35.0°C (illustrative)</title></circle><circle cx="204.4" cy="31.1" r="2.5" fill="var(--c-surface)" stroke="var(--c-series-1)" stroke-width="2"><title>15 Oct: 35.4°C (illustrative)</title></circle><circle cx="254.0" cy="26.5" r="4" fill="var(--c-series-1)" stroke="var(--c-surface)" stroke-width="2"><title>01 Nov: 35.75°C (recorded reading)</title></circle>
+            </svg>
+            <div class="trend-foot"><span>12 Mar</span><span>01 Nov (now)</span></div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+
     </main>
   </div>
 </div>

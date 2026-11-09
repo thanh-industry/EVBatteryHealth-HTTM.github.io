@@ -93,3 +93,44 @@ failure/ok pair).
   minimum (24px) and keep the records/history tables scannable, consistent
   with the token file's own "dense operational tool" rationale for the
   15px body size.
+
+## Two components added after design review
+
+Neither is required by an FR or UC. Both are recorded as additions on
+`handoff/traceability.html` so the line between "required" and "added" stays
+visible.
+
+### Feature attribution ("Why this result")
+
+On the classification result, a diverging bar chart shows which inputs pushed
+this specific prediction toward Failure and which pushed against it.
+
+The numbers are real, not illustrative. The deployed estimator is Logistic
+Regression, so a prediction decomposes exactly:
+
+    log-odds = intercept + SUM( coefficient_j * scaled_value_j )
+
+Every value in `js/attribution-data.js` was computed from
+`models/model_bundle.joblib` against the input snapshot stored in the database
+for that battery, and each one reconstructs the stored probability to within
+1e-6. No SHAP or LIME dependency is involved: for a linear model this
+decomposition *is* the explanation. One-hot columns are summed back onto the
+original categorical feature so each row is one model input.
+
+### Measurement trend
+
+Three small-multiple charts on the battery record: State of Health, Capacity
+Loss, and average cell temperature across inspections.
+
+They are three charts rather than one because those metrics carry different
+units and scales. Putting them on shared axes - or on two y-axes - would make
+unrelated lines look comparable.
+
+**The earlier points are illustrative, and the UI says so.** The rightmost
+point of each chart is the battery's real stored reading. The source dataset is
+cross-sectional, one row per battery, so no repeat measurements exist yet. In
+production each series is built from `classifications.input_snapshot_json`
+ordered by `created_at`, which the schema already stores - so a real curve
+appears as soon as a specialist classifies the same battery twice. Until then
+the panel shows its "awaiting repeat inspections" state, specified in
+`handoff/states.html`.

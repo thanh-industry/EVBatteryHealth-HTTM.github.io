@@ -197,6 +197,13 @@ Two parts:
   states and redlined dimensions, layout and responsive patterns, the states
   catalogue, the ML workflow, and an FR-01..16 / UC-01..09 traceability table.
 
+Two components go beyond the specification, added after design review and
+recorded as additions in the traceability table: **feature attribution**, which
+decomposes a single prediction into the exact per-input contributions that
+produced it (possible without any approximation because the deployed estimator
+is linear), and a **measurement trend** panel showing State of Health, Capacity
+Loss and temperature across inspections as three separate charts.
+
 See `mockup/README.md` and `mockup/handoff/README.md`.
 
 ---
