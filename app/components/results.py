@@ -12,8 +12,46 @@ from typing import Any
 
 import streamlit as st
 
+from app.charts import attribution_chart
+from app.explain import compute_attribution, unavailable_reason
 from app.format_utils import format_algorithm_name, format_timestamp
 from app.model_service import PredictionResult
+
+
+def render_attribution(
+    bundle: dict[str, Any], values: dict[str, Any], result: PredictionResult
+) -> None:
+    """Explain one prediction: which inputs pushed it toward Failure and
+    which pushed against it (see app/explain.py for why this is exact)."""
+    st.markdown("#### Why this result")
+
+    reason = unavailable_reason(bundle)
+    if reason is not None:
+        st.info(reason, icon="ℹ️")
+        return
+
+    attribution = compute_attribution(bundle, values)
+    if attribution is None:  # pragma: no cover - guarded by reason above
+        return
+
+    st.caption(
+        "The deployed model is linear, so this prediction decomposes exactly: "
+        "every input contributes coefficient x scaled value to the log-odds of "
+        "Failure. The largest contributions are shown; the bar is the size of "
+        "the push and its side is the direction."
+    )
+    st.altair_chart(attribution_chart(attribution), theme=None)
+
+    probability_text = (
+        f"{attribution.probability * 100:.1f}% probability of failure"
+    )
+    st.caption(
+        f"Base log-odds {attribution.intercept:+.2f} "
+        f"+ shown {attribution.top_total:+.2f} "
+        f"+ remaining {attribution.other_count} features "
+        f"{attribution.other_total:+.2f} = {attribution.logit:+.2f}, "
+        f"which is a {probability_text}."
+    )
 
 
 def render_classification_result(

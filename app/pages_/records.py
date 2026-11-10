@@ -9,6 +9,7 @@ import streamlit as st
 from app import db, model_service
 from app.components.forms import render_feature_form
 from app.components.status import render_no_model_state
+from app.components.trends import render_measurement_trend
 from app.format_utils import format_timestamp
 
 _SELECTED_KEY = "records_selected_id"
@@ -146,6 +147,8 @@ def _render_selected_record(bundle_status) -> None:
                 f"{icon} {item['prediction_label']} - "
                 f"{format_timestamp(item['created_at'])}"
             )
+
+    render_measurement_trend(history)
 
 
 def render(bundle_status) -> None:

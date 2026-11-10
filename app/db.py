@@ -237,7 +237,11 @@ def create_classification(
     model_trained_at: str,
     input_snapshot: dict[str, Any],
     db_path: Optional[Path | str] = None,
+    created_at: Optional[str] = None,
 ) -> int:
+    """Insert a classification. `created_at` defaults to now; it is accepted
+    so seed_demo.py can backdate derived prior inspections, which is the only
+    legitimate reason to set it."""
     with _connect(db_path) as conn:
         cur = conn.execute(
             "INSERT INTO classifications "
@@ -252,7 +256,7 @@ def create_classification(
                 model_algorithm,
                 model_trained_at,
                 json.dumps(input_snapshot),
-                _now(),
+                created_at or _now(),
             ),
         )
         return int(cur.lastrowid)

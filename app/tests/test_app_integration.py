@@ -104,3 +104,77 @@ def test_classification_result_icon_is_not_duplicated(tmp_path, monkeypatch, sma
     model_lines = [c.value for c in at.caption if c.value.startswith("Model: ")]
     assert model_lines, "expected a 'Model: ...' line on the result panel"
     assert "_" not in model_lines[0], f"algorithm name not formatted: {model_lines[0]!r}"
+
+
+def test_classification_result_includes_the_explanation(tmp_path, monkeypatch, small_bundle):
+    """The explanation must actually reach the screen, not merely compute.
+    Guards the wiring between classify.py and render_attribution."""
+    bundle_path = tmp_path / "model_bundle.joblib"
+    joblib.dump(small_bundle, bundle_path)
+    monkeypatch.setattr(config, "MODEL_BUNDLE_PATH", bundle_path)
+
+    import app.model_service as model_service
+
+    model_service.clear_cache()
+    db.init_db()
+
+    feature_names = [f["name"] for f in small_bundle["feature_spec"]["features"]]
+    defaults = model_service.build_default_values(small_bundle)
+    db.create_battery_record(
+        "BAT-EXPLAIN", "EV-EXPLAIN", {k: defaults[k] for k in feature_names}
+    )
+
+    at = streamlit_testing.AppTest.from_file(APP_MAIN, default_timeout=60)
+    at.run()
+    at.sidebar.radio[0].set_value("Run Classification").run()
+    [b for b in at.button if b.label == "Select"][0].click().run()
+    [b for b in at.button if "classify_form" in (b.key or "")][0].click().run()
+    assert not at.exception, at.exception
+
+    headings = " ".join(m.value for m in at.markdown)
+    assert "Why this result" in headings, "the explanation section is missing"
+
+    captions = " ".join(c.value for c in at.caption)
+    assert "Base log-odds" in captions, (
+        "the log-odds reconciliation line is missing from the result screen"
+    )
+
+
+def test_record_detail_shows_trend_state_for_a_single_reading(
+    tmp_path, monkeypatch, small_bundle
+):
+    """With one classification there is no trend; the record screen must say
+    so rather than drawing a one-point chart."""
+    bundle_path = tmp_path / "model_bundle.joblib"
+    joblib.dump(small_bundle, bundle_path)
+    monkeypatch.setattr(config, "MODEL_BUNDLE_PATH", bundle_path)
+
+    import app.model_service as model_service
+
+    model_service.clear_cache()
+    db.init_db()
+
+    feature_names = [f["name"] for f in small_bundle["feature_spec"]["features"]]
+    defaults = model_service.build_default_values(small_bundle)
+    record_id = db.create_battery_record(
+        "BAT-TREND", "EV-TREND", {k: defaults[k] for k in feature_names}
+    )
+    db.create_classification(
+        battery_record_id=record_id, prediction=0, prediction_label="No Failure",
+        probability=0.01, model_algorithm="logistic_regression",
+        model_trained_at="2026-11-01T00:00:00+00:00",
+        input_snapshot={k: defaults[k] for k in feature_names},
+    )
+
+    at = streamlit_testing.AppTest.from_file(APP_MAIN, default_timeout=60)
+    at.run()
+    at.sidebar.radio[0].set_value("Battery Records").run()
+    view_buttons = [b for b in at.button if b.label in ("View / Edit", "View", "Open")]
+    assert view_buttons, f"no record-open button found; labels={[b.label for b in at.button]}"
+    view_buttons[0].click().run()
+    assert not at.exception, at.exception
+
+    markdown = " ".join(m.value for m in at.markdown)
+    assert "Measurement trend" in markdown
+    info = " ".join(i.value for i in at.info)
+    assert "Not enough readings yet" in info

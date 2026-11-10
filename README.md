@@ -96,6 +96,10 @@ real rows classifies sensibly. Both exit non-zero on failure.
 
 ```bash
 python app/seed_demo.py          # optional: 25 demo records from the real dataset
+# seed_demo also creates earlier inspections for a few records so the
+# measurement-trend panel has a series to draw. The most recent reading of
+# every record is the genuine CSV row; earlier ones are derived from it and
+# then classified by the real model. Pass --history 0 to skip them.
 python -m streamlit run app/main.py
 ```
 
@@ -165,6 +169,54 @@ candidates. The balanced variant catches far more failures (93.5% recall) but at
 human-reviewed decision-support tool, the deployed configuration favours
 trustworthy alerts; the balanced variant remains available in the notebook if
 the operator later prefers recall over precision.
+
+---
+
+## Explaining and tracking a prediction
+
+Two capabilities go beyond the functional requirements. They were added after
+design review and are implemented in both the application and the mockup.
+
+### Why this result (feature attribution)
+
+The classification screen shows which inputs drove that specific prediction:
+a diverging bar chart of per-feature contributions, largest first, with the
+direction and the signed value for each.
+
+The decomposition is exact, not approximate. The deployed estimator is a
+linear model, so
+
+    log-odds = intercept + SUM( coefficient_j * transformed_value_j )
+    P(failure) = 1 / (1 + exp(-log-odds))
+
+is an identity rather than an estimate, and no SHAP or LIME dependency is
+needed. `app/tests/test_explain.py` asserts that reconstructing the
+probability from the contributions reproduces `pipeline.predict_proba` to
+within 1e-9.
+
+One-hot columns are summed back onto the originating categorical feature, so
+each row names a model input the specialist actually entered rather than a
+dummy variable.
+
+If a non-linear model is ever deployed (Random Forest, RBF-kernel SVM), the
+screen says attribution is unavailable and why. It does not fall back to
+`feature_importances_`, which is a global property of the model and not an
+explanation of one prediction.
+
+### Measurement trend
+
+A battery record charts State of Health, Capacity Loss and average cell
+temperature across its recorded inspections, built from the input snapshot
+stored with every classification (`classifications.input_snapshot_json`
+ordered by `created_at`).
+
+Those three metrics carry different units and scales, so they are three
+charts with one series each - never one chart with two y-axes, which would
+make unrelated lines look comparable. The y-axis of each is widened to a
+minimum span so a negligible change is not exaggerated into a steep slope.
+
+With fewer than two stored classifications there is no trend to draw, and the
+panel says so instead of charting a single point.
 
 ---
 

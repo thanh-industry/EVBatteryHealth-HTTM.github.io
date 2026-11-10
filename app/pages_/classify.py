@@ -7,21 +7,26 @@ import streamlit as st
 
 from app import db, model_service
 from app.components.forms import render_feature_form
-from app.components.results import render_classification_result
+from app.components.results import render_attribution, render_classification_result
 from app.components.status import render_no_model_state
 
 _SELECTED_KEY = "classify_selected_id"
 _LAST_RESULT_KEY = "classify_last_result"
+# The inputs that produced _LAST_RESULT_KEY. Kept so the explanation can be
+# re-rendered on a rerun without re-running inference.
+_LAST_VALUES_KEY = "classify_last_values"
 
 
 def _select(record_id: int) -> None:
     st.session_state[_SELECTED_KEY] = record_id
     st.session_state[_LAST_RESULT_KEY] = None
+    st.session_state[_LAST_VALUES_KEY] = None
 
 
 def _clear() -> None:
     st.session_state[_SELECTED_KEY] = None
     st.session_state[_LAST_RESULT_KEY] = None
+    st.session_state[_LAST_VALUES_KEY] = None
 
 
 def _render_picker() -> None:
@@ -78,6 +83,9 @@ def _render_classification(bundle_status) -> None:
         last = st.session_state.get(_LAST_RESULT_KEY)
         if last is not None:
             render_classification_result(last, record)
+            last_values = st.session_state.get(_LAST_VALUES_KEY)
+            if last_values:
+                render_attribution(bundle, last_values, last)
         return
 
     ok, errors = model_service.validate_input(values, bundle["feature_spec"])
@@ -86,6 +94,7 @@ def _render_classification(bundle_status) -> None:
         for e in errors:
             st.write(f"- {e}")
         st.session_state[_LAST_RESULT_KEY] = None
+        st.session_state[_LAST_VALUES_KEY] = None
         return
 
     result = model_service.predict(bundle, values)
@@ -101,8 +110,10 @@ def _render_classification(bundle_status) -> None:
     db.update_battery_record(record_id, parameters=values)
 
     st.session_state[_LAST_RESULT_KEY] = result
+    st.session_state[_LAST_VALUES_KEY] = values
     record = db.get_battery_record(record_id)
     render_classification_result(result, record)
+    render_attribution(bundle, values, result)
     st.info(
         "Result saved. Go to Maintenance Assessment to record an assessment "
         "and recommendation for this classification."
@@ -124,6 +135,8 @@ def render(bundle_status) -> None:
         st.session_state[_SELECTED_KEY] = None
     if _LAST_RESULT_KEY not in st.session_state:
         st.session_state[_LAST_RESULT_KEY] = None
+    if _LAST_VALUES_KEY not in st.session_state:
+        st.session_state[_LAST_VALUES_KEY] = None
 
     if st.session_state[_SELECTED_KEY] is None:
         _render_picker()
