@@ -115,3 +115,12 @@ resolved; they are recorded here because the resolution is the useful part.
 
 Every number in this handoff traces to `models/model_bundle.joblib` metadata
 or to the live application, never to an estimate.
+
+## Mockup rendering vs the shipped application
+
+Feature attribution and the measurement trend are drawn here by hand in CSS and
+SVG, and in the application with Altair (`app/charts.py`). Each of those two
+component specs now ends with a note saying which of its rows are binding
+behaviour and which describe this mockup's own way of drawing the chart, so an
+engineer implementing either one knows what must be reproduced and what is free
+choice.

@@ -1,7 +1,7 @@
 # EV Battery Failure Classification - UI/UX Mockup
 
 Static HTML + CSS mockup of the EV Maintenance Specialist web application,
-built to mirror the running production system (`frontend/` / Streamlit app)
+built to mirror the running production system (the Streamlit app in `app/`)
 and the project specification (`2 - Group5_ProjectSpec_v2.pdf`). It is a
 design deliverable only: no build step, no framework, no backend, no network
 calls. Every number on these pages is a real figure from the deployed model
@@ -95,6 +95,13 @@ failure/ok pair).
   15px body size.
 
 ## Two components added after design review
+
+Both are **now implemented in the application**, not only drawn here:
+`app/explain.py` + `app/charts.py` for the attribution, `app/trend.py` +
+`app/components/trends.py` for the trend. The application renders both with
+Altair rather than the hand-built CSS/SVG used in this mockup; the binding
+behaviour is identical and the difference is recorded on
+`handoff/components.html`.
 
 Neither is required by an FR or UC. Both are recorded as additions on
 `handoff/traceability.html` so the line between "required" and "added" stays

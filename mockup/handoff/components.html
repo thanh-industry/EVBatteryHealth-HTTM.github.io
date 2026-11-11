@@ -405,6 +405,26 @@ probability    = 1 / (1 + exp(-log_odds))</code></pre>
         <dt>Below 640px</dt><dd>collapses to 2 columns with the track spanning the full row, rather than crushing the plot area to a few pixels</dd>
         <dt>Verification</dt><dd>reconstructed probability must equal the stored probability to within 1e-6; this is a usable unit test</dd>
       </dl>
+
+      <div class="hd-callout">
+        <strong>What is normative here.</strong> The behaviour above is binding: the exact
+        decomposition, the one-hot aggregation, the top-8 selection with the remainder reported,
+        the per-prediction bar scale, the <code class="hd-inline-code">--c-failure</code> /
+        <code class="hd-inline-code">--c-ok</code> pair, and the rule that the signed value is
+        always printed so colour is never the only signal. The <em>Geometry</em>, <em>Grid</em> and
+        <em>Below 640px</em> rows describe how this mockup draws the chart by hand in CSS, and are
+        there so the layout can be reproduced exactly if you build it that way.
+        <br><br>
+        The shipped application renders this chart with <strong>Altair (Vega-Lite)</strong> instead
+        &mdash; see <code class="hd-inline-code">app/charts.py</code>. It keeps every normative
+        property and lets the library own the geometry, which also brings hover tooltips and axis
+        ticks for free. Two implementation notes that cost real debugging time: the plot height must
+        be set in <em>pixels</em> (Vega-Lite ignores step-based sizing on a layered view), and the
+        chart must declare <code class="hd-inline-code">width="container"</code> rather than relying
+        on Streamlit's <code class="hd-inline-code">use_container_width</code>, which applies Vega
+        autosize <code class="hd-inline-code">fit</code>, rescales the whole view and collapses the
+        rows until Vega silently drops half the axis labels.
+      </div>
     </section>
 
     <!-- ============================== TREND SMALL MULTIPLES ============================== -->
@@ -419,11 +439,27 @@ probability    = 1 / (1 + exp(-log_odds))</code></pre>
         <dt>Layout</dt><dd>grid repeat(auto-fit, minmax(240px, 1fr)), gap var(--space-4); reflows to one column on a phone without a media query</dd>
         <dt>Panel</dt><dd>1px var(--c-border), radius var(--radius-lg), padding var(--space-4), min-width 0</dd>
         <dt>Plot</dt><dd>SVG viewBox 0 0 260 86, width 100% / height auto so it scales without overflowing; 2px line, round caps and joins</dd>
-        <dt>Markers</dt><dd>r=2.5 hollow for prior readings, r=4 filled for the most recent; every point carries an SVG &lt;title&gt; giving date and value on hover</dd>
+        <dt>Markers</dt><dd>every reading is a filled point carrying date and value on hover. <strong>In this mockup only</strong>, earlier points are drawn hollow and the most recent filled, because the mockup's earlier points are illustrative and its last point is the real stored reading &mdash; that distinction does not exist in the application, where every point is an equally real stored reading, so it draws them uniformly</dd>
         <dt>Y domain</dt><dd>fixed sensible range per metric, not auto-fit to the data &mdash; an auto domain exaggerates trivial movement into a dramatic slope</dd>
         <dt>Colour</dt><dd>var(--c-series-1) for the line. Deliberately NOT a status colour: the chart reports a measurement, and colouring it red/green would pass judgement the model has not made</dd>
         <dt>Empty state</dt><dd>with fewer than 2 stored classifications there is no trend to draw; the panel shows its "awaiting repeat inspections" state instead of a one-point chart</dd>
       </dl>
+
+      <div class="hd-callout">
+        <strong>What is normative here.</strong> The data source, the separate-chart-per-metric rule,
+        the widened y domain, the measurement (not status) colour, and the empty state. The
+        <em>Plot</em> row's viewBox and the hollow/filled marker split are this mockup's own
+        rendering.
+        <br><br>
+        The shipped application draws these with <strong>Altair</strong>
+        (<code class="hd-inline-code">app/charts.py</code>) at a fixed 150px height, one
+        <code class="hd-inline-code">st.column</code> per metric, with the latest value and its change
+        since the first reading shown above each chart as a
+        <code class="hd-inline-code">st.metric</code>. The y domain comes from
+        <code class="hd-inline-code">TrendSeries.domain</code> in
+        <code class="hd-inline-code">app/trend.py</code>, which widens a narrow spread to a per-metric
+        minimum span &mdash; without it a 0.02 drift fills the panel and reads as a crisis.
+      </div>
     </section>
 
     <!-- ============================== STATUS CHIP ============================== -->

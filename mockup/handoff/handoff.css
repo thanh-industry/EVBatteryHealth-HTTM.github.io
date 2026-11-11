@@ -438,3 +438,19 @@ hr.hd-rule { border: none; border-top: 1px solid var(--c-border); margin: var(--
 @media (max-width: 374px) {
   .hd-main { padding-left: var(--space-4); padding-right: var(--space-4); }
 }
+
+
+/* Reconciliation notes: what in a component spec is binding behaviour versus
+   this mockup's own way of drawing it. */
+.hd-callout {
+  margin-top: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--c-info-border);
+  border-left: 3px solid var(--c-info);
+  border-radius: var(--radius-md);
+  background: var(--c-info-bg);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-sm);
+  color: var(--c-text-secondary);
+}
+.hd-callout strong { color: var(--c-text); }
